@@ -1,0 +1,3141 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>CSS-Tricks</title>
+	<atom:link href="https://css-tricks.com/feed/" rel="self" type="application/rss+xml" />
+	<link>https://css-tricks.com</link>
+	<description>Tips, Tricks, and Techniques on using Cascading Style Sheets.</description>
+	<lastBuildDate>Thu, 08 May 2025 20:56:01 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+
+<image>
+	<url>https://i0.wp.com/css-tricks.com/wp-content/uploads/2021/07/star.png?fit=32%2C32&#038;ssl=1</url>
+	<title>CSS-Tricks</title>
+	<link>https://css-tricks.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">45537868</site>	<item>
+		<title>Orbital Mechanics (or How I Optimized a CSS Keyframes Animation)</title>
+		<link>https://css-tricks.com/orbital-mechanics-or-how-i-optimized-a-css-keyframes-animation/</link>
+					<comments>https://css-tricks.com/orbital-mechanics-or-how-i-optimized-a-css-keyframes-animation/#respond</comments>
+		
+		<dc:creator><![CDATA[John Rhea]]></dc:creator>
+		<pubDate>Thu, 08 May 2025 12:33:29 +0000</pubDate>
+				<category><![CDATA[Articles]]></category>
+		<category><![CDATA[animation]]></category>
+		<guid isPermaLink="false">https://css-tricks.com/?p=386270</guid>
+
+					<description><![CDATA[<p>What does it look like to refactor your own code? John Rhea picks apart an old CSS animation he wrote and walks through the thought process of optimizing it.</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/orbital-mechanics-or-how-i-optimized-a-css-keyframes-animation/">Orbital Mechanics (or How I Optimized a CSS Keyframes Animation)</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>I recently updated my portfolio at <a href="https://johnrhea.com" rel="noopener">johnrhea.com</a>. (If you’re looking to add a CSS or front-end engineer with storytelling and animation skills to your team, I’m your guy.) I liked the look of a series of planets I’d created for another personal project and decided to reuse them on my new site. Part of that was also reusing an animation I’d built circa 2019, where a moon orbited around the planet.</p>
+
+
+
+<p>Initially, I just plopped the animations into the new site, only changing the units (<code>em</code> units to viewport units using some complicated math that I was very, very proud of) so that they would scale properly because I’m… <em>efficient</em> with my time. However, on mobile, the planet would move up a few pixels and down a few pixels as the moons orbited around it. I suspected the plopped-in animation was the culprit (it wasn’t, but at least I got some optimized animation and an article out of the deal).</p>
+
+
+
+<span id="more-386270"></span>
+
+
+
+<p>Here’s the original animation:</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_OPPJYja" src="//codepen.io/anon/embed/preview/OPPJYja?height=450&amp;theme-id=1&amp;slug-hash=OPPJYja&amp;default-tab=result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed OPPJYja" title="CodePen Embed OPPJYja" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>My initial animation for the moon ran for 60 seconds. I’m folding it inside a disclosure widget because, at 141 lines, it’s stupid long (and, as we’ll see, emphasis on the <em>stupid</em>). Here it is in all its “glory”:</p>
+
+
+
+<details >
+  <summary>
+          Open code      </summary>
+  
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line=""><code markup="tt">#moon1 {
+  animation: moon-one 60s infinite;
+}
+
+@keyframes moon-one {
+  0% {
+    transform: translate(0, 0) scale(1);
+    z-index: 2;
+    animation-timing-function: ease-in;
+  }
+  5% {
+    transform: translate(-3.51217391vw, 3.50608696vw) scale(1.5);
+    z-index: 2;
+    animation-timing-function: ease-out;
+  }
+  9.9% {
+    z-index: 2;
+  }
+  10% {
+    transform: translate(-5.01043478vw, 6.511304348vw) scale(1);
+    z-index: -1;
+    animation-timing-function: ease-in;
+  }
+  15% {
+    transform: translate(1.003478261vw, 2.50608696vw) scale(0.25);
+    z-index: -1;
+    animation-timing-function: ease-out;
+  }
+  19.9% {
+    z-index: -1;
+  }
+  20% {
+    transform: translate(0, 0) scale(1);
+    z-index: 2;
+    animation-timing-function: ease-in;
+  }
+  25% {
+    transform: translate(-3.51217391vw, 3.50608696vw) scale(1.5);
+    z-index: 2;
+    animation-timing-function: ease-out;
+  }
+  29.9% {
+    z-index: 2;
+  }
+  30% {
+    transform: translate(-5.01043478vw, 6.511304348vw) scale(1);
+    z-index: -1;
+    animation-timing-function: ease-in;
+  }
+  35% {
+    transform: translate(1.003478261vw, 2.50608696vw) scale(0.25);
+    z-index: -1;
+    animation-timing-function: ease-out;
+  }
+  39.9% {
+    z-index: -1;
+  }
+  40% {
+    transform: translate(0, 0) scale(1);
+    z-index: 2;
+    animation-timing-function: ease-in;
+  }
+  45% {
+    transform: translate(-3.51217391vw, 3.50608696vw) scale(1.5);
+    z-index: 2;
+    animation-timing-function: ease-out;
+  }
+  49.9% {
+    z-index: 2;
+  }
+  50% {
+    transform: translate(-5.01043478vw, 6.511304348vw) scale(1);
+    z-index: -1;
+    animation-timing-function: ease-in;
+  }
+  55% {
+    transform: translate(1.003478261vw, 2.50608696vw) scale(0.25);
+    z-index: -1;
+    animation-timing-function: ease-out;
+  }
+  59.9% {
+    z-index: -1;
+  }
+  60% {
+    transform: translate(0, 0) scale(1);
+    z-index: 2;
+    animation-timing-function: ease-in;
+  }
+  65% {
+    transform: translate(-3.51217391vw, 3.50608696vw) scale(1.5);
+    z-index: 2;
+    animation-timing-function: ease-out;
+  }
+  69.9% {
+    z-index: 2;
+  }
+  70% {
+    transform: translate(-5.01043478vw, 6.511304348vw) scale(1);
+    z-index: -1;
+    animation-timing-function: ease-in;
+  }
+  75% {
+    transform: translate(1.003478261vw, 2.50608696vw) scale(0.25);
+    z-index: -1;
+    animation-timing-function: ease-out;
+  }
+  79.9% {
+    z-index: -1;
+  }
+  80% {
+    transform: translate(0, 0) scale(1);
+    z-index: 2;
+    animation-timing-function: ease-in;
+  }
+  85% {
+    transform: translate(-3.51217391vw, 3.50608696vw) scale(1.5);
+    z-index: 2;
+    animation-timing-function: ease-out;
+  }
+  89.9% {
+    z-index: 2;
+  }
+  90% {
+    transform: translate(-5.01043478vw, 6.511304348vw) scale(1);
+    z-index: -1;
+    animation-timing-function: ease-in;
+  }
+  95% {
+    transform: translate(1.003478261vw, 2.50608696vw) scale(0.25);
+    z-index: -1;
+    animation-timing-function: ease-out;
+  }
+  99.9% {
+    z-index: -1;
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    z-index: 2;
+    animation-timing-function: ease-in;
+  }
+}</code></pre>
+
+
+</details>
+
+
+<p>If you look at the keyframes in that code, you’ll notice that the <code>0%</code> to <code>20%</code> keyframes are exactly the same as <code>20%</code> to <code>40%</code> and so on up through <code>100%</code>. Why I decided to repeat the keyframes five times infinitely instead of just repeating one set infinitely is a decision lost to antiquity, like six years ago in web time. We can also drop the duration to 12 seconds (one-fifth of sixty) if we were doing our due diligence.</p>
+
+
+
+<p>I could thus delete everything from <code>20%</code> on, instantly dropping the code down to 36 lines. And yes, I realize gains like this are unlikely to be possible on most sites, but this is the first step for optimizing things.</p>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line=""><code markup="tt">#moon1 {
+  animation: moon-one 12s infinite;
+}
+
+@keyframes moon-one {
+  0% {
+    transform: translate(0, 0) scale(1);
+    z-index: 2;
+    animation-timing-function: ease-in;
+  }
+  5% {
+    transform: translate(-3.51217391vw, 3.50608696vw) scale(1.5);
+    z-index: 2;
+    animation-timing-function: ease-out;
+  }
+  9.9% {
+    z-index: 2;
+  }
+  10% {
+    transform: translate(-5.01043478vw, 6.511304348vw) scale(1);
+    z-index: -1;
+    animation-timing-function: ease-in;
+  }
+  15% {
+    transform: translate(1.003478261vw, 2.50608696vw) scale(0.25);
+    z-index: -1;
+    animation-timing-function: ease-out;
+  }
+  19.9% {
+    z-index: -1;
+  }
+  20% {
+    transform: translate(0, 0) scale(1);
+    z-index: 2;
+    animation-timing-function: ease-in;
+  }
+}</code></pre>
+
+
+
+<p>Now that we’ve gotten rid of 80% of the overwhelming bits, we can see that there are five main keyframes and two additional ones that set the <code>z-index</code> close to the middle and end of the animation (these prevent the moon from dropping behind the planet or popping out from behind the planet too early). We can change these five points from <code>0%</code>, <code>5%</code>, <code>10%</code>, <code>15%</code>, and <code>20%</code> to <code>0%</code>, <code>25%</code>, <code>50%</code>, <code>75%</code>, and <code>100%</code> (and since the <code>0%</code> and the former <code>20%</code> are the same, we can remove that one, too). Also, since the <code>10%</code> keyframe above is switching to <code>50%</code>, the <code>9.9%</code> keyframe can move to <code>49.9%</code>, and the <code>19.9%</code> keyframe can switch to <code>99.9%</code>, giving us this:</p>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line=""><code markup="tt">#moon1 {
+  animation: moon-one 12s infinite;
+}
+
+@keyframes moon-one {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    z-index: 2;
+    animation-timing-function: ease-in;
+  }
+  25% {
+    transform: translate(-3.51217391vw, 3.50608696vw) scale(1.5);
+    z-index: 2;
+    animation-timing-function: ease-out;
+  }
+  49.9% {
+    z-index: 2;
+  }
+  50% {
+    transform: translate(-5.01043478vw, 6.511304348vw) scale(1);
+    z-index: -1;
+    animation-timing-function: ease-in;
+  }
+  75% {
+    transform: translate(1.003478261vw, 2.50608696vw) scale(0.25);
+    z-index: -1;
+    animation-timing-function: ease-out;
+  }
+  99.9% {
+    z-index: -1;
+  }
+}</code></pre>
+
+
+
+<p>Though I was very proud of myself for my math wrangling, numbers like <code>-3.51217391vw</code> are really, really unnecessary. If a screen was one thousand pixels wide, <code>-3.51217391vw</code> would be <code>35.1217391</code> pixels. No one ever needs to go down to the precision of a ten-millionth of a pixel. So, let&#8217;s round everything to the tenth place (and if it’s a <code>0</code>, we’ll just drop it). We can also skip <code>z-index</code> in the <code>75%</code> and <code>25%</code> keyframes since it doesn’t change.</p>
+
+
+
+<p>Here’s where that gets us in the code:</p>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line=""><code markup="tt">#moon1 {
+  animation: moon-one 12s infinite;
+}
+
+@keyframes moon-one {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    z-index: 2;
+    animation-timing-function: ease-in;
+  }
+  25% {
+    transform: translate(-3.5vw, 3.5vw) scale(1.5);
+    z-index: 2;
+    animation-timing-function: ease-out;
+  }
+  49.9% {
+    z-index: 2;
+  }
+  50% {
+    transform: translate(-5vw, 6.5vw) scale(1);
+    z-index: -1;
+    animation-timing-function: ease-in;
+  }
+  75% {
+    transform: translate(1vw, 2.5vw) scale(0.25);
+    z-index: -1;
+    animation-timing-function: ease-out;
+  }
+  99.9% {
+    z-index: -1;
+  }
+}</code></pre>
+
+
+
+<p>After all our changes, the animation still looks pretty close to what it was before, only way less code:</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_XJJJWba" src="//codepen.io/anon/embed/preview/XJJJWba?height=450&amp;theme-id=1&amp;slug-hash=XJJJWba&amp;default-tab=result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed XJJJWba" title="CodePen Embed XJJJWba" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>One of the things I don’t like about this animation is that the moon kind of turns at its zenith when it crosses the planet. It would be much better if it traveled in a straight line from the upper right to the lower left. However, we also need it to get a little larger, as if the moon is coming closer to us in its orbit. Because both translation and scaling were done in the <code>transform</code> property, I can’t translate and scale the moon independently.</p>
+
+
+
+<p>If we skip either one in the <code>transform</code> property, it resets the one we skipped, so I’m forced to guess where the mid-point should be so that I can set the scale I need. One way I’ve solved this in the past is to add a wrapping element, then apply <code>scale</code> to one element and <code>translate</code> to the other. However, now that we have individual <code>scale</code> and <code>translate</code> properties, a better way is to separate them from the <code>transform</code> property and use them as separate properties. Separating out the translation and scaling shouldn&#8217;t change anything, unless the original order they were declared on the <code>transform</code> property was different than the order of the singular properties.</p>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line=""><code markup="tt">#moon1 {
+  animation: moon-one 12s infinite;
+}
+
+@keyframes moon-one {
+  0%, 100% {
+    translate: 0 0;
+    scale: 1;
+    z-index: 2;
+    animation-timing-function: ease-in;
+  }
+  25% {
+    translate: -3.5vw 3.5vw;
+    z-index: 2;
+    animation-timing-function: ease-out;
+  }
+  49.9% {
+    z-index: 2;
+  }
+  50% {
+    translate: -5vw 6.5vw;
+    scale: 1;
+    z-index: -1;
+    animation-timing-function: ease-in;
+  }
+  75% {
+    translate: 1vw 2.5vw;
+    scale: 0.25;
+    animation-timing-function: ease-out;
+  }
+  99.9% {
+    z-index: -1;
+  }
+}</code></pre>
+
+
+
+<p>Now that we can separate the <code>scale</code> and <code>translate</code> properties and use them independently, we can drop the <code>translate</code> property in the <code>25%</code> and <code>75%</code> keyframes because we don’t want them placed precisely in that keyframe. We want the browser’s interpolation to take care of that for us so that it translates smoothly while scaling.</p>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line=""><code markup="tt">#moon1 {
+  animation: moon-one 12s infinite;
+}
+
+@keyframes moon-one {
+  0%, 100% {
+    translate: 0 0;
+    scale: 1;
+    z-index: 2;
+    animation-timing-function: ease-in;
+  }
+  25% {
+    scale: 1.5;
+    animation-timing-function: ease-out;
+  }
+  49.9% {
+    z-index: 2;
+  }
+  50% {
+    translate: -5vw 6.5vw;
+    scale: 1;
+    z-index: -1;
+    animation-timing-function: ease-in;
+  }
+  75% {
+    scale: 0.25;
+    animation-timing-function: ease-out;
+  }
+  99.9% {
+    z-index: -1;
+  }
+}</code></pre>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_LEEEYBq" src="//codepen.io/anon/embed/preview/LEEEYBq?height=450&amp;theme-id=1&amp;slug-hash=LEEEYBq&amp;default-tab=result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed LEEEYBq" title="CodePen Embed LEEEYBq" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>Lastly, those different timing functions don’t make a lot of sense anymore because we’ve got the browser working for us, and if we use an <code>ease-in-out</code> timing function on everything, then it should do exactly what we want.</p>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line=""><code markup="tt">#moon1 {
+  animation: moon-one 12s infinite ease-in-out;
+}
+
+@keyframes moon-one {
+  0%, 100% {
+    translate: 0 0;
+    scale: 1;
+    z-index: 2;
+  }
+  25% {
+    scale: 1.5;
+  }
+  49.9% {
+    z-index: 2;
+  }
+  50% {
+    translate: -5vw 6.5vw;
+    scale: 1;
+    z-index: -1;
+  }
+  75% {
+    scale: 0.25;
+  }
+  99.9% {
+    z-index: -1;
+  }
+}</code></pre>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_vEEEYvB" src="//codepen.io/anon/embed/preview/vEEEYvB?height=450&amp;theme-id=1&amp;slug-hash=vEEEYvB&amp;default-tab=result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed vEEEYvB" title="CodePen Embed vEEEYvB" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>And there you go: 141 lines down to 28, and I think the animation looks even better than before. It will certainly be easier to maintain, that’s for sure.</p>
+
+
+
+<p>But what do you think? Was there an optimization step I missed? Let me know in the comments.</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/orbital-mechanics-or-how-i-optimized-a-css-keyframes-animation/">Orbital Mechanics (or How I Optimized a CSS Keyframes Animation)</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://css-tricks.com/orbital-mechanics-or-how-i-optimized-a-css-keyframes-animation/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">386270</post-id>	</item>
+		<item>
+		<title>Why is Nobody Using the hwb() Color Function?</title>
+		<link>https://css-tricks.com/why-is-nobody-using-the-hwb-color-function/</link>
+					<comments>https://css-tricks.com/why-is-nobody-using-the-hwb-color-function/#comments</comments>
+		
+		<dc:creator><![CDATA[Sunkanmi Fafowora]]></dc:creator>
+		<pubDate>Wed, 07 May 2025 12:25:19 +0000</pubDate>
+				<category><![CDATA[Articles]]></category>
+		<category><![CDATA[color]]></category>
+		<guid isPermaLink="false">https://css-tricks.com/?p=386463</guid>
+
+					<description><![CDATA[<p>Okay, nobody is an exaggeration, but have you seen the stats for <code>hwb()</code>? They show a steep decline, and after working a lot on color in the CSS-Tricks almanac, I’ve just been wondering why that is.</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/why-is-nobody-using-the-hwb-color-function/">Why is Nobody Using the hwb() Color Function?</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Okay,&nbsp;<em>nobody</em>&nbsp;is an exaggeration, but have you seen the stats for&nbsp;<code>hwb()</code>? They show a steep decline, and after working&nbsp;<em>a lot</em>&nbsp;on color in the <a href="https://css-tricks.com/almanac/">CSS-Tricks almanac</a>, I’ve just been wondering why that is.</p>
+
+
+
+<span id="more-386463"></span>
+
+
+
+<figure class="wp-block-image size-full"><img data-recalc-dims="1" fetchpriority="high" decoding="async" width="1960" height="1196" src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/05/Screenshot-2025-05-05-at-10.43.24%E2%80%AFAM.png?resize=1960%2C1196&#038;ssl=1" alt="Chrome Platform Status for hwb(), showing a steep decline in usage from 0.4 percent of all page loads in 2024 to less than .2 perfect in 2025." class="wp-image-386469" srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/05/Screenshot-2025-05-05-at-10.43.24%E2%80%AFAM.png?w=1960&amp;ssl=1 1960w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/05/Screenshot-2025-05-05-at-10.43.24%E2%80%AFAM.png?resize=300%2C183&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/05/Screenshot-2025-05-05-at-10.43.24%E2%80%AFAM.png?resize=1024%2C625&amp;ssl=1 1024w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/05/Screenshot-2025-05-05-at-10.43.24%E2%80%AFAM.png?resize=768%2C469&amp;ssl=1 768w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/05/Screenshot-2025-05-05-at-10.43.24%E2%80%AFAM.png?resize=1536%2C937&amp;ssl=1 1536w" sizes="(min-width: 735px) 864px, 96vw" /></figure>
+
+
+
+<p><code>hwb()</code>&nbsp;is a color function in the sRGB color space, which is the same color space used by&nbsp;<a href="https://css-tricks.com/almanac/functions/r/rgb"><code>rgb()</code></a>,&nbsp;<a href="https://css-tricks.com/almanac/functions/h/hsl/"><code>hsl()</code></a>&nbsp;and the older hexadecimal color format (e.g. <code>#f8a100</code>). <code>hwb()</code> is supposed to be more intuitive and easier to work with than&nbsp;<code>hsl()</code>. I kinda get why it&#8217;s considered &#8220;easier&#8221; since you specify how much black or white you want to add to a given color. But, how is&nbsp;<code>hwb()</code>&nbsp;more <em>intuitive</em> than&nbsp;<code>hsl()</code>?</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p><code>hwb()</code>&nbsp;accepts three values, and similar to&nbsp;<code>hsl()</code>, the first value specifies the color&#8217;s hue (between&nbsp;<code>0deg</code>&#8211;<code>360deg</code>), while the second and third values add whiteness (<code>0</code>&nbsp;&#8211;&nbsp;<code>100</code>) and blackness (<code>0</code>&nbsp;&#8211;&nbsp;<code>100</code>) to the mix, respectively.</p>
+</blockquote>
+
+
+
+<p>According to Google, the term “intuitive” means “<em>what one feels to be true even without conscious reasoning; instinctive</em>.” As such, it does truly seem that&nbsp;<code>hwb()</code>&nbsp;is more&nbsp;intuitive&nbsp;than&nbsp;<code>hsl()</code>, but it’s only a slight notable difference that makes that true.</p>
+
+
+
+<p>Let’s consider an example with a color. We&#8217;ll declare <em>light orange</em>&nbsp;in both&nbsp;<code>hsl()</code>&nbsp;and&nbsp;<code>hwb()</code>:</p>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line=""><code markup="tt">/* light orange in hsl */
+.element-1 {
+  color: hsl(30deg 100% 75%);
+}
+
+/* light orange in hwb() */
+.element-2 {
+  color: hwb(30deg 50% 0%);
+}</code></pre>
+
+
+
+<p>These two functions produce the exact same color, but while <code>hwb()</code> handles ligthness with two arguments, <code>hsl()</code> does it with just one, leaving one argument for the saturation. By comparison, <code>hwb()</code> provides no clear intuitive way to set just the saturation. I&#8217;d argue that makes the <code>hwb()</code> function less intuitive than <code>hsl()</code>.</p>
+
+
+
+<p>I think another reason that <code>hsl()</code> is generally more intuitive than <code>hwb()</code> is that&nbsp;<a href="https://en.wikipedia.org/wiki/HSL_and_HSV" rel="noopener">HSL as a color model was created in the 1970s</a>&nbsp;while&nbsp;<a href="https://en.wikipedia.org/wiki/HWB_color_model#:~:text=It%20was%20developed%20by%20HSV%E2%80%99s%20creator%20Alvy%20Ray%20Smith%20in%201996" rel="noopener">HWB as a color model was created in 1996</a>.&nbsp;We&#8217;ve had much more time to get acquainted with <code>hsl()</code> than we have <code>hwb()</code>. <code>hsl()</code>&nbsp;was implemented by browsers&nbsp;<a href="https://caniuse.com/?search=hsl" rel="noopener">as far back as 2008</a>, Safari being the first and other browsers following suit. Meanwhile,&nbsp;<code>hwb()</code>&nbsp;<a href="https://caniuse.com/?search=hwb" rel="noopener">gained support as recently</a> <a href="https://caniuse.com/?search=hwb" rel="noopener">as 2021</a>! That’s more than a 10-year gap between functions when it comes to using them and being familiar with them.</p>
+
+
+
+<p>There&#8217;s also the fact that other color functions that are used to represent colors in other color spaces — such as <a href="https://css-tricks.com/almanac/functions/l/lab/"><code>lab()</code></a>,&nbsp;<a href="https://css-tricks.com/almanac/functions/l/lch/"><code>lch()</code></a>,&nbsp;<a href="https://css-tricks.com/almanac/functions/o/oklab/"><code>oklab()</code></a>, and&nbsp;<code><a href="https://css-tricks.com/almanac/functions/o/oklch/">oklch()</a></code> — offer more advantages, such as access to more colors in the color gamut and perceptual uniformity. So, maybe being&nbsp;<em>intuitive</em> is coming at the expense of having a more robust feature set, which could explain why you might go with a less intuitive function that doesn&#8217;t use sRGB.</p>
+
+
+
+<p>Look, I can get around the idea of controlling how white or black you want a color to look based on personal preferences, and for designers, it’s maybe easier to mix colors that way. But I&nbsp;<em>honestly</em>&nbsp;would not opt for this as my go-to color function in the sRGB color space because&nbsp;<code>hsl()</code>&nbsp;does something similar using the same hue, but with saturation and lightness as the parameters which is far more intuitive than what <code>hwb()</code> offers.</p>
+
+
+
+<p>I see our web friend, Stefan Judis, preferring&nbsp;<code>hsl()</code>&nbsp;over&nbsp;<code>hwb()</code><a href="https://www.stefanjudis.com/blog/hwb-a-color-notation-for-humans/" rel="noopener"> in his article on&nbsp;<code>hwb()</code></a>.</p>
+
+
+
+<p><a href="https://github.com/w3c/csswg-drafts/issues/6940#issue-1099121498" rel="noopener">Lea Verou even brought up the idea of removing <code>hwb()</code></a> from the spec&nbsp;in 2022, but&nbsp;<a href="https://github.com/w3c/csswg-drafts/issues/6940#issuecomment-1028283127" rel="noopener">a decision was made to leave it as it was</a> since browsers were already implementing the function. And although,I was initially pained by the idea of keeping <code>hwb()</code> around, I also quite understand the feeling of working on something, and then seeing it thrown in the bin. Once we&#8217;ve introduced something, it&#8217;s always tough to walk it back, especially when it comes to maintaining backwards compatibility, which is a core tenet of the web.</p>
+
+
+
+<p>I would like to say something though:&nbsp;<code>lab()</code>,&nbsp;<code>lch()</code>,&nbsp;<code>oklab()</code>,&nbsp;<code>oklch()</code>&nbsp;are already here and are better color functions than <code>hwb()</code>. I, for one, would encourage using them over <code>hwb()</code> because <a href="https://www.smashingmagazine.com/2023/08/oklch-color-spaces-gamuts-css/" rel="noopener">they support <em>so many more</em>&nbsp;colors</a>&nbsp;that are simply missing from the&nbsp;<code>hsl()</code>&nbsp;and&nbsp;<code>hwb()</code>&nbsp;functions.</p>
+
+
+
+<p>I’ve been exploring colors for quite some time now, so any input would be extremely helpful. What color functions are you using in your everyday website or web application, and why?</p>
+
+
+<h3 class="wp-block-heading" id="more-on-color">More on color</h3>
+
+
+    		
+    <div class="in-article-cards">
+      <article class="in-article-card " id="mini-post-386463">
+
+  <time datetime="2025-02-20" title="Originally published May 7, 2025">
+    <strong>
+                
+      Almanac
+      </strong>
+
+    on
+
+    Feb 22, 2025  </time>
+
+  <h3>
+    <a href="https://css-tricks.com/almanac/functions/h/hsl/">
+      hsl()    </a>
+  </h3>
+
+      <a href="https://css-tricks.com/almanac/functions/h/hsl/" class="almanac-example">
+      <code class="language-css">.element { color: hsl(90deg, 50%, 50%); }</code>
+    </a>
+  
+      <div class="tags">
+      <a href="https://css-tricks.com/tag/color/" rel="tag">color</a>    </div>
+  
+  <div class="author-row">
+    <a href="https://css-tricks.com/author/sunkanmifafowora/" aria-label="Author page of Sunkanmi Fafowora">
+      <img alt='' src='https://css-tricks.com/wp-content/cache/breeze-extra/gravatars/7a0804d8152c56694fa36cce088c9564c8504d3d71f0f12527afb0ad3bc88dab' srcset='https://css-tricks.com/wp-content/cache/breeze-extra/gravatars/7a0804d8152c56694fa36cce088c9564c8504d3d71f0f12527afb0ad3bc88dab 2x' class='avatar avatar-80 photo' height='80' width='80' />    </a>
+  
+    <a class="author-name" href="https://css-tricks.com/author/sunkanmifafowora/">
+      Sunkanmi Fafowora    </a>
+  </div>
+
+</article>
+<article class="in-article-card " id="mini-post-386463">
+
+  <time datetime="2025-03-04" title="Originally published May 7, 2025">
+    <strong>
+                
+      Almanac
+      </strong>
+
+    on
+
+    Mar 4, 2025  </time>
+
+  <h3>
+    <a href="https://css-tricks.com/almanac/functions/l/lab/">
+      lab()    </a>
+  </h3>
+
+      <a href="https://css-tricks.com/almanac/functions/l/lab/" class="almanac-example">
+      <code class="language-css">.element { color: lab(50% 50% 50% / 0.5); }</code>
+    </a>
+  
+      <div class="tags">
+      <a href="https://css-tricks.com/tag/color/" rel="tag">color</a>    </div>
+  
+  <div class="author-row">
+    <a href="https://css-tricks.com/author/sunkanmifafowora/" aria-label="Author page of Sunkanmi Fafowora">
+      <img alt='' src='https://css-tricks.com/wp-content/cache/breeze-extra/gravatars/7a0804d8152c56694fa36cce088c9564c8504d3d71f0f12527afb0ad3bc88dab' srcset='https://css-tricks.com/wp-content/cache/breeze-extra/gravatars/7a0804d8152c56694fa36cce088c9564c8504d3d71f0f12527afb0ad3bc88dab 2x' class='avatar avatar-80 photo' height='80' width='80' />    </a>
+  
+    <a class="author-name" href="https://css-tricks.com/author/sunkanmifafowora/">
+      Sunkanmi Fafowora    </a>
+  </div>
+
+</article>
+<article class="in-article-card " id="mini-post-386463">
+
+  <time datetime="2025-03-12" title="Originally published May 7, 2025">
+    <strong>
+                
+      Almanac
+      </strong>
+
+    on
+
+    Mar 12, 2025  </time>
+
+  <h3>
+    <a href="https://css-tricks.com/almanac/functions/l/lch/">
+      lch()    </a>
+  </h3>
+
+      <a href="https://css-tricks.com/almanac/functions/l/lch/" class="almanac-example">
+      <code class="language-css">.element { color: lch(10% 0.215 15deg); }</code>
+    </a>
+  
+      <div class="tags">
+      <a href="https://css-tricks.com/tag/color/" rel="tag">color</a>    </div>
+  
+  <div class="author-row">
+    <a href="https://css-tricks.com/author/sunkanmifafowora/" aria-label="Author page of Sunkanmi Fafowora">
+      <img alt='' src='https://css-tricks.com/wp-content/cache/breeze-extra/gravatars/7a0804d8152c56694fa36cce088c9564c8504d3d71f0f12527afb0ad3bc88dab' srcset='https://css-tricks.com/wp-content/cache/breeze-extra/gravatars/7a0804d8152c56694fa36cce088c9564c8504d3d71f0f12527afb0ad3bc88dab 2x' class='avatar avatar-80 photo' height='80' width='80' />    </a>
+  
+    <a class="author-name" href="https://css-tricks.com/author/sunkanmifafowora/">
+      Sunkanmi Fafowora    </a>
+  </div>
+
+</article>
+<article class="in-article-card " id="mini-post-386463">
+
+  <time datetime="2025-04-29" title="Originally published May 7, 2025">
+    <strong>
+                
+      Almanac
+      </strong>
+
+    on
+
+    Apr 29, 2025  </time>
+
+  <h3>
+    <a href="https://css-tricks.com/almanac/functions/o/oklab/">
+      oklab()    </a>
+  </h3>
+
+      <a href="https://css-tricks.com/almanac/functions/o/oklab/" class="almanac-example">
+      <code class="language-css">.element { color: oklab(25.77% 25.77% 54.88%; }</code>
+    </a>
+  
+      <div class="tags">
+      <a href="https://css-tricks.com/tag/color/" rel="tag">color</a>    </div>
+  
+  <div class="author-row">
+    <a href="https://css-tricks.com/author/sunkanmifafowora/" aria-label="Author page of Sunkanmi Fafowora">
+      <img alt='' src='https://css-tricks.com/wp-content/cache/breeze-extra/gravatars/7a0804d8152c56694fa36cce088c9564c8504d3d71f0f12527afb0ad3bc88dab' srcset='https://css-tricks.com/wp-content/cache/breeze-extra/gravatars/7a0804d8152c56694fa36cce088c9564c8504d3d71f0f12527afb0ad3bc88dab 2x' class='avatar avatar-80 photo' height='80' width='80' />    </a>
+  
+    <a class="author-name" href="https://css-tricks.com/author/sunkanmifafowora/">
+      Sunkanmi Fafowora    </a>
+  </div>
+
+</article>
+<article class="in-article-card " id="mini-post-386463">
+
+  <time datetime="2025-04-03" title="Originally published May 7, 2025">
+    <strong>
+                
+      Almanac
+      </strong>
+
+    on
+
+    May 10, 2025  </time>
+
+  <h3>
+    <a href="https://css-tricks.com/almanac/functions/o/oklch/">
+      oklch()    </a>
+  </h3>
+
+      <a href="https://css-tricks.com/almanac/functions/o/oklch/" class="almanac-example">
+      <code class="language-css">.element { color: oklch(70% 0.15 240); }</code>
+    </a>
+  
+      <div class="tags">
+      <a href="https://css-tricks.com/tag/color/" rel="tag">color</a>    </div>
+  
+  <div class="author-row">
+    <a href="https://css-tricks.com/author/gabrielshoyombo/" aria-label="Author page of Gabriel Shoyombo">
+      <img data-recalc-dims="1" decoding="async" alt="" class="avatar avatar-80 photo avatar-default" height="80" src="https://i0.wp.com/css-tricks.com/wp-content/cache/breeze-extra/gravatars/gabriel-shoyombo-80x80.jpeg?resize=80%2C80&#038;ssl=1" width="80">    </a>
+  
+    <a class="author-name" href="https://css-tricks.com/author/gabrielshoyombo/">
+      Gabriel Shoyombo    </a>
+  </div>
+
+</article>
+    </div>
+  
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/why-is-nobody-using-the-hwb-color-function/">Why is Nobody Using the hwb() Color Function?</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://css-tricks.com/why-is-nobody-using-the-hwb-color-function/feed/</wfw:commentRss>
+			<slash:comments>4</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">386463</post-id>	</item>
+		<item>
+		<title>GSAP is Now Completely Free, Even for Commercial Use!</title>
+		<link>https://css-tricks.com/gsap-is-now-completely-free-even-for-commercial-use/</link>
+					<comments>https://css-tricks.com/gsap-is-now-completely-free-even-for-commercial-use/#respond</comments>
+		
+		<dc:creator><![CDATA[Ryan Trimble]]></dc:creator>
+		<pubDate>Tue, 06 May 2025 14:14:41 +0000</pubDate>
+				<category><![CDATA[Links]]></category>
+		<category><![CDATA[animation]]></category>
+		<category><![CDATA[resource]]></category>
+		<guid isPermaLink="false">https://css-tricks.com/?p=386482</guid>
+
+					<description><![CDATA[<p>Along with the version 3.13 release, GSAP, and all its awesome plugins, are now freely available to everyone.</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/gsap-is-now-completely-free-even-for-commercial-use/">GSAP is Now Completely Free, Even for Commercial Use!</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Back in October, the folks behind the GreenSock Animation Platform (GSAP) <a href="https://css-tricks.com/combining-forces-gsap-webflow/">joined forces with Webflow</a>, the visual website builder. Now, the team&#8217;s back with another announcement: Along with the version 3.13 release, GSAP, and all its awesome plugins, are now <em>freely available</em> to everyone.</p>
+
+
+
+<span id="more-386482"></span>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>Thanks to&nbsp;<a href="https://webflow.com/" rel="noopener">Webflow</a>&nbsp;GSAP is now&nbsp;<strong>100% free</strong>&nbsp;including <em>all</em> of the bonus plugins like&nbsp;<a href="https://gsap.com/docs/v3/Plugins/SplitText" rel="noopener">SplitText</a>,&nbsp;<a href="https://gsap.com/docs/v3/Plugins/MorphSVGPlugin" rel="noopener">MorphSVG</a>, and all the others that were exclusively available to Club GSAP members. That&#8217;s right, the entire GSAP toolset is free,&nbsp;<strong>even for commercial use!</strong>&nbsp;&#x1f92f;</p>
+</blockquote>
+
+
+
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/lfVA-5qHiUM?si=AcBc7SUyUmuEZH4K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+
+<p>Webflow is celebrating over on <a href="https://webflow.com/blog/gsap-becomes-free" rel="noopener">their blog</a> as well:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>With Webflow’s support, the GSAP team can continue to lead the charge in product and industry innovation while allowing even more developers the opportunity to harness the full breadth of GSAP-powered motion.</p>
+</blockquote>
+
+
+
+<p>Check out the GSAP blog to read more about the announcement, then go animate something awesome and share it with us!</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/gsap-is-now-completely-free-even-for-commercial-use/">GSAP is Now Completely Free, Even for Commercial Use!</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://css-tricks.com/gsap-is-now-completely-free-even-for-commercial-use/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">386482</post-id>	</item>
+		<item>
+		<title>Modern Scroll Shadows Using Scroll-Driven Animations</title>
+		<link>https://css-tricks.com/modern-scroll-shadows-using-scroll-driven-animations/</link>
+					<comments>https://css-tricks.com/modern-scroll-shadows-using-scroll-driven-animations/#comments</comments>
+		
+		<dc:creator><![CDATA[Kevin Hamer]]></dc:creator>
+		<pubDate>Mon, 05 May 2025 13:01:43 +0000</pubDate>
+				<category><![CDATA[Articles]]></category>
+		<category><![CDATA[Scroll Driven Animation]]></category>
+		<guid isPermaLink="false">https://css-tricks.com/?p=385733</guid>
+
+					<description><![CDATA[<p>Using scroll shadows, especially for mobile devices, is a subtle bit of UX that Chris has covered before. Geoff covered a newer approach that uses the <code>animation-timeline</code> property. Here’s yet another way.</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/modern-scroll-shadows-using-scroll-driven-animations/">Modern Scroll Shadows Using Scroll-Driven Animations</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Using scroll shadows, especially for mobile devices, is a subtle bit of UX that Chris has covered before (indeed, it’s&nbsp;<a href="https://css-tricks.com/books/greatest-css-tricks/scroll-shadows/">one of his all-time favorite CSS tricks</a>), by layering background gradients with different attachments, we can get shadows that are covered up when you’ve scrolled to the limits of the element.</p>
+
+
+
+<p>Geoff covered a&nbsp;<a href="https://css-tricks.com/unleash-the-power-of-scroll-driven-animations/#aa-add-scroll-shadows-to-a-scroll-container">newer approach</a>&nbsp;that uses the&nbsp;<code><a href="https://css-tricks.com/almanac/properties/a/animation-timeline/">animation-timeline</a></code> property. Using&nbsp;<code>animation-timeline</code>, we can tie CSS animation to the scroll position. His example uses pseudo-elements to render the scroll shadows, and&nbsp;animation-range&nbsp;to animate the opacity of the pseudo-elements based on scroll.</p>
+
+
+
+<p>Here’s yet another way. Instead of using shadows, let’s use a CSS <code>mask</code>&nbsp;to fade out the edges of the scrollable element. This is a slightly different visual metaphor that works great for horizontally scrollable elements — places where your scrollable element doesn’t have a distinct border of its own. This approach still uses&nbsp;<code>animation-timeline</code>, but we’ll use custom properties instead of pseudo-elements. Since we’re fading, the effect also works regardless of whether we’re on a dark or light background.</p>
+
+
+
+<span id="more-385733"></span>
+
+
+<h2 class="wp-block-heading" id="getting-started-with-a-scrollable-element">Getting started with a scrollable element</h2>
+
+
+<p>First, we’ll define our scrollable element with a mask that fades out the start and end of the container. For this example, let’s consider the infamous table that can’t be responsive and has to be horizontally scrollable on mobile.</p>
+
+
+
+<p>Let’s add the mask. We can use the shorthand and find the mask as a linear gradient that fades out on either end. A mask lets the table fade into the background instead of overlaying a shadow, but you could use the same technique for shadows.</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_raNRXPK" src="//codepen.io/anon/embed/raNRXPK?height=450&amp;theme-id=1&amp;slug-hash=raNRXPK&amp;default-tab=result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed raNRXPK" title="CodePen Embed raNRXPK" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line=""><code markup="tt">.scrollable {
+  mask: linear-gradient(to right, #0000, #ffff 3rem calc(100% - 3rem), #0000);
+}</code></pre>
+
+
+<h2 class="wp-block-heading" id="defining-the-custom-properties-and-animation">Defining the custom properties and animation</h2>
+
+
+<p>Next, we need to define our custom properties and the animation. We’ll define two separate properties,&nbsp;<code>--left-fade</code>&nbsp;and&nbsp;<code>--right-fade</code>, using&nbsp;<code><a href="https://css-tricks.com/almanac/rules/p/property/">@property</a></code>. Using&nbsp;<code>@property</code>&nbsp;is necessary here to specify the&nbsp;<em>syntax</em>&nbsp;of the properties so that browsers can animate the property’s values.</p>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line=""><code markup="tt">@property --left-fade {
+  syntax: "&lt;length>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --right-fade {
+  syntax: "&lt;length>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@keyframes scrollfade {
+  0% {
+    --left-fade: 0;
+  }
+  10%, 100% {
+    --left-fade: 3rem;
+  }
+  0%, 90% {
+    --right-fade: 3rem;
+  }
+  100% {
+    --right-fade: 0;
+  }
+}</code></pre>
+
+
+
+<p>Instead of using multiple animations or&nbsp;<code>animation-range</code>, we can define a single animation where&nbsp;<code>--left-fade</code>&nbsp;animates from&nbsp;<code>0</code>&nbsp;to&nbsp;<code>3rem</code>&nbsp;between 0-10%, and&nbsp;<code>--right-fade</code>&nbsp;animates from&nbsp;<code>3rem</code>&nbsp;to&nbsp;<code>0</code>&nbsp;between 90-100%. Now we update our mask to use our custom properties and tie the&nbsp;<code>scroll-timeline</code>&nbsp;of our element to its own&nbsp;<code>animation-timeline</code>.</p>
+
+
+<h2 class="wp-block-heading" id="putting-it-all-together">Putting it all together</h2>
+
+
+<p>Putting it all together, we have the effect we’re after:</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_dPyrxEx" src="//codepen.io/anon/embed/preview/dPyrxEx?height=450&amp;theme-id=1&amp;slug-hash=dPyrxEx&amp;default-tab=result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed dPyrxEx" title="CodePen Embed dPyrxEx" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>We’re still waiting for some browsers (Safari) to support&nbsp;<code>animation-timeline</code>, but this gracefully degrades to simply not fading the element at all.</p>
+
+
+
+
+<baseline-status class="wp-block-css-tricks-baseline-status" featureId="scroll-driven-animations"></baseline-status>
+
+
+<h2 class="wp-block-heading" id="wrapping-up">Wrapping up</h2>
+
+
+<p>I like this implementation because it combines two newer bits of CSS — animating custom properties and&nbsp;<code>animation-timeline</code>&nbsp;— to achieve a practical effect that’s more than just decoration. The technique can even be used with scroll-snap-based carousels or cards:</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_OPJGLVb" src="//codepen.io/anon/embed/preview/OPJGLVb?height=450&amp;theme-id=1&amp;slug-hash=OPJGLVb&amp;default-tab=result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed OPJGLVb" title="CodePen Embed OPJGLVb" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>It works regardless of content or background and doesn’t require JavaScript. It exemplifies just how far CSS has come lately.</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/modern-scroll-shadows-using-scroll-driven-animations/">Modern Scroll Shadows Using Scroll-Driven Animations</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://css-tricks.com/modern-scroll-shadows-using-scroll-driven-animations/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">385733</post-id>	</item>
+		<item>
+		<title>CSS shape() Commands</title>
+		<link>https://css-tricks.com/css-shape-commands/</link>
+					<comments>https://css-tricks.com/css-shape-commands/#comments</comments>
+		
+		<dc:creator><![CDATA[Geoff Graham]]></dc:creator>
+		<pubDate>Fri, 02 May 2025 12:36:10 +0000</pubDate>
+				<category><![CDATA[Notes]]></category>
+		<category><![CDATA[CSS functions]]></category>
+		<guid isPermaLink="false">https://css-tricks.com/?p=386291</guid>
+
+					<description><![CDATA[<p>The CSS <code>shape()</code> function recently gained support in both Chromium and WebKit browsers. It's a way of drawing complex shapes when clipping elements with the <code>clip-path</code> property.</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/css-shape-commands/">CSS shape() Commands</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>The CSS <code>shape()</code> function recently gained support in both <a href="https://developer.chrome.com/blog/css-shape" rel="noopener">Chromium</a> and <a href="https://webkit.org/blog/16794/the-css-shape-function/" rel="noopener">WebKit</a> browsers. It&#8217;s a way of drawing complex shapes when clipping elements with the <code><a href="https://css-tricks.com/almanac/properties/c/clip-path/">clip-path</a></code> property. We&#8217;ve had the ability to draw basic shapes for years — think <code>circle</code>, <code>ellipse()</code>, and <code>polygon()</code> — but no &#8220;easy&#8221; way to draw more complex shapes.</p>
+
+
+
+<span id="more-386291"></span>
+
+
+
+<p>Well, that&#8217;s not entirely true. It&#8217;s true there was no &#8220;easy&#8221; way to draw shapes, but we&#8217;ve had the <code>path()</code> function for some time, which we can use to draw shapes using SVG commands directly in the function&#8217;s arguments. This is an example of an SVG path pulled straight from WebKit&#8217;s blog post linked above:</p>
+
+
+
+<pre rel="SVG" class="wp-block-csstricks-code-block language-svg" data-line=""><code markup="tt">&lt;svg viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg">
+  &lt;path fill="black" d="M0 0 L 100 0 L 150 50 L 100 100 L 0 100 Q 50 50 0 0 z " />
+&lt;/svg></code></pre>
+
+
+
+<p>Which means we can yank those <code>&lt;path></code> coordinates and drop them into the <code>path()</code> function in CSS when clipping a shape out of an element:</p>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line=""><code markup="tt">.clipped {
+  clip-path: path("M0 0 L 100 0 L 150 50 L 100 100 L 0 100 Q 50 50 0 0 z");
+}</code></pre>
+
+
+
+<p><em>I totally understand what all of those letters and numbers are doing.</em> Just kidding, I&#8217;d have to read up on that somewhere, like Myriam Frisano&#8217;s more recent <a href="https://www.smashingmagazine.com/2024/09/svg-coding-examples-recipes-writing-vectors-by-hand/" rel="noopener">&#8220;Useful Recipes For Writing Vectors By Hand&#8221;</a> article. There&#8217;s a steep learning curve to all that, and not everyone — including me — is going down that nerdy, albeit interesting, road. Writing SVG by hand is a niche specialty, not something you&#8217;d expect the average front-ender to know. I doubt I&#8217;m alone in saying I&#8217;d rather draw those vectors in something like Figma first, export the SVG code, and copy-paste the resulting paths where I need them.</p>
+
+
+
+<p>The <code>shape()</code> function is designed to be more, let&#8217;s say, CSS-y. We get new commands that tell the browser where to draw lines, arcs, and curves, just like <code>path()</code>, but we get to use plain English and native CSS units rather than unreadable letters and coordinates. That opens us up to even using CSS <code>calc()</code>-ulations in our drawings!</p>
+
+
+
+<p>Here&#8217;s a fairly simple drawing I made from a couple of elements. You&#8217;ll want to view the demo in either Chrome 135+ or Safari 18.4+ to see what&#8217;s up.</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_YPPZQLM" src="//codepen.io/anon/embed/YPPZQLM?height=500&amp;theme-id=1&amp;slug-hash=YPPZQLM&amp;default-tab=css,result" height="500" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed YPPZQLM" title="CodePen Embed YPPZQLM" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>So, instead of all those wonky coordinates we saw in <code>path()</code>, we get new terminology. This post is really me trying to wrap my head around what those new terms are and how they&#8217;re used.</p>
+
+
+
+<p>In short, you start by telling <code>shape()</code> where the starting point should be when drawing. For example, we can say &#8220;<code>from top left</code>&#8221; using directional keywords to set the origin at the top-left corner of the element. We can also use CSS units to set that position, so &#8220;<code>from 0 0</code>&#8221; works as well. Once we establish that starting point, we get a set of commands we can use for drawing lines, arcs, and curves.</p>
+
+
+
+<p>I figured a table would help.</p>
+
+
+
+<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Command</th><th>What it means</th><th>Usage</th><th>Examples</th></tr></thead><tbody><tr><td><code>line</code></td><td>A line that is drawn using a coordinate pair</td><td>The <code>by</code> keyword sets a coordinate pair used to determine the length of the line.</td><td><code>line by -2px 3px</code></td></tr><tr><td><code>vline</code></td><td>Vertical line</td><td>The <code>to</code> keyword indicates where the line should end, based on the current starting point.<br><br>The <code>by</code> keyword sets a coordinate pair used to determine the length of the line.</td><td><code>vline to 50px</code></td></tr><tr><td><code>hline</code></td><td>Horizontal line</td><td>The <code>to</code> keyword indicates where the line should end, based on the current starting point.<br><br>The <code>by</code> keyword sets a coordinate pair used to determine the length of the line.</td><td><code>hline to 95%</code></td></tr><tr><td><code>arc</code></td><td>An arc (oh, really?!). An elliptical one, that is, sort of like the rounded edges of a heart shape.</td><td>The <code>to</code> keyword indicates where the arc should end.<br><br>The <code>with</code> keyword sets a pair of coordinates that tells the arc how far right and down the arc should slope.<br><br>The&nbsp;<code>of</code>&nbsp;keyword specifies the size of the ellipse that the arc is taken from. The first value provides the horizontal radius of the ellipse, and the second provides the vertical radius.&nbsp;I&#8217;m a little unclear on this one, even after playing with it.</td><td><code>arc to 10% 50% of 1%</code></td></tr><tr><td><code>curve</code></td><td>A curved line</td><td>The <code>to</code> keyword indicates where the curved line should end.<br><br>The <code>with</code> keyword sets &#8220;control points&#8221; that affect the shape of the curve, making it deep or shallow.</td><td><code>curve to 0% 100% with 50% 0%</code></td></tr><tr><td><code>smooth</code></td><td>Adds a smooth Bézier curve command to the list of path data commands</td><td>The <code>to</code> keyword indicates where the curve should end.<br><br>The <code>by</code> keyword sets a coordinate pair used to determine the length of the curve.<br><br>The&nbsp;<code>with</code>&nbsp;keyword specifies control points for the curve.</td><td>I have yet to see any examples of this in the wild, but let me know if you do, and I can add it here.</td></tr></tbody></table></figure>
+
+
+
+<p>The <a href="https://drafts.csswg.org/css-shapes-2/#funcdef-shape" rel="noopener">spec</a> is dense, as you might expect with a lot of moving pieces like this. Again, these are just my notes, but let me know if there&#8217;s additional nuance you think would be handy to include in the table.</p>
+
+
+
+<p>Oh, another fun thing: you can adjust the <code>shape()</code> on hover/focus. The only thing is that I was unable to <code>transition</code> or animate it, at least in the current implementation.</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_XJJRGdj" src="//codepen.io/anon/embed/preview/XJJRGdj?height=500&amp;theme-id=1&amp;slug-hash=XJJRGdj&amp;default-tab=css,result" height="500" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed XJJRGdj" title="CodePen Embed XJJRGdj" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/css-shape-commands/">CSS shape() Commands</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://css-tricks.com/css-shape-commands/feed/</wfw:commentRss>
+			<slash:comments>3</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">386291</post-id>	</item>
+		<item>
+		<title>State of Devs: A Survey for Every Developer</title>
+		<link>https://css-tricks.com/state-of-devs-a-survey-for-every-developer/</link>
+					<comments>https://css-tricks.com/state-of-devs-a-survey-for-every-developer/#respond</comments>
+		
+		<dc:creator><![CDATA[Sacha Greif]]></dc:creator>
+		<pubDate>Thu, 01 May 2025 12:34:58 +0000</pubDate>
+				<category><![CDATA[Articles]]></category>
+		<category><![CDATA[news]]></category>
+		<guid isPermaLink="false">https://css-tricks.com/?p=386334</guid>
+
+					<description><![CDATA[<p>The State of Devs survey is now open to participation, and unlike previous surveys it covers everything except code: career, workplace, but also health, hobbies, and more. </p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/state-of-devs-a-survey-for-every-developer/">State of Devs: A Survey for Every Developer</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>I don’t know if I should say this on a website devoted to programming, but I sometimes feel like *lowers voice* <em>coding is actually the least interesting part of our lives</em>.</p>
+
+
+
+<p>After all, last time I got excited meeting someone at a conference it was because we were both into bouldering, not because we both use React. And <em>The Social Network</em> won an Oscar for the way it displayed interpersonal drama, not for its depiction of Mark Zuckerberg’s PHP code.&nbsp;</p>
+
+
+
+<p>Yet for the past couple years, I’ve been running developer surveys (such as the <a href="https://2024.stateofjs.com/" rel="noopener">State of JS</a> and <a href="https://2024.stateofcss.com/" rel="noopener">State of CSS</a>) that <em>only</em> ask about code. It was time to fix that.&nbsp;</p>
+
+
+
+<span id="more-386334"></span>
+
+
+<h3 class="wp-block-heading" id="a-new-kind-of-survey"><strong>A new kind of survey</strong></h3>
+
+
+<p>The <a href="https://survey.devographics.com/en-US/survey/state-of-devs/2025?source=css_tricks" rel="noopener">State of Devs survey</a> is now open to participation, and unlike previous surveys it covers everything <em>except</em> code: career, workplace, but also health, hobbies, and more.&nbsp;</p>
+
+
+
+<p>I’m hoping to answer questions such as:</p>
+
+
+
+<ul class="wp-block-list">
+<li>What are developers’ favorite recent movies and video games?</li>
+
+
+
+<li>What kind of physical activity do developers practice?</li>
+
+
+
+<li>How much sleep are we all getting?</li>
+</ul>
+
+
+
+<p>But also address more serious topics, including:</p>
+
+
+
+<ul class="wp-block-list">
+<li>What do developers like about their workplace?</li>
+
+
+
+<li>What factors lead to workplace discrimination?</li>
+
+
+
+<li>What global issues are developers most concerned with?</li>
+</ul>
+
+
+<h3 class="wp-block-heading" id="reaching-out-to-new-audiences"><strong>Reaching out to new audiences</strong></h3>
+
+
+<p>Another benefit from branching out into new topics is the chance to reach out to new audiences.</p>
+
+
+
+<p>It’s no secret that people who don’t fit the mold of the average developer (whether because of their gender, race, age, disabilities, or a myriad of other factors) often have a harder time getting involved in the community, and this also shows up in our data.&nbsp;</p>
+
+
+
+<p>In the past, we’ve tried various <a href="https://dev.to/sachagreif/state-of-js-2024-outreach-and-diversity-report-n0e" rel="noopener">outreach strategies</a> to help address these imbalances in survey participation, but the results haven’t always been as effective as we’d hoped.&nbsp;</p>
+
+
+
+<p>So this time, I thought I’d try something different and have the survey itself include more questions relevant to under-represented groups, asking about workplace discrimination:</p>
+
+
+
+<figure class="wp-block-image size-full"><img data-recalc-dims="1" loading="lazy" decoding="async" width="1664" height="1484" src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-2025-04-29-at-8.32.57%E2%80%AFAM.png?resize=1664%2C1484&#038;ssl=1" alt="Question: Have you ever experiences discrimination in the workplace based on any of the following factors?" class="wp-image-386358" srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-2025-04-29-at-8.32.57%E2%80%AFAM.png?w=1664&amp;ssl=1 1664w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-2025-04-29-at-8.32.57%E2%80%AFAM.png?resize=300%2C268&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-2025-04-29-at-8.32.57%E2%80%AFAM.png?resize=1024%2C913&amp;ssl=1 1024w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-2025-04-29-at-8.32.57%E2%80%AFAM.png?resize=768%2C685&amp;ssl=1 768w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-2025-04-29-at-8.32.57%E2%80%AFAM.png?resize=1536%2C1370&amp;ssl=1 1536w" sizes="auto, (min-width: 735px) 864px, 96vw" /></figure>
+
+
+
+<p>As well as actions taken in response to said discrimination:</p>
+
+
+
+<figure class="wp-block-image size-full"><img data-recalc-dims="1" loading="lazy" decoding="async" width="1662" height="1494" src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-2025-04-29-at-8.33.33%E2%80%AFAM.png?resize=1662%2C1494&#038;ssl=1" alt="Question: Have you taken any of the following actions in response to workplace issues?" class="wp-image-386359" srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-2025-04-29-at-8.33.33%E2%80%AFAM.png?w=1662&amp;ssl=1 1662w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-2025-04-29-at-8.33.33%E2%80%AFAM.png?resize=300%2C270&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-2025-04-29-at-8.33.33%E2%80%AFAM.png?resize=1024%2C920&amp;ssl=1 1024w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-2025-04-29-at-8.33.33%E2%80%AFAM.png?resize=768%2C690&amp;ssl=1 768w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-2025-04-29-at-8.33.33%E2%80%AFAM.png?resize=1536%2C1381&amp;ssl=1 1536w" sizes="auto, (min-width: 735px) 864px, 96vw" /></figure>
+
+
+
+<p>Yet while obtaining a more representative data sample as a result of this new focus would be ideal, it isn’t the only benefit.&nbsp;</p>
+
+
+
+<p>The most vulnerable among us are often the proverbial canaries in the coal mine, suffering first from issues or policies that will eventually affect the rest of the community as well, if left unchecked.&nbsp;</p>
+
+
+
+<p>So, facing these issues head-on is especially valuable now, at a time when &#8220;DEI&#8221; is becoming a new taboo, and a lot of the important work that has been done to make things slightly better over the past decade is at risk of being reversed.</p>
+
+
+<h3 class="wp-block-heading" id="the-big-questions"><strong>The big questions</strong></h3>
+
+
+<p>Finally, the survey also tries to go beyond work and daily life to address the broader questions that keep us up at night:</p>
+
+
+
+<figure class="wp-block-image size-full"><img data-recalc-dims="1" loading="lazy" decoding="async" width="1656" height="1448" src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-2025-04-29-at-8.34.22%E2%80%AFAM.png?resize=1656%2C1448&#038;ssl=1" alt="Question: What global issues are currently most concerning to you?" class="wp-image-386360" srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-2025-04-29-at-8.34.22%E2%80%AFAM.png?w=1656&amp;ssl=1 1656w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-2025-04-29-at-8.34.22%E2%80%AFAM.png?resize=300%2C262&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-2025-04-29-at-8.34.22%E2%80%AFAM.png?resize=1024%2C895&amp;ssl=1 1024w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-2025-04-29-at-8.34.22%E2%80%AFAM.png?resize=768%2C672&amp;ssl=1 768w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-2025-04-29-at-8.34.22%E2%80%AFAM.png?resize=1536%2C1343&amp;ssl=1 1536w" sizes="auto, (min-width: 735px) 864px, 96vw" /></figure>
+
+
+
+<p>There’s been talk in recent years about keeping the workplace free of politics. And why I can certainly see the appeal in that, in 2025, it feels harder than ever to achieve that ideal. At a time when people are losing rights and governments are sliding towards authoritarianism, should we still pretend that everything is fine? Especially when you factor in the fact that the tech community is now a major political player in its own right…</p>
+
+
+
+<p>So while I didn’t push too far in that direction for this first edition of the survey, one of my goals for the future is to get a better grasp of where exactly developers stand in terms of ideology and worldview. Is this a good idea, or should I keep my distance from any hot-button issues? Don’t hesitate to <a href="https://github.com/Devographics/surveys/issues/288" rel="noopener">let me know what you think</a>, or suggest any other topic I should be asking about next time.&nbsp;</p>
+
+
+
+<p>In the meantime, <a href="https://survey.devographics.com/en-US/survey/state-of-devs/2025?source=css_tricks" rel="noopener">go take the survey</a>, and help us get a better picture of who exactly we all are!</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/state-of-devs-a-survey-for-every-developer/">State of Devs: A Survey for Every Developer</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://css-tricks.com/state-of-devs-a-survey-for-every-developer/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">386334</post-id>	</item>
+		<item>
+		<title>Revisiting Image Maps</title>
+		<link>https://css-tricks.com/revisiting-image-maps/</link>
+					<comments>https://css-tricks.com/revisiting-image-maps/#comments</comments>
+		
+		<dc:creator><![CDATA[Andy Clarke]]></dc:creator>
+		<pubDate>Wed, 30 Apr 2025 12:12:45 +0000</pubDate>
+				<category><![CDATA[Articles]]></category>
+		<category><![CDATA[images]]></category>
+		<guid isPermaLink="false">https://css-tricks.com/?p=385783</guid>
+
+					<description><![CDATA[<p>Let’s run through a quick refresher. Image maps date all the way back to HTML 3.2, where, first, server-side maps and then client-side maps defined clickable regions over an image using map and area elements.</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/revisiting-image-maps/">Revisiting Image Maps</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>I mentioned <a href="https://css-tricks.com/revisiting-css-border-image/">last time</a> that I’ve been working on a new website for Emmy-award-winning game composer Mike Worth. He hired me to create a highly graphical design that showcases his work.</p>
+
+
+
+<p>Mike loves ’90s animation, particularly Disney’s <em>Duck Tales</em> and other animated series. He challenged me to find a way to incorporate their retro ’90s style into his design without making it a pastiche. But that wasn’t my only challenge. I also needed to achieve that ’90s feel by using up-to-the-minute code to maintain accessibility, performance, responsiveness, and semantics.</p>
+
+
+
+<span id="more-385783"></span>
+
+
+
+<figure class="wp-block-image"><img data-recalc-dims="1" decoding="async" src="https://i0.wp.com/paper-attachments.dropboxusercontent.com/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744060949809_2025-03-1.webp?ssl=1" alt="Design by Andy Clarke, Stuff &amp; Nonsense. Mike Worth’s website will launch in April 2025, but you can see examples from this article on CodePen."/></figure>
+
+
+
+<p>Designing for Mike was like a trip back to when mainstream website design seemed more spontaneous and less governed by conventions and best practices. Some people describe these designs as “whimsical”:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p><strong>adjective</strong></p>
+
+
+
+<ol class="wp-block-list">
+<li>spontaneously fanciful or playful</li>
+
+
+
+<li>given to whims; capricious</li>
+
+
+
+<li>quaint, unusual, or fantastic</li>
+</ol>
+
+
+
+<p>— <em>Collins English Dictionary</em></p>
+</blockquote>
+
+
+
+<p>But I’m not so sure that’s entirely accurate. “Playful?” Definitely. “Fanciful?” Possibly. But “fantastic?” That depends. “Whimsy&#8221; sounds superfluous, so I call it “expressive” instead.</p>
+
+
+
+<p>Studying design from way back, I remembered how websites often included graphics that combined branding, content, and navigation. Pretty much every reference to web design in the ’90s — when I designed my first website — talks about Warner Brothers’ <em>Space Jam</em> from 1996.</p>
+
+
+
+<figure class="wp-block-image size-full"><img data-recalc-dims="1" loading="lazy" decoding="async" width="830" height="699" src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744061132300_2025-04-2.webp?resize=830%2C699&#038;ssl=1" alt="Space Jam website homepage. The movie logo is in the center of a series of planets that are navigation for other areas of the website against a dark starry background." class="wp-image-385785" srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744061132300_2025-04-2.webp?w=830&amp;ssl=1 830w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744061132300_2025-04-2.webp?resize=300%2C253&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744061132300_2025-04-2.webp?resize=768%2C647&amp;ssl=1 768w" sizes="auto, (min-width: 735px) 864px, 96vw" /><figcaption class="wp-element-caption">Warner Brothers’ <em>Space Jam</em> (1996)</figcaption></figure>
+
+
+
+<p>So, I’m not going to do that.</p>
+
+
+
+<p>Brands like Nintendo used their home pages to direct people to their content while making branded visual statements. Cheestrings combined graphics with navigation, making me wonder why we don’t see designs like this today. <em>Goosebumps</em> typified this approach, combining cartoon illustrations with brightly colored shapes into a functional and visually rich banner, proving that being useful doesn’t mean being boring.</p>
+
+
+
+<figure class="wp-block-image size-large"><img data-recalc-dims="1" loading="lazy" decoding="async" width="1024" height="278" src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744061205723_2025-04-3-1024x278.webp?resize=1024%2C278&#038;ssl=1" alt="" class="wp-image-385786" srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744061205723_2025-04-3.webp?resize=1024%2C278&amp;ssl=1 1024w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744061205723_2025-04-3.webp?resize=300%2C81&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744061205723_2025-04-3.webp?resize=768%2C208&amp;ssl=1 768w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744061205723_2025-04-3.webp?resize=1536%2C416&amp;ssl=1 1536w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744061205723_2025-04-3.webp?resize=2048%2C555&amp;ssl=1 2048w" sizes="auto, (min-width: 735px) 864px, 96vw" /><figcaption class="wp-element-caption">Left to right: Nintendo, Cheestrings, <em>Goosebumps</em>.</figcaption></figure>
+
+
+
+<p>In the ’90s, when I developed graphics for websites like these, I either sliced them up and put their parts in tables or used mostly forgotten image maps.</p>
+
+
+<h3 class="wp-block-heading" id="a-brief-overview-of-properties-and-values">A brief overview of properties and values</h3>
+
+
+<p>Let’s run through a quick refresher. Image maps date all the way back to HTML 3.2, where, first, server-side maps and then client-side maps defined clickable regions over an image using <code>map</code> and <code>area</code> elements. They were popular for graphics, maps, and navigation, but their use declined with the rise of CSS, SVG, and JavaScript.</p>
+
+
+
+<p><code>&lt;map&gt;</code> adds clickable areas to a bitmap or vector image.</p>
+
+
+
+<pre rel="HTML" class="wp-block-csstricks-code-block language-markup" data-line=""><code markup="tt">&lt;map name="projects">
+  ...
+&lt;/map></code></pre>
+
+
+
+<p>That <code>&lt;map&gt;</code> is linked to an image using the <code>usemap</code> attribute:</p>
+
+
+
+<pre rel="HTML" class="wp-block-csstricks-code-block language-markup" data-line=""><code markup="tt">&lt;img usemap="#projects" ...></code></pre>
+
+
+
+<p>Those elements can have separate <code>href</code> and <code>alt</code> attributes and can be enhanced with ARIA to improve accessibility:</p>
+
+
+
+<pre rel="HTML" class="wp-block-csstricks-code-block language-markup" data-line=""><code markup="tt">&lt;map name="projects">
+  &lt;area href="" alt="" … />
+  ...
+&lt;/map></code></pre>
+
+
+
+<p>The <code>shape</code> attribute specifies an area’s shape. It can be a primitive <code>circle</code> or <code>rect</code> or a polygon defined by a set of absolute <code>x</code> and <code>y</code> coordinates:</p>
+
+
+
+<pre rel="HTML" class="wp-block-csstricks-code-block language-markup" data-line=""><code markup="tt">&lt;area shape="circle" coords="..." ... />
+&lt;area shape="rect" coords="..." ... />
+&lt;area shape="poly" coords="..." ... /></code></pre>
+
+
+
+<p>Despite their age, image maps still offer plenty of benefits. They’re lightweight and need (almost) no JavaScript. More on that in just a minute. They’re accessible and semantic when used with <code>alt</code>, ARIA, and <code>title</code> attributes. Despite being from a different era, even modern mobile browsers support image maps.</p>
+
+
+
+<figure class="wp-block-image size-full"><img data-recalc-dims="1" loading="lazy" decoding="async" width="1920" height="1080" src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744061341859_2025-04-4.webp?resize=1920%2C1080&#038;ssl=1" alt="A large illustrated map of a cartoon island." class="wp-image-385787" srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744061341859_2025-04-4.webp?w=1920&amp;ssl=1 1920w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744061341859_2025-04-4.webp?resize=300%2C169&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744061341859_2025-04-4.webp?resize=1024%2C576&amp;ssl=1 1024w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744061341859_2025-04-4.webp?resize=768%2C432&amp;ssl=1 768w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744061341859_2025-04-4.webp?resize=1536%2C864&amp;ssl=1 1536w" sizes="auto, (min-width: 735px) 864px, 96vw" /><figcaption class="wp-element-caption">Design by Andy Clarke, Stuff &amp; Nonsense. Mike Worth’s website will launch in April 2025, but you can see examples from this article on CodePen.</figcaption></figure>
+
+
+
+<p>My design for Mike Worth includes several graphic navigation elements, which made me wonder if image maps might still be an appropriate solution.</p>
+
+
+<h3 class="wp-block-heading" id="image-maps-in-action">Image maps in action</h3>
+
+
+<p>Mike wants his website to showcase his past work and the projects he’d like to do. To make this aspect of his design discoverable and fun, I created a map for people to explore by pressing on areas of the map to open modals. This map contains numbered circles, and pressing one pops up its modal.</p>
+
+
+
+<figure class="wp-block-image"><img data-recalc-dims="1" decoding="async" src="https://i0.wp.com/paper-attachments.dropboxusercontent.com/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744061438883_2025-04-5.webp?ssl=1" alt="A large illustrated cartoon map of an island. 6 annotations are on the map and a tooltip is exposed showing detail of one of the annotations."/></figure>
+
+
+
+<p>My first thought was to embed anchors into the external map SVG:</p>
+
+
+
+<pre rel="HTML" class="wp-block-csstricks-code-block language-markup" data-line=""><code markup="tt">&lt;img src="projects.svg" alt="Projects">
+
+&lt;svg ...>
+  ...
+  &lt;a href="...">
+    &lt;circle cx="35" cy="35" r="35" fill="#941B2F"/>
+    &lt;path fill="#FFF" d="..."/>
+  &lt;/a>
+&lt;/svg></code></pre>
+
+
+
+<p>This approach is problematic. Those anchors are only active when SVG is inline and don’t work with an <code>&lt;img&gt;</code> element. But image maps work perfectly, even though specifying their coordinates can be laborious. Fortunately, <a href="https://www.image-map.net" rel="noopener">plenty of tools</a> are available, which make defining coordinates less tedious. Upload an image, choose shape types, draw the shapes, and copy the markup:</p>
+
+
+
+<pre rel="HTML" class="wp-block-csstricks-code-block language-markup" data-line=""><code markup="tt">&lt;img src="projects.svg" usemap="#projects-map.svg">
+
+&lt;map name="projects-map.svg">
+  &lt;area href="" alt="" coords="..." shape="circle">
+  &lt;area href="" alt="" coords="..." shape="circle">
+  ...
+&lt;/map></code></pre>
+
+
+
+<p>Image maps work well when images are fixed sizes, but flexible images present a problem because map coordinates are absolute, not relative to an image’s dimensions. Making image maps responsive needs a little JavaScript to recalculate those coordinates when the image changes size:</p>
+
+
+
+<pre rel="JavaScript" class="wp-block-csstricks-code-block language-javascript" data-line=""><code markup="tt">function resizeMap() {
+  const image = document.getElementById("projects");
+  const map = document.querySelector("map[name='projects-map']");
+  
+  if (!image || !map || !image.naturalWidth) return;
+  
+  const scale = image.clientWidth / image.naturalWidth;
+  map.querySelectorAll("area").forEach(area => {
+  
+    if (!area.dataset.originalCoords) {
+      area.dataset.originalCoords = area.getAttribute("coords");
+    }
+
+    const scaledCoords = area.dataset.originalCoords
+    
+    .split(",")
+    .map(coord => Math.round(coord * scale))
+    .join(",");
+    area.setAttribute("coords", scaledCoords);
+  });
+}
+
+["load", "resize"].forEach(event =>
+  window.addEventListener(event, resizeMap)
+);</code></pre>
+
+
+
+<p>I still wasn’t happy with this implementation as I wanted someone to be able to press on much larger map areas, not just the numbered circles.</p>
+
+
+
+<p>Every <code>&lt;path&gt;</code> has coordinates which define how it’s drawn, and they’re relative to the SVG viewBox:</p>
+
+
+
+<pre rel="HTML" class="wp-block-csstricks-code-block language-markup" data-line=""><code markup="tt">&lt;svg width="1024" height="1024">
+  &lt;path fill="#BFBFBF" d="…"/>
+&lt;/svg></code></pre>
+
+
+
+<p>On the other hand, a map’s <code>&lt;area&gt;</code> coordinates are absolute to the top-left of an image, so <code>&lt;path&gt;</code> values need to be converted. Fortunately, <a href="https://elmonnerat.com" rel="noopener">Raphael Monnerat</a> has written <a href="https://shinao.github.io/PathToPoints/" rel="noopener">PathToPoints</a>, a tool which does precisely that. Upload an SVG, choose the point frequency, copy the coordinates for each path, and add them to a map area’s <code>coords:</code></p>
+
+
+
+<pre rel="HTML" class="wp-block-csstricks-code-block language-markup" data-line=""><code markup="tt">&lt;map>
+  &lt;area href="" shape="poly" coords="...">
+  &lt;area href="" shape="poly" coords="...">
+  &lt;area href="" shape="poly" coords="...">
+  ...
+&lt;/map></code></pre>
+
+
+<h3 class="wp-block-heading" id="more-issues-with-image-maps">More issues with image maps</h3>
+
+
+<p>Image maps are hard-coded and time-consuming to create without tools. Even with tools for generating image maps, converting paths to points, and then recalculating them using JavaScript, they could be challenging to maintain at scale.</p>
+
+
+
+<p><code>&lt;area&gt;</code> elements aren’t visible, and except for a change in the cursor, they provide no visual feedback when someone hovers over or presses a link. Plus, there’s no easy way to add animations or interaction effects.</p>
+
+
+
+<p>But the deal-breaker for me was that an image map’s pixel-based values are unresponsive by default. So, what might be an alternative solution for implementing my map using CSS, HTML, and SVG?</p>
+
+
+
+<figure class="wp-block-image size-full"><img data-recalc-dims="1" loading="lazy" decoding="async" width="1920" height="1080" src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744062888968_2025-04-6.webp?resize=1920%2C1080&#038;ssl=1" alt="A large illustrated map of a cartoon island cut out against a transparent background." class="wp-image-385788" srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744062888968_2025-04-6.webp?w=1920&amp;ssl=1 1920w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744062888968_2025-04-6.webp?resize=300%2C169&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744062888968_2025-04-6.webp?resize=1024%2C576&amp;ssl=1 1024w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744062888968_2025-04-6.webp?resize=768%2C432&amp;ssl=1 768w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744062888968_2025-04-6.webp?resize=1536%2C864&amp;ssl=1 1536w" sizes="auto, (min-width: 735px) 864px, 96vw" /></figure>
+
+
+
+<p>Anchors positioned absolutely over my map wouldn’t solve the pixel-based positioning problem or give me the irregular-shaped clickable areas I wanted. Anchors within an external SVG wouldn’t work either.</p>
+
+
+
+<p>But the solution was staring me in the face. I realized I needed to:</p>
+
+
+
+<ol class="wp-block-list">
+<li>Create a new SVG path for each clickable area.</li>
+
+
+
+<li>Make those paths invisible.</li>
+
+
+
+<li>Wrap each path inside an anchor.</li>
+
+
+
+<li>Place the anchors below other elements at the end of my SVG source.</li>
+
+
+
+<li>Replace that external file with inline SVG.</li>
+</ol>
+
+
+
+<figure class="wp-block-image size-full"><img data-recalc-dims="1" loading="lazy" decoding="async" width="1920" height="1080" src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744062914229_2025-04-7.webp?resize=1920%2C1080&#038;ssl=1" alt="The same illustrated map of an island but the six regions are represented by solid colors." class="wp-image-385789" srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744062914229_2025-04-7.webp?w=1920&amp;ssl=1 1920w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744062914229_2025-04-7.webp?resize=300%2C169&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744062914229_2025-04-7.webp?resize=1024%2C576&amp;ssl=1 1024w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744062914229_2025-04-7.webp?resize=768%2C432&amp;ssl=1 768w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744062914229_2025-04-7.webp?resize=1536%2C864&amp;ssl=1 1536w" sizes="auto, (min-width: 735px) 864px, 96vw" /></figure>
+
+
+
+<p>I created a set of six much larger paths which define the clickable areas, each with its own <code>fill</code> to match its numbered circle. I placed each anchor at the end of my SVG source:</p>
+
+
+
+<pre rel="HTML" class="wp-block-csstricks-code-block language-markup" data-line=""><code markup="tt">&lt;svg … viewBox="0 0 1024 1024">
+
+  &lt;!-- Visible content -->
+  &lt;g>...&lt;/g>
+
+  &lt;!-- Clickable areas -->`
+  &lt;g id="links">`
+    &lt;a href="...">&lt;path fill="#B48F4C" d="..."/>&lt;/a>`
+    &lt;a href="...">&lt;path fill="#6FA676" d="..."/>&lt;/a>`
+    &lt;a href="...">&lt;path fill="#30201D" d="..."/>&lt;/a>`
+    ...
+  &lt;/g>
+&lt;/svg></code></pre>
+
+
+
+<p>Then, I reduced those anchors’ <code>opacity</code> to <code>0</code> and added a short <code>transition</code> to their full-opacity hover state:</p>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line=""><code markup="tt">#links a {
+  opacity: 0;
+  transition: all .25s ease-in-out;
+}
+
+#links a:hover {
+  opacity: 1;
+}</code></pre>
+
+
+
+<p>While using an image map’s <code>&lt;area&gt;</code> sadly provides no visual feedback, embedded anchors and their content can respond to someone’s action, hint at what’s to come, and add detail and depth to a design.</p>
+
+
+
+<figure class="wp-block-image size-large"><img data-recalc-dims="1" loading="lazy" decoding="async" width="1024" height="393" src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744064725324_2025-04-8-1024x393.webp?resize=1024%2C393&#038;ssl=1" alt="The illustrated regions of the cartoon map in three states, from left to right: annotated, with visual markers, and with both visual markers and labels." class="wp-image-385790" srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744064725324_2025-04-8-scaled.webp?resize=1024%2C393&amp;ssl=1 1024w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744064725324_2025-04-8-scaled.webp?resize=300%2C115&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744064725324_2025-04-8-scaled.webp?resize=768%2C295&amp;ssl=1 768w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744064725324_2025-04-8-scaled.webp?resize=1536%2C589&amp;ssl=1 1536w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/s_8B3545BE9665BEC98D5B2520E77AADDF993F71F890567CC0B56EDF31507C0EBC_1744064725324_2025-04-8-scaled.webp?resize=2048%2C785&amp;ssl=1 2048w" sizes="auto, (min-width: 735px) 864px, 96vw" /></figure>
+
+
+
+<p>I might add gloss to those numbered circles to be consistent with the branding I’ve designed for Mike. Or, I could include images, titles, or other content to preview the pop-up modals:</p>
+
+
+
+<pre rel="HTML" class="wp-block-csstricks-code-block language-markup" data-line=""><code markup="tt">&lt;g id="links">
+  &lt;a href="…">
+    &lt;path fill="#B48F4C" d="..."/>
+    &lt;image href="..." ... />
+  &lt;/a>
+&lt;/g></code></pre>
+
+
+
+<p>Try it for yourself:</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_xbxNKWN" src="//codepen.io/anon/embed/preview/xbxNKWN?height=650&amp;theme-id=1&amp;slug-hash=xbxNKWN&amp;default-tab=result" height="650" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed xbxNKWN" title="CodePen Embed xbxNKWN" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+<h3 class="wp-block-heading" id="expressive-design-modern-techniques">Expressive design, modern techniques</h3>
+
+
+<p>Designing Mike Worth’s website gave me a chance to blend expressive design with modern development techniques, and revisiting image maps reminded me just how important a tool image maps were during the period Mike loves so much.</p>
+
+
+
+<p>Ultimately, image maps weren’t the right tool for Mike’s website. But exploring them helped me understand what I really needed: a way to recapture the expressiveness and personality of ’90s website design using modern techniques that are accessible, lightweight, responsive, and semantic. That’s what design’s about: choosing the right tool for a job, even if that sometimes means looking back to move forward.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+<h4 class="wp-block-heading" id="biography-andy-clarke">Biography: Andy Clarke</h4>
+
+
+<p>Often referred to as one of the pioneers of web design, <a href="https://stuffandnonsense.co.uk/" rel="noopener">Andy Clarke</a> has been instrumental in pushing the boundaries of web design and is known for his creative and visually stunning designs. His work has inspired countless designers to explore the full potential of product and website design.</p>
+
+
+
+<p>Andy’s written several industry-leading books, including <em>Transcending CSS</em>, <em>Hardboiled Web Design</em>, and <em>Art Direction for the Web</em>. He’s also worked with businesses of all sizes and industries to achieve their goals through design.</p>
+
+
+
+<p>Visit Andy’s studio, <a href="https://stuffandnonsense.co.uk/" rel="noopener">Stuff &amp; Nonsense</a>, and check out his <a href="https://stuffandnonsense.co.uk/projects/contract-killer" rel="noopener">Contract Killer</a>, the popular web design contract template trusted by thousands of web designers and developers.</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/revisiting-image-maps/">Revisiting Image Maps</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://css-tricks.com/revisiting-image-maps/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">385783</post-id>	</item>
+		<item>
+		<title>Open Up With Brad Frost, Episode 2</title>
+		<link>https://css-tricks.com/open-up-with-brad-frost-episode-2/</link>
+					<comments>https://css-tricks.com/open-up-with-brad-frost-episode-2/#comments</comments>
+		
+		<dc:creator><![CDATA[Geoff Graham]]></dc:creator>
+		<pubDate>Tue, 29 Apr 2025 14:27:25 +0000</pubDate>
+				<category><![CDATA[Links]]></category>
+		<category><![CDATA[podcast]]></category>
+		<guid isPermaLink="false">https://css-tricks.com/?p=386325</guid>
+
+					<description><![CDATA[<p>Brad Frost is running this new little podcast called <em><a href="https://smashingconf.com/open-up" rel="noopener">Open Up</a></em>. Folks write in with questions about the &#8220;other&#8221; side of web design and front-end development — not so much about tools and best practices as it is about &#8230;</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/open-up-with-brad-frost-episode-2/">Open Up With Brad Frost, Episode 2</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Brad Frost is running this new little podcast called <em><a href="https://smashingconf.com/open-up" rel="noopener">Open Up</a></em>. Folks write in with questions about the &#8220;other&#8221; side of web design and front-end development — not so much about tools and best practices as it is about the things that surround the work we do, like what happens if you get laid off, or AI takes your job, or something along those lines. You know, the <em>human</em> side of what we do in web design and development.</p>
+
+
+
+<span id="more-386325"></span>
+
+
+
+<p>Well, it just so happens that I&#8217;m co-hosting the show. In other words, I get to sprinkle in a little advice on top of the wonderful insights that Brad expertly doles out to audience questions.</p>
+
+
+
+<p>Our second episode just published, and I thought I&#8217;d share it. We&#8217;re finding our sea legs with this whole thing and figuring things out as we go. We&#8217;ve opened things up (get it?!) to a live audience and even pulled in one of Brad&#8217;s friends at the end to talk about the changing nature of working on a team and what it looks like to collaborate in a remote-first world.</p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+https://www.youtube.com/watch?v=bquVF5Cibaw
+</div></figure>
+
+
+
+<p></p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/open-up-with-brad-frost-episode-2/">Open Up With Brad Frost, Episode 2</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://css-tricks.com/open-up-with-brad-frost-episode-2/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">386325</post-id>	</item>
+		<item>
+		<title>Anchor Positioning Just Don&#8217;t Care About Source Order</title>
+		<link>https://css-tricks.com/anchor-positioning-just-dont-care-about-source-order/</link>
+					<comments>https://css-tricks.com/anchor-positioning-just-dont-care-about-source-order/#comments</comments>
+		
+		<dc:creator><![CDATA[Geoff Graham]]></dc:creator>
+		<pubDate>Mon, 28 Apr 2025 12:43:01 +0000</pubDate>
+				<category><![CDATA[Articles]]></category>
+		<category><![CDATA[anchor positioning]]></category>
+		<guid isPermaLink="false">https://css-tricks.com/?p=385394</guid>
+
+					<description><![CDATA[<p>The fact that anchor positioning eschews HTML source order is so CSS-y because it's another separation of concerns between content and presentation. </p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/anchor-positioning-just-dont-care-about-source-order/">Anchor Positioning Just Don&#8217;t Care About Source Order</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Ten divs walk into a bar:</p>
+
+
+
+<pre rel="HTML" class="wp-block-csstricks-code-block language-markup" data-line=""><code markup="tt">&lt;div>1&lt;/div>
+&lt;div>2&lt;/div>
+&lt;div>3&lt;/div>
+&lt;div>4&lt;/div>
+&lt;div>5&lt;/div>
+&lt;div>6&lt;/div>
+&lt;div>7&lt;/div>
+&lt;div>8&lt;/div>
+&lt;div>9&lt;/div>
+&lt;div>10&lt;/div></code></pre>
+
+
+
+<p>There&#8217;s not enough chairs for them to all sit at the bar, so you need the tenth div to sit on the lap of one of the other divs, say the second one. We can visually cover the second div with the tenth div but have to make sure they are sitting next to each other in the HTML as well. The order matters.</p>
+
+
+
+<span id="more-385394"></span>
+
+
+
+<pre rel="HTML" class="wp-block-csstricks-code-block language-markup" data-line=""><code markup="tt">&lt;div>1&lt;/div>
+&lt;div>2&lt;/div>
+&lt;div>10&lt;/div>&lt;!-- Sitting next to Div #2-->
+&lt;div>3&lt;/div>
+&lt;div>4&lt;/div>
+&lt;div>5&lt;/div>
+&lt;div>6&lt;/div>
+&lt;div>7&lt;/div>
+&lt;div>8&lt;/div>
+&lt;div>9&lt;/div></code></pre>
+
+
+
+<p>The tenth div needs to sit on the second div&#8217;s lap rather than next to it. So, perhaps we redefine the relationship between them and make this a parent-child sorta thing.</p>
+
+
+
+<pre rel="HTML" class="wp-block-csstricks-code-block language-markup" data-line=""><code markup="tt">&lt;div>1&lt;/div>
+&lt;div class="parent">
+  2
+  &lt;div class="child">10&lt;/div>&lt;!-- Sitting in Div #2's lap-->
+&lt;/div>
+&lt;div>3&lt;/div>
+&lt;div>4&lt;/div>
+&lt;div>5&lt;/div>
+&lt;div>6&lt;/div>
+&lt;div>7&lt;/div>
+&lt;div>8&lt;/div>
+&lt;div>9&lt;/div></code></pre>
+
+
+
+<p>Now we can do a little tricky positioning dance to contain the tenth div inside the second div in the CSS:</p>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line=""><code markup="tt">.parent {
+  position: relative; /* Contains Div #10 */
+}
+
+.child {
+  position: absolute;
+}</code></pre>
+
+
+
+<p>We can inset the child&#8217;s position so it is pinned to the parent&#8217;s top-left edge:</p>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line="3,4"><code markup="tt">.child {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+}</code></pre>
+
+
+
+<p>And we can set the child&#8217;s width to 100% of the parent&#8217;s size so that it is fully covering the parent&#8217;s lap and completely obscuring it.</p>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line="5"><code markup="tt">.child {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  width: 100%;
+}</code></pre>
+
+
+
+<p>Cool, it works!</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_LEYmmZd" src="//codepen.io/anon/embed/preview/LEYmmZd?height=450&amp;theme-id=1&amp;slug-hash=LEYmmZd&amp;default-tab=css,result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed LEYmmZd" title="CodePen Embed LEYmmZd" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>Anchor positioning simplifies this process a heckuva lot because it just doesn&#8217;t care where the tenth div is in the HTML. Instead, we can work with our initial markup containing 10 in<em>div</em>iduals exactly as they entered the bar. You&#8217;re going to want to follow along in the latest version of Chrome since anchor positioning is only supported there by default at the time I&#8217;m writing this.</p>
+
+
+
+<pre rel="HTML" class="wp-block-csstricks-code-block language-markup" data-line=""><code markup="tt">&lt;div>1&lt;/div>
+&lt;div class="parent">2&lt;/div>
+&lt;div>3&lt;/div>
+&lt;div>4&lt;/div>
+&lt;div>5&lt;/div>
+&lt;div>6&lt;/div>
+&lt;div>7&lt;/div>
+&lt;div>8&lt;/div>
+&lt;div>9&lt;/div>
+&lt;div class="child">10&lt;/div></code></pre>
+
+
+
+<p>Instead, we define the second div as an <strong>anchor</strong> element using the <code><a href="https://css-tricks.com/almanac/properties/a/anchor-name/">anchor-name</a></code> property. I&#8217;m going to continue using the <code>.parent</code> and <code>.child</code> classes to keep things clear.</p>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line=""><code markup="tt">.parent {
+  anchor-name: --anchor; /* this can be any name formatted as a dashed ident */
+}</code></pre>
+
+
+
+<p>Then we connect the child to the parent by way of the <code><a href="https://css-tricks.com/almanac/properties/p/position-anchor/">position-anchor</a></code> property:</p>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line=""><code markup="tt">.child {
+  position-anchor: --anchor; /* has to match the `anchor-name` */
+}</code></pre>
+
+
+
+<p>The last thing we have to do is position the child so that it covers the parent&#8217;s lap. We have the <code><a href="https://css-tricks.com/almanac/properties/p/position-area/">position-area</a></code> property that allows us to center the element over the parent:</p>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line="3"><code markup="tt">.child {
+  position-anchor: --anchor;
+  position-area: center;
+}</code></pre>
+
+
+
+<p>If we want to completely cover the parent&#8217;s lap, we can set the child&#8217;s size to match that of the parent using the <code><a href="https://css-tricks.com/almanac/functions/a/anchor-size/">anchor-size()</a></code> function:</p>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line="4"><code markup="tt">.child {
+  position-anchor: --anchor;
+  position-area: center;
+  width: anchor-size(width);
+}</code></pre>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_ogNddvE" src="//codepen.io/anon/embed/preview/ogNddvE?height=450&amp;theme-id=1&amp;slug-hash=ogNddvE&amp;default-tab=css,result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed ogNddvE" title="CodePen Embed ogNddvE" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>No punchline — just one of the things that makes anchor positioning something I&#8217;m so excited about. The fact that it eschews HTML source order is so CSS-y because it&#8217;s another separation of concerns between content and presentation.</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/anchor-positioning-just-dont-care-about-source-order/">Anchor Positioning Just Don&#8217;t Care About Source Order</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://css-tricks.com/anchor-positioning-just-dont-care-about-source-order/feed/</wfw:commentRss>
+			<slash:comments>3</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">385394</post-id>	</item>
+		<item>
+		<title>The Lost CSS Tricks of Cohost.org</title>
+		<link>https://css-tricks.com/the-lost-css-tricks-of-cohost-org/</link>
+					<comments>https://css-tricks.com/the-lost-css-tricks-of-cohost-org/#comments</comments>
+		
+		<dc:creator><![CDATA[Blackle Mori]]></dc:creator>
+		<pubDate>Thu, 24 Apr 2025 12:49:42 +0000</pubDate>
+				<category><![CDATA[Articles]]></category>
+		<category><![CDATA[inspiration]]></category>
+		<guid isPermaLink="false">https://css-tricks.com/?p=385855</guid>
+
+					<description><![CDATA[<p>In this post, Blackle Mori shows you a few of the hacks found while trying to push the limits of Cohost’s HTML support. Use these if you dare, lest you too get labelled a CSS criminal.</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/the-lost-css-tricks-of-cohost-org/">The Lost CSS Tricks of Cohost.org</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>You would be forgiven if you’ve never heard of <a href="http://cohost.org/" rel="noopener">Cohost.org</a>. The bespoke, Tumblr-like social media website came and went in a flash. Going public in June 2022 with invite-only registrations, Cohost’s peach and maroon landing page promised that it would be “posting, but better.” Just over two years later, in September 2024, the site announced its shutdown, its creators citing burnout and funding problems. Today, its servers are gone for good. Any link to <a href="http://cohost.org/" rel="noopener">cohost.org</a> redirects to the Wayback Machine’s slow but comprehensive archive.</p>
+
+
+
+<span id="more-385855"></span>
+
+
+
+<figure class="wp-block-image size-full"><img data-recalc-dims="1" loading="lazy" decoding="async" width="1919" height="966" src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-from-2025-04-13-05-34-34.png?resize=1919%2C966&#038;ssl=1" alt="Screenshot of the Cohost.org homepage before it was shut down." class="wp-image-385856" srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-from-2025-04-13-05-34-34.png?w=1919&amp;ssl=1 1919w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-from-2025-04-13-05-34-34.png?resize=300%2C151&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-from-2025-04-13-05-34-34.png?resize=1024%2C515&amp;ssl=1 1024w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-from-2025-04-13-05-34-34.png?resize=768%2C387&amp;ssl=1 768w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/Screenshot-from-2025-04-13-05-34-34.png?resize=1536%2C773&amp;ssl=1 1536w" sizes="auto, (min-width: 735px) 864px, 96vw" /></figure>
+
+
+
+<p>The landing page for&nbsp;<a href="http://cohost.org/" rel="noopener">Cohost.org</a>, featuring our beloved eggbug.</p>
+
+
+
+<p>Despite its short lifetime, I am confident in saying that Cohost delivered on its promise. This is in no small part due to its user base, consisting mostly of niche internet creatives and their friends — many of whom already considered “posting” to be an art form. These users were attracted to Cohost’s opinionated, anti-capitalist design that set it apart from the mainstream alternatives. The site was free of advertisements and follower counts, all feeds were purely chronological, and the posting interface even supported a subset of HTML.</p>
+
+
+
+<p>It was this latter feature that conjured a community of its own. For security reasons, any post using HTML was passed through a sanitizer to remove any malicious or malformed elements. But unlike most websites, Cohost’s sanitizer was remarkably permissive. The vast majority of tags and attributes were allowed — most notably inline CSS styles on arbitrary elements.</p>
+
+
+
+<p>Users didn’t take long to grasp the creative opportunities lurking within Cohost’s unassuming “new post” modal. Within 48 hours of going public, the fledgling community had figured out how to post&nbsp;<a href="https://web.archive.org/web/20250107154555mp_/https://cohost.org/everest/post/20330-the-entire-content-o" rel="noopener">poetry using the&nbsp;<code>&lt;details&gt;</code>&nbsp;tag</a>, port&nbsp;<a href="https://web.archive.org/web/20250107154555mp_/https://cohost.org/ticky/post/15513-mods-are-asleep-post" rel="noopener">the Apple homepage from 1999</a>, and reimplement&nbsp;<a href="https://web.archive.org/web/20250107154555mp_/https://cohost.org/mog/post/15769-details-summary-s" rel="noopener">a quick-time WarioWare game</a>. We called posts like these “CSS Crimes,” and the people who made them “CSS Criminals.” Without even intending to, the developers of Cohost had created an environment for a CSS community to thrive.</p>
+
+
+
+<p>In this post, I’ll show you a few of the hacks we found while trying to push the limits of Cohost’s HTML support. Use these if you dare, lest you too get labelled a CSS criminal.</p>
+
+
+<h3 class="wp-block-heading" id="widthhacking">Width-hacking</h3>
+
+
+<p>Many of the CSS crimes of Cohost were powered by a technique that user @corncycle dubbed “width-hacking.” Using a combination of the&nbsp;<code>&lt;details&gt;</code>&nbsp;element and the CSS&nbsp;<code>calc()</code>&nbsp;function, we can get some pretty wild functionality:&nbsp;<a href="https://web.archive.org/web/20250107014121/https://cohost.org/blackle/post/260204-div-style-width-60" rel="noopener">combination locks</a>,&nbsp;<a href="https://web.archive.org/web/20250107052244/https://cohost.org/rykarn/post/3328326-rotating-hexagonal-t" rel="noopener">tile matching games</a>, <a href="https://web.archive.org/web/20250107044611/https://cohost.org/Corncycle/post/362844-div-style-line-hei" rel="noopener">Zelda-style top-down movement</a>, the list goes on.</p>
+
+
+
+<p>If you’ve been around the CSS world for a while, there’s a good chance you’ve been exposed to the old&nbsp;<a href="https://css-tricks.com/the-checkbox-hack/">checkbox hack</a>. By combining a checkbox, a label, and creative use of CSS selectors, you can use the toggle functionality of the checkbox to implement all sorts of things. Tabbed areas, push toggles, dropdown menus, etc.</p>
+
+
+
+<p>However, because this hack requires CSS selectors, that meant we couldn’t use it on Cohost — remember, we only had inline styles. Instead, we used the relatively new elements&nbsp;<code>&lt;details&gt;</code>&nbsp;and&nbsp;<code>&lt;summary&gt;</code>. These elements provide the same visibility-toggling logic, but now directly in HTML. No weird CSS needed.</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_LEYwJEZ" src="//codepen.io/anon/embed/preview/LEYwJEZ?height=350&amp;theme-id=1&amp;slug-hash=LEYwJEZ&amp;default-tab=html,result" height="350" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed LEYwJEZ" title="CodePen Embed LEYwJEZ" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>These elements work like so: All children of the&nbsp;<code>&lt;details&gt;</code>&nbsp;element are hidden by default, except for the&nbsp;<code>&lt;summary&gt;</code> element. When the summary is clicked, it “opens” the parent details element, causing its children to become visible.</p>
+
+
+
+<p>We can add all sorts of styles to these elements to make this example more interesting. Below, I have styled the constituent elements to create the effect of a button that lights up when you click on it.</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_azbeaOO" src="//codepen.io/anon/embed/preview/azbeaOO?height=450&amp;theme-id=1&amp;slug-hash=azbeaOO&amp;default-tab=css,result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed azbeaOO" title="CodePen Embed azbeaOO" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>This is achieved by giving the&nbsp;<code>&lt;summary&gt;</code>&nbsp;element a fixed position and size, a grey background color, and an outset border to make it look like a button. When it’s clicked, a sibling&nbsp;<code>&lt;div&gt;</code>&nbsp;is revealed that covers the&nbsp;<code>&lt;summary&gt;</code>&nbsp;with its own red background and border. Normally, this&nbsp;<code>&lt;div&gt;</code>&nbsp;would block further click events, but I’ve given it the declaration&nbsp;<code>pointer-events: none</code>. Now all clicks pass right on through to the&nbsp;<code>&lt;summary&gt;</code>&nbsp;element underneath, allowing you to turn the button back off.</p>
+
+
+
+<p>This is all pretty nifty, but it’s ultimately the same logic as before: something is toggled either on or off. These are only two states. If we want to make games and other gizmos, we might want to represent hundreds to thousands of states.</p>
+
+
+
+<p>Width-hacking gives us exactly that. Consider the following example:</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_RNwZPwq" src="//codepen.io/anon/embed/preview/RNwZPwq?height=450&amp;theme-id=1&amp;slug-hash=RNwZPwq&amp;default-tab=css,result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed RNwZPwq" title="CodePen Embed RNwZPwq" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>In this example, three <code>&lt;details></code> elements live together in an <code>inline-flex</code> container. Because all the <code>&lt;summary></code> elements are absolutely-positioned, the width of their respective <code>&lt;details></code> elements are all zero when they’re closed.</p>
+
+
+
+<p>Now, each of these three&nbsp;<code>&lt;details&gt;</code>&nbsp;has a small&nbsp;<code>&lt;div&gt;</code>&nbsp;inside. The first has a child with a width of&nbsp;<code>1px</code>, the second a child with a width of&nbsp;<code>2px</code>, and the third a width of&nbsp;<code>4px</code>. When a&nbsp;<code>&lt;details&gt;</code>&nbsp;element is opened, it reveals its hidden&nbsp;<code>&lt;div&gt;</code>, causing its own width to increase. This increases the width of the&nbsp;<code>inline-flex</code>&nbsp;container. Because the width of the container is the sum of its children, this means its width&nbsp;<em>directly corresponds</em>&nbsp;to the specific&nbsp;<code>&lt;details&gt;</code>&nbsp;elements that are open.</p>
+
+
+
+<p>For example, if just the first and third&nbsp;<code>&lt;details&gt;</code>&nbsp;are open, the&nbsp;<code>inline-flex</code>&nbsp;container will have the width&nbsp;<code>1px + 4px = 5px</code>. Conversely, if the&nbsp;<code>inline-flex</code>&nbsp;container is&nbsp;<code>2px</code>&nbsp;wide, we can infer that the only open&nbsp;<code>&lt;details&gt;</code>&nbsp;element is the second one. With this trick, we’ve managed to encode all eight states of the three&nbsp;<code>&lt;details&gt;</code>&nbsp;into the width of the container element.</p>
+
+
+
+<p>This is pretty cool. Maybe we could use this as an element of some kind of puzzle game? We could show a secret message if the right combination of buttons is checked. But how do we do that? How do we only show the secret message for a specific width of that container div?</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_qEBeMrq" src="//codepen.io/anon/embed/preview/qEBeMrq?height=450&amp;theme-id=1&amp;slug-hash=qEBeMrq&amp;default-tab=css,result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed qEBeMrq" title="CodePen Embed qEBeMrq" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>In the preceding CodePen, I’ve added a secret message as two nested divs. Currently, this message is always visible — complete with a TODO reminding us to implement the logic to hide it unless the correct combination is set.</p>
+
+
+
+<p>You may wonder why we’re using two nested divs for such a simple message. This is because we’ll be hiding the message using a peculiar method: We will make the width of the parent <code>div.secret</code> be zero. Because the <code>overflow: hidden</code> property is used, the child <code>div.message</code> will be clipped, and thus invisible.</p>
+
+
+
+<p>Now we’re ready to implement our secret message logic. Thanks to the fact that percentage sizes are relative to the parent, we can use&nbsp;<code>100%</code>&nbsp;as a stand-in for the parent’s width. We can then construct a complicated CSS&nbsp;<code>calc()</code>&nbsp;formula that is&nbsp;<code>350px</code>&nbsp;if the container div is our target size, and&nbsp;<code>0px</code>&nbsp;otherwise. With that, our secret message will be visible only when the center button is active and the others are inactive. Give it a try!</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_ByaXOZP" src="//codepen.io/anon/embed/preview/ByaXOZP?height=450&amp;theme-id=1&amp;slug-hash=ByaXOZP&amp;default-tab=css,result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed ByaXOZP" title="CodePen Embed ByaXOZP" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>This complicated&nbsp;<code>calc()</code>&nbsp;function that’s controlling the secret div’s width has the following graph:</p>
+
+
+
+<figure class="wp-block-image size-full"><img data-recalc-dims="1" loading="lazy" decoding="async" width="715" height="400" src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/indicator_function_plain.jpg?resize=715%2C400&#038;ssl=1" alt="Line chart showing the width of the secret div when the container div is at different widths." class="wp-image-385857" srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/indicator_function_plain.jpg?w=715&amp;ssl=1 715w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/indicator_function_plain.jpg?resize=300%2C168&amp;ssl=1 300w" sizes="auto, (min-width: 735px) 864px, 96vw" /></figure>
+
+
+
+<p>You can see that it’s a piecewise linear curve, constructed from multiple pieces using&nbsp;<code>min</code>/<code>max</code>. These pieces are placed in just the right spots so that the function maxes out when the container div is&nbsp;<code>2px</code>— which we’ve established is precisely when only the second button is active.</p>
+
+
+
+<p>A surprising variety of games can be implemented using variations on this technique. Here is a&nbsp;<a href="https://web.archive.org/web/20250107031033/https://cohost.org/blackle/post/1899723-div-style-width-40" rel="noopener">tower of Hanoi</a>&nbsp;game I had made that uses both width and height to track the game’s state.</p>
+
+
+<h3 class="wp-block-heading" id="svg-animation">SVG animation</h3>
+
+
+<p>So far, we’ve seen some basic functionality for implementing a game. But what if we want our games to look&nbsp;<em>good</em>? What if we want to add&nbsp;<em>&#x2728;animations</em>?&#x2728; Believe it or not, this is actually possible entirely within inline CSS using the power of SVG.</p>
+
+
+
+<p>SVG (Scalable Vector Graphics) is an XML-based image format for storing vector images. It enjoys broad support on the web — you can use it in&nbsp;<code>&lt;img&gt;</code>&nbsp;elements or as the URL of a&nbsp;<code>background-image</code>&nbsp;property, among other things.</p>
+
+
+
+<p>Like HTML, an SVG file is a collection of&nbsp;<em>elements</em>. For SVG, these elements are things like&nbsp;<code>&lt;rect&gt;</code>,&nbsp;<code>&lt;circle&gt;</code>, and&nbsp;<code>&lt;text&gt;</code>, to name a few. These elements can have all sorts of properties defined, such as fill color, stroke width, and font family.</p>
+
+
+
+<p>A lesser-known feature of SVG is that it can contain&nbsp;<code>&lt;style&gt;</code>&nbsp;blocks for configuring the properties of these elements. In the example below, an SVG is used as the background for a div. Inside that SVG is a&nbsp;<code>&lt;style&gt;</code>&nbsp;block that sets the&nbsp;<code>fill</code>color of its&nbsp;<code>&lt;circle&gt;</code>&nbsp;to&nbsp;<code>red</code>.</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_YPzmObL" src="//codepen.io/anon/embed/preview/YPzmObL?height=450&amp;theme-id=1&amp;slug-hash=YPzmObL&amp;default-tab=result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed YPzmObL" title="CodePen Embed YPzmObL" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>An even&nbsp;<i>lesser-known</i> feature of SVG is that its styles can use&nbsp;<em>media queries</em>. The size used by those queries is the size of the div it is a background of.</p>
+
+
+
+<p>In the following example, we have a resizable&nbsp;<code>&lt;div&gt;</code>&nbsp;with an SVG background. Inside this SVG is a media query which will change the fill color of its&nbsp;<code>&lt;circle&gt;</code>&nbsp;to&nbsp;<code>blue</code>&nbsp;when the width exceeds&nbsp;<code>100px</code>. Grab the resize handle in its bottom right corner and drag until the circle turns blue.</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_ogNKavE" src="//codepen.io/anon/embed/preview/ogNKavE?height=450&amp;theme-id=1&amp;slug-hash=ogNKavE&amp;default-tab=result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed ogNKavE" title="CodePen Embed ogNKavE" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p class="is-style-explanation">Because resize handles don&#8217;t quite work on mobile, unfortunately, this and the next couple of CodePens are best experienced on desktop.</p>
+
+
+
+<p>This is an extremely powerful technique. By mixing it with width-hacking, we could encode the state of a game or gizmo in the width of an SVG background image. This SVG can then show or hide specific elements depending on the corresponding game state via media queries.</p>
+
+
+
+<p>But I promised you animations. So, how is that done? Turns out you can use CSS animations&nbsp;<em>within</em>&nbsp;SVGs. By using the CSS&nbsp;<code>transition</code>&nbsp;property, we can make the color of our circle smoothly transition from&nbsp;<code>red</code>&nbsp;to&nbsp;<code>blue</code>.</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_OPJKBPG" src="//codepen.io/anon/embed/preview/OPJKBPG?height=450&amp;theme-id=1&amp;slug-hash=OPJKBPG&amp;default-tab=result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed OPJKBPG" title="CodePen Embed OPJKBPG" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>Amazing! But before you try this yourself, be sure to look at the source code carefully. You&#8217;ll notice that I&#8217;ve had to add a&nbsp;<code>1</code>×<code>1px</code>, off-screen element with the ID&nbsp;<code>#hack</code>. This element has a very simple (and nearly unnoticeable) continuous animation applied. A “dummy animation” like this is necessary to get around some web browsers&#8217; buggy detection of SVG animation. Without that hack, our&nbsp;<code>transition</code>&nbsp;property wouldn’t work consistently.</p>
+
+
+
+<p>For the fun of it, let’s combine this tech with our previous secret message example. Instead of toggling the secret message’s width between the values of&nbsp;<code>0px</code>&nbsp;and&nbsp;<code>350px</code>, I’ve adjusted the calc formula so that the secret message div is normally&nbsp;<code>350px</code>, and becomes&nbsp;<code>351px</code>&nbsp;if the right combination is set.</p>
+
+
+
+<p>Instead of HTML/CSS, the secret message is now just an SVG background with a&nbsp;<code>&lt;text&gt;</code>&nbsp;element that says “secret message.” Using media queries, we change the transform scale of this&nbsp;<code>&lt;text&gt;</code>&nbsp;to be zero unless the div is&nbsp;<code>351px</code>. With the&nbsp;<code>transition</code>&nbsp;property applied, we get a smooth transition between these two states.</p>
+
+
+
+<p>Click the center button to activate the secret message:</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_GgRVYNe" src="//codepen.io/anon/embed/preview/GgRVYNe?height=450&amp;theme-id=1&amp;slug-hash=GgRVYNe&amp;default-tab=css,result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed GgRVYNe" title="CodePen Embed GgRVYNe" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>The first cohost user to discover the use of media queries within SVG backgrounds was @ticky for&nbsp;<a href="https://cohost.org/ticky/post/27259-div-style-position" rel="noopener">this post</a>. I don&#8217;t recall who figured out they could animate, but I used the tech quite extensively for&nbsp;<a href="https://web.archive.org/web/20250107020524/https://cohost.org/blackle/post/70692-we-got-buzzfeed-quiz" rel="noopener">this quiz</a>&nbsp;that tells you what kind of soil you&#8217;d like if you were a worm.</p>
+
+
+<h3 class="wp-block-heading" id="wrapping-up">Wrapping up</h3>
+
+
+<p>And that’s will be all for now. There are a number of techniques I haven’t touched on — namely the fun antics one can get up to with the&nbsp;<code>resize</code>&nbsp;property. If you’d like to explore the world of CSS crimes further, I’d recommend this great&nbsp;<a href="https://yal.cc/cohost-css-crimes/" rel="noopener">linkdump</a>&nbsp;by YellowAfterlife, or this&nbsp;<a href="https://www.youtube.com/watch?v=LkMtiwitg-w" rel="noopener">video retrospective</a>&nbsp;by rebane2001.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<p>It will always hurt to describe Cohost in the past tense. It truly was a magical place, and I don’t think I’ll be able to properly convey what it was like to be there at its peak. The best I can do is share the hacks we came up with: the lost CSS tricks we invented while “posting, but better.”</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/the-lost-css-tricks-of-cohost-org/">The Lost CSS Tricks of Cohost.org</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://css-tricks.com/the-lost-css-tricks-of-cohost-org/feed/</wfw:commentRss>
+			<slash:comments>4</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">385855</post-id>	</item>
+		<item>
+		<title>&#8220;Pretty&#8221; is in the eye of the beholder</title>
+		<link>https://css-tricks.com/pretty-is-in-the-eye-of-the-beholder/</link>
+					<comments>https://css-tricks.com/pretty-is-in-the-eye-of-the-beholder/#comments</comments>
+		
+		<dc:creator><![CDATA[Geoff Graham]]></dc:creator>
+		<pubDate>Fri, 18 Apr 2025 12:12:35 +0000</pubDate>
+				<category><![CDATA[Articles]]></category>
+		<category><![CDATA[browser]]></category>
+		<category><![CDATA[typography]]></category>
+		<guid isPermaLink="false">https://css-tricks.com/?p=385848</guid>
+
+					<description><![CDATA[<p>Yay, let's jump for <code>text-wrap: pretty</code> landing in Safari Technology Preview! But beware that it's different from how it works in Chromium browsers.</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/pretty-is-in-the-eye-of-the-beholder/">&#8220;Pretty&#8221; is in the eye of the beholder</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Hey, did you see the post Jen Simmons <a href="https://webkit.org/blog/16547/better-typography-with-text-wrap-pretty/" rel="noopener">published</a> about WebKit&#8217;s <code>text-wrap: pretty</code> implementation? It was added to Safari Technology Preview and can be tested now, as in, like, today. Slap this in a stylesheet and your paragraphs get a nice little makeover that improves the ragging, reduces hyphenation, eliminates typographic orphans at the end of the last line, and generally avoids large typographic rivers as a result. The first visual in the post tells the full story, showing how each of these is handled.</p>
+
+
+
+<span id="more-385848"></span>
+
+
+
+<figure class="wp-block-image size-full"><img data-recalc-dims="1" loading="lazy" decoding="async" width="1652" height="896" src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/bad-typography-SM-light.png?resize=1652%2C896&#038;ssl=1" alt="A screenshot of paragraph text that demonstrates a short last line, bad rag, bad hyphenation, and a typographic river." class="wp-image-385849" srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/bad-typography-SM-light.png?w=1652&amp;ssl=1 1652w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/bad-typography-SM-light.png?resize=300%2C163&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/bad-typography-SM-light.png?resize=1024%2C555&amp;ssl=1 1024w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/bad-typography-SM-light.png?resize=768%2C417&amp;ssl=1 768w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/04/bad-typography-SM-light.png?resize=1536%2C833&amp;ssl=1 1536w" sizes="auto, (min-width: 735px) 864px, 96vw" /><figcaption class="wp-element-caption">Credit: <a href="https://webkit.org/blog/16547/better-typography-with-text-wrap-pretty/" rel="noopener">WebKit Blog</a></figcaption></figure>
+
+
+
+<p>That&#8217;s a lot of heavy lifting for a single value! And according to Jen, this is vastly different from Chromium&#8217;s implementation of the <em>exact same feature</em>.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>According to&nbsp;<a href="https://developer.chrome.com/blog/css-text-wrap-pretty/" rel="noopener">an article</a>&nbsp;by the Chrome team, Chromium only makes adjustments to the last four lines of a paragraph. It’s focused on preventing short last lines. It also adjusts hyphenation if consecutive hyphenated lines appear at the end of a paragraph.</p>
+</blockquote>
+
+
+
+<p>Jen suggests that performance concerns are the reason for the difference. It does sound like the <code>pretty</code> value does a lot of work, and you might imagine that would have a cumulative effect when we&#8217;re talking about long-form content where we&#8217;re handling hundreds, if not thousands, of lines of text. If it sounds like Safari cares less about performance, that&#8217;s not the case, as their approach is capable of handling the load.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>One thing to know as a developer, the performance of&nbsp;<code>text-wrap</code>&nbsp;is not affected by how many elements on the page it’s applied to. Perf concerns emerge as the&nbsp;<code>pretty</code>&nbsp;algorithm takes more and more lines into consideration as it calculates what to do. In WebKit-based browsers or apps, your text element would need to be many hundreds or thousands of lines long to see a performance hit — and that kind of content is unusual on the web. If your content is broken up into typical-length paragraphs, then you have no reason to worry. Use&nbsp;<code>text-wrap: pretty</code>&nbsp;as much as you want, and rely on our browser engineers to ensure your users will not experience any downsides.</p>
+</blockquote>
+
+
+
+<p>Great, carry on! But now you know that two major browsers have competing implementations of the same feature. I&#8217;ve been unclear on the terminology of <code>pretty</code> since it was specced, and now it truly seems that what is considered &#8220;pretty&#8221; really is in the eye of the beholder. And if you&#8217;re hoping to choose a side, don&#8217;t, because the specification is intentionally unopinionated in this situation, as it says (emphasis added):</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>The user agent may among other things attempt to avoid excessively short last lines… but it should also improve the layout in additional ways.&nbsp;<strong>The precise set of improvements is user agent dependent, and may include</strong>&nbsp;things such as: reducing the variation in length between lines; avoiding typographic rivers; prioritizing different classes of soft wrap opportunities, hyphenation opportunities, or justification opportunities; avoiding hyphenation on too many consecutive lines.</p>
+</blockquote>
+
+
+
+<p>So, there you have it. One new feature. Two different approaches. Enjoy your new typographic powers. &#x1f4aa;</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/pretty-is-in-the-eye-of-the-beholder/">&#8220;Pretty&#8221; is in the eye of the beholder</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://css-tricks.com/pretty-is-in-the-eye-of-the-beholder/feed/</wfw:commentRss>
+			<slash:comments>4</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">385848</post-id>	</item>
+		<item>
+		<title>So, You Want to Give Up CSS Pre- and Post-Processors&#8230;</title>
+		<link>https://css-tricks.com/so-you-want-to-give-up-css-pre-and-post-processors/</link>
+					<comments>https://css-tricks.com/so-you-want-to-give-up-css-pre-and-post-processors/#comments</comments>
+		
+		<dc:creator><![CDATA[Zell Liew]]></dc:creator>
+		<pubDate>Thu, 17 Apr 2025 12:38:05 +0000</pubDate>
+				<category><![CDATA[Articles]]></category>
+		<category><![CDATA[css preprocessors]]></category>
+		<category><![CDATA[postcss]]></category>
+		<category><![CDATA[tailwind]]></category>
+		<guid isPermaLink="false">https://css-tricks.com/?p=385199</guid>
+
+					<description><![CDATA[<p>There was once upon a time when native CSS lacked many essential features, leaving developers to come up with all sorts of ways to make CSS easier to write over the years.</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/so-you-want-to-give-up-css-pre-and-post-processors/">So, You Want to Give Up CSS Pre- and Post-Processors&#8230;</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>There was once upon a time when native CSS lacked many essential features, leaving developers to come up with all sorts of ways to make CSS easier to write over the years.</p>
+
+
+
+<p>These ways can mostly be categorized into two groups:</p>
+
+
+
+<ol class="wp-block-list">
+<li>Pre-processors</li>
+
+
+
+<li>Post-processors</li>
+</ol>
+
+
+
+<p>Pre-processors include tools like Sass, Less, and Stylus. Like what the category’s name suggests, these tools let you write CSS in their syntax before compiling your code into valid CSS.</p>
+
+
+
+<p>Post-processors work the other way — you write non-valid CSS syntax into a CSS file, then post-processors will change those values into valid CSS.</p>
+
+
+
+<p>There are two major post-processors today:</p>
+
+
+
+<ul class="wp-block-list">
+<li>PostCSS</li>
+
+
+
+<li>LightningCSS</li>
+</ul>
+
+
+
+<p>PostCSS is the largest kid on the block while Lightning CSS is a new and noteworthy one. We&#8217;ll talk about them both in a bit.</p>
+
+
+
+<span id="more-385199"></span>
+
+
+<h3 class="wp-block-heading" id="i-think-post-processors-have-won-the-compiling-game">I think post-processors have won the compiling game</h3>
+
+
+<p>Post-processors have always been on the verge of winning since PostCSS has always been a necessary tool in the toolchain.</p>
+
+
+
+<p>The most obvious (and most useful) PostCSS plugin for a long time is Autoprefixer — it creates vendor prefixes for you so you don&#8217;t have to deal with them.</p>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line=""><code markup="tt">/* Input */
+.selector {
+  transform: /* ... */; 
+}
+
+.selector {
+  -webkit-transform: /* ... */;
+  transform: /* ... */;
+}</code></pre>
+
+
+
+<p>Arguably, we don&#8217;t need Autoprefixer much today because browsers are more interopable, but nobody wants to go without Autoprefixer because it eliminates our worries about vendor prefixing.</p>
+
+
+
+<p>What has really tilted the balance towards post-processors includes:</p>
+
+
+
+<ol class="wp-block-list">
+<li>Native CSS gaining essential features</li>
+
+
+
+<li>Tailwind removing support for pre-processors</li>
+
+
+
+<li>Lightning CSS</li>
+</ol>
+
+
+
+<p>Let me expand on each of these.</p>
+
+
+<h3 class="wp-block-heading" id="native-css-gaining-essential-features">Native CSS gaining essential features</h3>
+
+
+<p>CSS pre-processors existed in the first place because native CSS lacked features that were critical for most developers, including:</p>
+
+
+
+<ul class="wp-block-list">
+<li>CSS variables</li>
+
+
+
+<li>Nesting capabilities</li>
+
+
+
+<li>Allowing users to break CSS into multiple files without additional fetch requests</li>
+
+
+
+<li>Conditionals like <code>if</code> and <code>for</code></li>
+
+
+
+<li>Mixins and functions</li>
+</ul>
+
+
+
+<p>Native CSS has progressed a lot over the years. It has gained great browser support for the first two features:</p>
+
+
+
+<ul class="wp-block-list">
+<li>CSS Variables</li>
+
+
+
+<li>Nesting</li>
+</ul>
+
+
+
+<p>With just these two features, I suspect a majority of CSS users won&#8217;t even need to fire up pre-processors or post-processors. What&#8217;s more, <a href="https://css-tricks.com/if-css-gets-inline-conditionals/">The <code>if()</code> function is coming to CSS</a> in the future too.</p>
+
+
+
+<p>But, for the rest of us who needs to make maintenance and loading performance a priority, we still need the third feature — the ability to break CSS into multiple files. This can be done with Sass&#8217;s <code>use</code> feature or PostCSS&#8217;s <code>import</code> feature (provided by the <code>postcss-import</code> plugin).</p>
+
+
+
+<p><code>PostCSS</code> also contains plugins that can help you create conditionals, mixins, and functions should you need them.</p>
+
+
+
+<p>Although, from my experience, mixins can be better replaced with <a href="https://css-tricks.com/tailwinds-apply-feature-is-better-than-it-sounds/">Tailwind&#8217;s <code>@apply</code> feature</a>.</p>
+
+
+
+<p>This brings us to Tailwind.</p>
+
+
+<h3 class="wp-block-heading" id="tailwind-removing-support-for-pre-processors">Tailwind removing support for pre-processors</h3>
+
+
+<p>Tailwind 4 has officially removed support for pre-processors. From Tailwind&#8217;s <a href="https://tailwindcss.com/docs/compatibility" rel="noopener">documentation</a>:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>Tailwind CSS v4.0 is a full-featured CSS build tool designed for a specific workflow, and is not designed to be used with CSS pre-processors like Sass, Less, or Stylus. <strong>Think of Tailwind CSS itself as your pre-processor</strong> — you shouldn&#8217;t use Tailwind with Sass for the same reason you wouldn&#8217;t use Sass with Stylus. Since Tailwind is designed for modern browsers, you actually don&#8217;t need a pre-processor for things like nesting or variables, and Tailwind itself will do things like bundle your imports and add vendor prefixes.</p>
+</blockquote>
+
+
+
+<p>If you included Tailwind 4 via its most direct installation method, you won&#8217;t be able to use pre-processors with Tailwind.</p>
+
+
+
+<pre rel="SCSS" class="wp-block-csstricks-code-block language-scss" data-line=""><code markup="tt">@import `tailwindcss`</code></pre>
+
+
+
+<p>That&#8217;s because this one import statement makes Tailwind incompatible with Sass, Less, and Stylus.</p>
+
+
+
+<p>But, (fortunately), Sass lets you import CSS files if the imported file contains the <code>.css</code> extension. So, if you wish to use Tailwind with Sass, you can. But it&#8217;s just going to be a little bit wordier.</p>
+
+
+
+<pre rel="SCSS" class="wp-block-csstricks-code-block language-scss" data-line=""><code markup="tt">@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);</code></pre>
+
+
+
+<p>Personally, I dislike Tailwind&#8217;s preflight styles so I exclude them from my files.</p>
+
+
+
+<pre rel="JavaScript" class="wp-block-csstricks-code-block language-javascript" data-line=""><code markup="tt">@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);</code></pre>
+
+
+
+<p>Either way, many people won&#8217;t know you can continue to use pre-processors with Tailwind. Because of this, I suspect pre-processors will get less popular as Tailwind gains more momentum.</p>
+
+
+
+<p>Now, beneath Tailwind is a CSS post-processor called Lightning CSS, so this brings us to talking about that.</p>
+
+
+<h3 class="wp-block-heading" id="lightning-css">Lightning CSS</h3>
+
+
+<p>Lightning CSS is a post-processor can do many things that a modern developer needs — so it replaces most of the PostCSS tool chain including:</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://www.npmjs.com/package/postcss-import" rel="noopener"><code>postcss-import</code></a></li>
+
+
+
+<li><a href="https://www.npmjs.com/package/postcss-preset-env" rel="noopener"><code>postcss-preset-env</code></a></li>
+
+
+
+<li><a href="https://www.npmjs.com/package/autoprefixer" rel="noopener"><code>autoprefixer</code></a></li>
+</ul>
+
+
+
+<p>Besides having a decent set of built-in features, it wins over PostCSS because it’s incredibly fast.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p><strong>Lightning CSS is over 100 times faster than comparable JavaScript-based tools.</strong> It can minify over 2.7 million lines of code per second on a single thread.</p>
+</blockquote>
+
+
+
+<figure class="wp-block-image size-full"><img data-recalc-dims="1" loading="lazy" decoding="async" width="966" height="320" src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/03/lightning.png?resize=966%2C320&#038;ssl=1" alt="Comparing build times for CSS Nano (544 milliseconds), ES Build (17 milliseconds), and Lightning CSS (4 milliseconds)." class="wp-image-385202" srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/03/lightning.png?w=966&amp;ssl=1 966w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/03/lightning.png?resize=300%2C99&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2025/03/lightning.png?resize=768%2C254&amp;ssl=1 768w" sizes="auto, (min-width: 735px) 864px, 96vw" /></figure>
+
+
+
+<p>Speed helps Lightning CSS win since many developers are speed junkies who don&#8217;t mind switching tools to achieve reduced compile times. But, Lightning CSS also wins because it has great distribution.</p>
+
+
+
+<p>It can be used directly as a Vite plugin (that many frameworks support). Ryan Trimble has a step-by-step article on <a href="https://css-tricks.com/compiling-css-with-vite-and-lightning-css/">setting it up with Vite</a> if you need help.</p>
+
+
+
+<pre rel="JavaScript" class="wp-block-csstricks-code-block language-javascript" data-line=""><code markup="tt">// vite.config.mjs
+export default {
+  css: {
+    transformer: 'lightningcss'
+  },
+  build: {
+    cssMinify: 'lightningcss'
+  }
+};</code></pre>
+
+
+
+<p>If you need other PostCSS plugins, you can also include that as part of the PostCSS tool chain.</p>
+
+
+
+<pre rel="JavaScript" class="wp-block-csstricks-code-block language-javascript" data-line=""><code markup="tt">// postcss.config.js
+// Import other plugins...
+import lightning from 'postcss-lightningcss'
+
+export default {
+  plugins: [lightning, /* Other plugins */],
+}</code></pre>
+
+
+
+<p>Many well-known developers have switched to Lightning CSS and didn’t look back. Chris Coyier <a href="https://frontendmasters.com/blog/fine-ill-use-a-super-basic-css-processing-setup/" rel="noopener">says</a> he’ll use a “super basic CSS processing setup” so you can be assured that you are probably not stepping in any toes if you wish to switch to Lightning, too.</p>
+
+
+<h3 class="wp-block-heading" id="if-you-wanna-ditch-pre-processors-today">If you wanna ditch pre-processors today</h3>
+
+
+<p>You&#8217;ll need to check the features you need. Native CSS is enough for you if you need:</p>
+
+
+
+<ul class="wp-block-list">
+<li>CSS Variables</li>
+
+
+
+<li>Nesting capabilities</li>
+</ul>
+
+
+
+<p>Lightning CSS is enough for you if you need:</p>
+
+
+
+<ul class="wp-block-list">
+<li>CSS Variables</li>
+
+
+
+<li>Nesting capabilities</li>
+
+
+
+<li><code>import</code> statements to break CSS into multiple files</li>
+</ul>
+
+
+
+<p>Tailwind (<a href="https://css-tricks.com/tailwinds-apply-feature-is-better-than-it-sounds/">with <code>@apply</code></a>) is enough for you if you need:</p>
+
+
+
+<ul class="wp-block-list">
+<li>all of the above</li>
+
+
+
+<li>Mixins</li>
+</ul>
+
+
+
+<p>If you still need conditionals like <code>if</code>, <code>for</code> and other functions, it&#8217;s still best to stick with Sass for now. (I&#8217;ve tried and encountered interoperability issues between <code>postcss-for</code> and Lightning CSS that I shall not go into details here).</p>
+
+
+
+<p>That&#8217;s all I want to share with you today. I hope it helps you if you have been thinking about your CSS toolchain.</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/so-you-want-to-give-up-css-pre-and-post-processors/">So, You Want to Give Up CSS Pre- and Post-Processors&#8230;</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://css-tricks.com/so-you-want-to-give-up-css-pre-and-post-processors/feed/</wfw:commentRss>
+			<slash:comments>17</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">385199</post-id>	</item>
+		<item>
+		<title>Using CSS backdrop-filter for UI Effects</title>
+		<link>https://css-tricks.com/using-css-backdrop-filter-for-ui-effects/</link>
+					<comments>https://css-tricks.com/using-css-backdrop-filter-for-ui-effects/#respond</comments>
+		
+		<dc:creator><![CDATA[Preethi]]></dc:creator>
+		<pubDate>Wed, 16 Apr 2025 12:34:50 +0000</pubDate>
+				<category><![CDATA[Articles]]></category>
+		<category><![CDATA[background]]></category>
+		<category><![CDATA[inspiration]]></category>
+		<guid isPermaLink="false">https://css-tricks.com/?p=385721</guid>
+
+					<description><![CDATA[<p>Tips and tricks on utilizing the CSS <code>backdrop-filter</code> property to style user interfaces. You’ll learn how to layer backdrop filters among multiple elements, and integrate them with other CSS graphical effects to create elaborate designs.</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/using-css-backdrop-filter-for-ui-effects/">Using CSS backdrop-filter for UI Effects</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>This article covers tips and tricks on effectively utilizing the CSS <a href="https://css-tricks.com/almanac/properties/b/backdrop-filter/"><code>backdrop-filter</code></a> property to style contemporary user interfaces. You’ll learn how to layer <em>backdrop filters</em> among multiple elements, and integrate them with other CSS graphical effects to create elaborate designs.</p>
+
+
+
+<span id="more-385721"></span>
+
+
+
+<p>Below is a hodgepodge sample of what you can build based on everything we’ll cover in this article. More examples are coming up.</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_EaxJeNw" src="//codepen.io/anon/embed/preview/EaxJeNw?height=850&amp;theme-id=1&amp;slug-hash=EaxJeNw&amp;default-tab=result" height="850" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed EaxJeNw" title="CodePen Embed EaxJeNw" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>The blurry, frosted glass effect is popular with developers and designers these days — maybe because <a href="https://www.joshwcomeau.com/css/backdrop-filter/" rel="noopener">Josh Comeau wrote a deep-dive about it</a> somewhat recently — so that is what I will base my examples on. However, you can apply everything you learn here to any relevant <em>filter</em>. I’ll also be touching upon a few of them in my examples.</p>
+
+
+<h3 class="wp-block-heading" id="what-s-essential-in-a-backdrop-filter-">What’s essential in a backdrop filter?</h3>
+
+
+<p>If you’re familiar with CSS <a href="https://css-tricks.com/almanac/properties/f/filter/"><code>filter</code></a> functions like <a href="https://css-tricks.com/almanac/properties/f/filter/#aa-blur"><code>blur()</code></a> and <a href="https://css-tricks.com/almanac/properties/f/filter/#aa-brightness"><code>brightness()</code></a>, then you’re also familiar with <em>backdrop filter</em> functions. They’re the same. You can find a complete list of supported <em>filter</em> functions <a href="https://css-tricks.com/almanac/properties/b/backdrop-filter/">here at CSS-Tricks</a> as well as <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function" rel="noopener">over at MDN</a>.</p>
+
+
+
+<p>The difference between the CSS <code>filter</code> and <code>backdrop-filter</code> properties is the affected part of an element. <em>Backdrop filter</em> affects the backdrop of an element, and it requires a transparent or translucent background in the element for its effect to be visible. It’s important to remember these fundamentals when using a <em>backdrop filter,</em> for these reasons:</p>
+
+
+
+<ol class="wp-block-list">
+<li>to decide on the aesthetics,</li>
+
+
+
+<li>to be able to layer the <em>filters</em> among multiple elements, and</li>
+
+
+
+<li>to combine <em>filters</em> with other CSS effects.</li>
+</ol>
+
+
+<h3 class="wp-block-heading" id="the-backdrop">The backdrop</h3>
+
+
+<p>Design is subjective, but a little guidance can be helpful. If you’ve applied a <em>blur filter</em> to a plain background and felt the result was unsatisfactory, it could be that it needed a few embellishments, like <em>shadows</em>, or more often than not, it’s because the backdrop is too plain.</p>
+
+
+
+<p>Plain backdrops can be enhanced with <em>filters</em> like <code>brightness()</code>, <code>contrast()</code>, and <code>invert()</code>. Such <em>filters</em> play with the luminosity and hue of an element’s backdrop, creating interesting designs. Textured backdrops complement distorting <em>filters</em> like <code>blur()</code> and <code>opacity()</code>.</p>
+
+
+
+<pre rel="HTML" class="wp-block-csstricks-code-block language-markup" data-line=""><code markup="tt">&lt;main>
+&lt;div>
+  &lt;section>
+    &lt;h1>Weather today&lt;/h1>
+    Cloudy with a chance of meatballs. Ramenstorms at 3PM that will last for ten minutes.
+  &lt;/section>
+&lt;/div>
+&lt;/main></code></pre>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line=""><code markup="tt">main {
+  background: center/cover url("image.jpg");
+  box-shadow: 0 0 10px rgba(154 201 255 / 0.6);
+  /* etc. */
+  
+  div {
+    backdrop-filter: blur(10px);
+    color: white;
+    /* etc. */
+  }
+}</code></pre>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_yyLrxMa" src="//codepen.io/anon/embed/preview/yyLrxMa?height=450&amp;theme-id=1&amp;slug-hash=yyLrxMa&amp;default-tab=result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed yyLrxMa" title="CodePen Embed yyLrxMa" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+<h3 class="wp-block-heading" id="layering-elements-with-backdrop-filters">Layering elements with backdrop filters</h3>
+
+
+<p>As we just discussed, <em>backdrop filters</em> require an element with a transparent or translucent background so that everything behind it, with the <em>filters</em> applied, is visible.</p>
+
+
+
+<p>If you’re applying <em>backdrop filters</em> on multiple elements that are layered above one another, set a translucent (not transparent) background to all elements except the bottommost one, which can be transparent or translucent, provided it has a backdrop. Otherwise, you won’t see the desired filter buildup.</p>
+
+
+
+<pre rel="HTML" class="wp-block-csstricks-code-block language-markup" data-line=""><code markup="tt">&lt;main>
+&lt;div>
+  &lt;section>
+    &lt;h1>Weather today&lt;/h1>
+    Cloudy with a chance of meatballs. Ramenstorms at 3PM that will last for ten minutes.
+  &lt;/section>
+  &lt;p>view details&lt;/p>
+&lt;/div>
+&lt;/main></code></pre>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line="7,8,12"><code markup="tt">main {
+  background: center/cover url("image.jpg");
+  box-shadow: 0 0 10px rgba(154 201 255 / 0.6);
+  /* etc. */
+
+  div {
+    background: rgb(255 255 255 / .1);
+    backdrop-filter: blur(10px);
+    /* etc. */
+
+    p {
+      backdrop-filter: brightness(0) contrast(10);
+      /* etc. */
+    }
+  }
+}</code></pre>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_MYWRqmJ" src="//codepen.io/anon/embed/preview/MYWRqmJ?height=450&amp;theme-id=1&amp;slug-hash=MYWRqmJ&amp;default-tab=result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed MYWRqmJ" title="CodePen Embed MYWRqmJ" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+<h3 class="wp-block-heading" id="combining-backdrop-filters-with-other-css-effects">Combining backdrop filters with other CSS effects</h3>
+
+
+<p>When an element meets a certain criterion, it gets a <a href="https://drafts.fxtf.org/filter-effects-2/#backdrop-root" rel="noopener"><em>backdrop root</em></a> (not yet a standardized name). One criterion is when an element has a <em>filter</em> effect (from <code>filter</code> and <code>background-filter</code>). I believe <em>backdrop filters</em> can work well with other CSS effects that also use a <em>backdrop root</em> because they all affect the same backdrop.</p>
+
+
+
+<p>Of those effects, I find two interesting: <a href="https://css-tricks.com/almanac/properties/m/mask/"><code>mask</code></a> and <a href="https://css-tricks.com/almanac/properties/m/mix-blend-mode/"><code>mix-blend-mode</code></a>. Combining <code>backdrop-filter</code> with <code>mask</code> resulted in the most reliable outcome across the major browsers in my testing. When it’s done with <code>mix-blend-mode</code>, the <em>blur backdrop filter</em> gets lost, so I won’t use it in my examples. However, I do recommend exploring <code>mix-blend-mode</code> with <code>backdrop-filter</code>.</p>
+
+
+<h3 class="wp-block-heading" id="backdrop-filter-with-mask">Backdrop filter with mask</h3>
+
+
+<p>Unlike <code>backdrop-filter</code>, CSS <code>mask</code> affects the background and foreground (made of descendants) of an element. We can use that to our advantage and work around it when it’s not desired.</p>
+
+
+
+<pre rel="HTML" class="wp-block-csstricks-code-block language-markup" data-line=""><code markup="tt">&lt;main>
+  &lt;div>
+    &lt;div class="bg">&lt;/div>
+    &lt;section>
+     &lt;h1>Weather today&lt;/h1>
+      Cloudy with a chance of meatballs. Ramenstorms at 3PM that will last for ten minutes. 
+    &lt;/section>
+  &lt;/div>
+&lt;/main></code></pre>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line="8,9"><code markup="tt">main {
+  background: center/cover url("image.jpg");
+  box-shadow: 0 0 10px rgba(154 201 255 / 0.6);
+  /* etc. */
+  
+  > div {
+      .bg {
+        backdrop-filter: blur(10px);
+        mask-image: repeating-linear-gradient(90deg, transparent, transparent 2px, white 2px, white 10px);
+        /* etc. */
+      }
+    /* etc. */
+  }
+}</code></pre>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_Pwogdmr" src="//codepen.io/anon/embed/preview/Pwogdmr?height=450&amp;theme-id=1&amp;slug-hash=Pwogdmr&amp;default-tab=result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed Pwogdmr" title="CodePen Embed Pwogdmr" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+<h3 class="wp-block-heading" id="backdrop-filter-for-the-foreground">Backdrop filter for the foreground</h3>
+
+
+<p>We have the <code>filter</code> property to apply graphical effects to an element, including its foreground, so we don’t need <em>backdrop filters</em> for such instances. However, if you want to apply a <em>filter</em> to a foreground element and introduce elements within it that shouldn’t be affected by the filter, use a <em>backdrop filter</em> instead.</p>
+
+
+
+<pre rel="HTML" class="wp-block-csstricks-code-block language-markup" data-line=""><code markup="tt">&lt;main>
+  &lt;div class="photo">
+    &lt;div class="filter">&lt;/div>
+  &lt;/div>
+  &lt;!-- etc. -->
+&lt;/main></code></pre>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line="6,7,8"><code markup="tt">.photo {
+  background: center/cover url("photo.jpg");
+
+  .filter {
+    backdrop-filter: blur(10px) brightness(110%);
+    mask-image: radial-gradient(white 5px, transparent 6px);
+    mask-size: 10px 10px;
+    transition: backdrop-filter .3s linear;
+    /* etc.*/
+  }
+
+  &amp;:hover .filter {
+    backdrop-filter: none;
+    mask-image: none;
+  }
+}</code></pre>
+
+
+
+<p>In the example below, hover over the blurred photo.</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_LEYvJLr" src="//codepen.io/anon/embed/preview/LEYvJLr?height=600&amp;theme-id=1&amp;slug-hash=LEYvJLr&amp;default-tab=result" height="600" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed LEYvJLr" title="CodePen Embed LEYvJLr" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>There are plenty of ways to play with the effects of the CSS <code>backdrop-filter</code>. If you want to layer the filters across stacked elements then ensure the elements on top are translucent. You can also combine the filters with other CSS standards that affect an element’s backdrop. Once again, here’s the set of UI designs I showed at the beginning of the article, that might give you some ideas on crafting your own.</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_EaxJeNw" src="//codepen.io/anon/embed/EaxJeNw?height=850&amp;theme-id=1&amp;slug-hash=EaxJeNw&amp;default-tab=result" height="850" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed EaxJeNw" title="CodePen Embed EaxJeNw" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+<h3 class="wp-block-heading" id="references">References</h3>
+
+
+<ul class="wp-block-list">
+<li><a href="https://css-tricks.com/almanac/properties/b/backdrop-filter/"><code>backdrop-filter</code></a> (CSS-Tricks)</li>
+
+
+
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter" rel="noopener"><code>backdrop-filter</code></a> (MDN)</li>
+
+
+
+<li><a href="https://drafts.fxtf.org/filter-effects-2/#backdrop-root" rel="noopener">Backdrop root</a> (CSS Filter Effects Module Level 2)</li>
+
+
+
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function" rel="noopener">Filter functions</a> (MDN)</li>
+</ul>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/using-css-backdrop-filter-for-ui-effects/">Using CSS backdrop-filter for UI Effects</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://css-tricks.com/using-css-backdrop-filter-for-ui-effects/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">385721</post-id>	</item>
+		<item>
+		<title>Next Level CSS Styling for Cursors</title>
+		<link>https://css-tricks.com/next-level-css-styling-for-cursors/</link>
+					<comments>https://css-tricks.com/next-level-css-styling-for-cursors/#comments</comments>
+		
+		<dc:creator><![CDATA[Declan Chidlow]]></dc:creator>
+		<pubDate>Mon, 14 Apr 2025 12:40:46 +0000</pubDate>
+				<category><![CDATA[Articles]]></category>
+		<category><![CDATA[inspiration]]></category>
+		<category><![CDATA[UI/IX Design]]></category>
+		<guid isPermaLink="false">https://css-tricks.com/?p=385604</guid>
+
+					<description><![CDATA[<p>Custom cursors with CSS are great, but we can take things to the next level with JavaScript. Using JavaScript, we can transition between cursor states, place dynamic text within the cursor, apply complex animations, and apply filters.</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/next-level-css-styling-for-cursors/">Next Level CSS Styling for Cursors</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>The cursor is a staple of the desktop interface but is scarcely touched by websites. This is for good reason. People expect their cursors to stay fairly consistent, and meddling with them can unnecessarily confuse users. Custom cursors also aren&#8217;t visible for people using touch interfaces — which excludes the majority of people.</p>
+
+
+
+<p>Geoff has already covered styling cursors with CSS pretty comprehensively in&nbsp;<a href="https://css-tricks.com/using-css-cursors/">“Changing the Cursor with CSS for Better User Experience (or Fun)”</a>&nbsp;so this post is going to focus on complex and interesting styling.</p>
+
+
+
+<span id="more-385604"></span>
+
+
+<h3 class="wp-block-heading" id="custom-cursors-with-javascript"><strong>Custom cursors with JavaScript</strong></h3>
+
+
+<p>Custom cursors with CSS are great, but we can take things to the next level with JavaScript. Using JavaScript, we can use an element as our cursor, which lets us style it however we would anything else. This lets us transition between cursor states, place dynamic text within the cursor, apply complex animations, and apply filters.</p>
+
+
+
+<p>In its most basic form, we just need a&nbsp;<code>div</code>&nbsp;that continuously positions itself to the cursor location. We can do this with the&nbsp;<code>mousemove</code>&nbsp;event listener. While we&#8217;re at it, we may as well add a cool little effect when clicking via the&nbsp;<code>mousedown</code>&nbsp;event listener.</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_raNJJLg" src="//codepen.io/anon/embed/preview/raNJJLg?height=450&amp;theme-id=1&amp;slug-hash=raNJJLg&amp;default-tab=result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed raNJJLg" title="CodePen Embed raNJJLg" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>That&#8217;s wonderful. Now we&#8217;ve got a bit of a custom cursor going that scales on click. You can see that it is positioned based on the mouse coordinates relative to the page with JavaScript. We do still have our default cursor showing though, and it is important for our new cursor to indicate intent, such as changing when hovering over something clickable.</p>
+
+
+
+<p>We can disable the default cursor display completely by adding the CSS rule&nbsp;<code>cursor: none</code>&nbsp;to&nbsp;<code>*</code>. Be aware that&nbsp;<em>some browsers will show the cursor</em>&nbsp;regardless if the document height isn&#8217;t 100% filled.</p>
+
+
+
+<p>We&#8217;ll also need to add <code>pointer-events: none</code> to our cursor element to prevent it from blocking our interactions, and we&#8217;ll show a custom effect when hovering certain elements by adding the <code>pressable</code> class.</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_MYWQQoR" src="//codepen.io/anon/embed/preview/MYWQQoR?height=450&amp;theme-id=1&amp;slug-hash=MYWQQoR&amp;default-tab=result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed MYWQQoR" title="CodePen Embed MYWQQoR" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>Very nice. That&#8217;s a lovely little circular cursor we&#8217;ve got here.</p>
+
+
+<h3 class="wp-block-heading" id="fallbacks-accessibility-and-touchscreens"><strong>Fallbacks, accessibility, and touchscreens</strong></h3>
+
+
+<p>People don’t need a cursor when interacting with touchscreens, so we can disable ours. And if we&#8217;re doing really funky things, we might also wish to disable our cursor for users who have the&nbsp;<code>prefers-reduced-motion</code>&nbsp;preference set.</p>
+
+
+
+<p>We can do this without too much hassle:</p>
+
+
+
+<div class="wp-block-cp-codepen-gutenberg-embed-block cp_embed_wrapper"><iframe id="cp_embed_EaxQQOK" src="//codepen.io/anon/embed/preview/EaxQQOK?height=450&amp;theme-id=1&amp;slug-hash=EaxQQOK&amp;default-tab=result" height="450" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed EaxQQOK" title="CodePen Embed EaxQQOK" class="cp_embed_iframe" style="width:100%;overflow:hidden">CodePen Embed Fallback</iframe></div>
+
+
+
+<p>What we&#8217;re doing here is checking if the user is accessing the site with a touchscreen or if they prefer reduced motion and then only enabling the custom cursor if they aren&#8217;t. Because this is handled with JavaScript, it also means that the custom cursor will only show if the JavaScript is active, otherwise falling back to the default cursor functionality as defined by the browser.</p>
+
+
+
+<pre rel="JavaScript" class="wp-block-csstricks-code-block language-javascript" data-line=""><code markup="tt">const isTouchDevice = "ontouchstart"in window || navigator.maxTouchPoints > 0;
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (!isTouchDevice &amp;&amp; !prefersReducedMotion &amp;&amp; cursor) {
+  // Cursor implementation is here
+}</code></pre>
+
+
+
+<p>Currently, the website falls back to the default cursors if JavaScript isn&#8217;t enabled, but we could set a fallback cursor more similar to our styled one with a bit of CSS. Progressive enhancement is where it&#8217;s at!</p>
+
+
+
+<p>Here we&#8217;re just using a very basic&nbsp;<code>32px</code>&nbsp;by&nbsp;<code>32px</code>&nbsp;base64-encoded circle. The&nbsp;<code>16</code>&nbsp;values position the cursor hotspot to the center.</p>
+
+
+
+<pre rel="CSS" class="wp-block-csstricks-code-block language-css" data-line=""><code markup="tt">html {
+  cursor:
+    url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0Jve
+D0iMCAwIDMyIDMyIj4KICA8Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxNiIgZmlsbD0iYmxhY2siIC8+Cjwvc3ZnPg==")
+    16 16,
+    auto;
+}</code></pre>
+
+
+<h3 class="wp-block-heading" id="taking-this-further"><strong>Taking this further</strong></h3>
+
+
+<p>Obviously this is just the start. You can go ballistic and completely overhaul the cursor experience. You can make it invert what is behind it with a filter, you can animate it, you could offset it from its actual location, or anything else your heart desires.</p>
+
+
+
+<p>As a little bit of inspiration, some really cool uses of custom cursors include:</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://www.studiomesmer.com/" rel="noopener"><strong>Studio Mesmer</strong></a>&nbsp;switches out the default cursor for a custom eye graphic when hovering cards, which is tasteful and fits their brand.</li>
+
+
+
+<li><a href="https://www.iaragrinspun.com/" rel="noopener"><strong>Iara Grinspun&#8217;s portfolio</strong></a>&nbsp;has a cursor implemented with JavaScript that is circular and slightly delayed from the actual position which makes it feel floaty.</li>
+
+
+
+<li><a href="https://marvinx.com/en/" rel="noopener"><strong>Marlène Bruhat&#8217;s portfolio</strong></a>&nbsp;has a sleek cursor that is paired with a gradient that appears behind page elements.</li>
+
+
+
+<li><a href="https://yaremenko.design/" rel="noopener"><strong>Aleksandr Yaremenko&#8217;s portfolio</strong></a>&nbsp;features a cursor that isn&#8217;t super complex but certainly stands out as a statement piece.</li>
+
+
+
+<li><a href="https://sustainability.terrahq.com/" rel="noopener"><strong>Terra</strong></a>&nbsp;features a giant glowing orb containing text describing what you&#8217;re hovering over.</li>
+</ul>
+
+
+
+<p>Please do take care when replacing browser or native operating system features in this manner. The web is accessible by default, and we should take care to not undermine this. Use your power as a developer with taste and restraint.</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/next-level-css-styling-for-cursors/">Next Level CSS Styling for Cursors</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://css-tricks.com/next-level-css-styling-for-cursors/feed/</wfw:commentRss>
+			<slash:comments>4</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">385604</post-id>	</item>
+		<item>
+		<title>CSS-Tricks Chronicles XLIII</title>
+		<link>https://css-tricks.com/css-tricks-chronicles-xliii/</link>
+					<comments>https://css-tricks.com/css-tricks-chronicles-xliii/#comments</comments>
+		
+		<dc:creator><![CDATA[Geoff Graham]]></dc:creator>
+		<pubDate>Fri, 11 Apr 2025 12:39:26 +0000</pubDate>
+				<category><![CDATA[Articles]]></category>
+		<category><![CDATA[chronicle]]></category>
+		<guid isPermaLink="false">https://css-tricks.com/?p=385404</guid>
+
+					<description><![CDATA[<p>This CSS-Tricks update highlights significant progress in the Almanac, recent podcast appearances, a new CSS counters guide, and the addition of several new authors contributing valuable content.</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/css-tricks-chronicles-xliii/">CSS-Tricks Chronicles XLIII</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Normally, I like to publish one of these updates every few months. But seeing as the last one dates back to September of last year, I’m well off that mark and figured it’s high time to put pen to paper. The fact is that a lot is happening around here at CSS-Tricks — and it’s all good stuff.</p>
+
+
+
+<span id="more-385404"></span>
+
+
+<h3 class="wp-block-heading" id="the-almanac-is-rolling">The Almanac is rolling</h3>
+
+
+<p>In the <a href="https://css-tricks.com/thank-you-2024-edition/">last post of 2024</a>, I said that filling the Almanac was a top priority heading into this year. We had recently refreshed the whole dang thing, complete with completely new sections for documenting CSS selectors, at-rules, and functions on top of the sections we already had for properties and pseudo-selectors. The only problem is that those new sections were pretty bare.</p>
+
+
+
+<p>Well, not only has this team stepped up to produce a bunch of new content for those new sections, but so have you. Together, we&#8217;ve published <strong>21 new Almanac entries</strong> since the start of 2025. Here they are in all their glory:</p>
+
+
+
+<ul class="wp-block-list">
+<li><code><a href="https://css-tricks.com/almanac/properties/a/animation-timeline/">animation-timeline</a></code></li>
+
+
+
+<li><code><a href="https://css-tricks.com/almanac/properties/i/interpolate-size/">interpolate-size</a></code></li>
+
+
+
+<li><code><a href="https://css-tricks.com/almanac/properties/o/overlay/">overlay</a></code></li>
+
+
+
+<li><code><a href="https://css-tricks.com/almanac/rules/c/charset/">@charset</a></code></li>
+
+
+
+<li><code><a href="https://css-tricks.com/almanac/rules/c/counter-style/">@counter-style</a></code></li>
+
+
+
+<li><code><a href="https://css-tricks.com/almanac/rules/i/import/">@import</a></code></li>
+
+
+
+<li><code><a href="https://css-tricks.com/almanac/rules/k/keyframes">@keyframes</a></code></li>
+
+
+
+<li><code><a href="https://css-tricks.com/almanac/rules/n/namespace/">@namspace</a></code></li>
+
+
+
+<li><code><a href="https://css-tricks.com/almanac/rules/p/page/">@page</a></code></li>
+
+
+
+<li><code><a href="https://css-tricks.com/almanac/rules/v/view-transition/">@view-transition</a></code></li>
+
+
+
+<li><code><a href="https://css-tricks.com/almanac/functions/a/attr/">attr()</a></code></li>
+
+
+
+<li><code><a href="https://css-tricks.com/almanac/functions/c/calc-size/">calc-size()</a></code></li>
+
+
+
+<li><code><a href="https://css-tricks.com/almanac/functions/c/counter/">counter()</a></code></li>
+
+
+
+<li><code><a href="https://css-tricks.com/almanac/functions/c/counters/">counters()</a></code></li>
+
+
+
+<li><code><a href="https://css-tricks.com/almanac/functions/h/hsl/">hsl()</a></code></li>
+
+
+
+<li><code><a href="https://css-tricks.com/almanac/functions/l/lab/">lab()</a></code></li>
+
+
+
+<li><code><a href="https://css-tricks.com/almanac/functions/l/lch/">lch()</a></code></li>
+
+
+
+<li><code><a href="https://css-tricks.com/almanac/functions/l/light-dark/">light-dark()</a></code></li>
+
+
+
+<li><code><a href="https://css-tricks.com/almanac/functions/o/oklch/">oklch()</a></code></li>
+
+
+
+<li><code><a href="https://css-tricks.com/almanac/functions/r/rgb/">rgb()</a></code></li>
+
+
+
+<li><code><a href="https://css-tricks.com/almanac/functions/s/symbols/">symbols()</a></code></li>
+</ul>
+
+
+
+<p>What&#8217;s even better? There are currently <strong>fourteen more in the hopper</strong> that we&#8217;re actively working on. I certainly do not expect us to sustain this sort of pace all year. A lot of work goes into each and every entry. Plus, if all we ever did was write in Almanac, we would never get new articles and tutorials out to you, which is really what we&#8217;re all about around here.</p>
+
+
+<h3 class="wp-block-heading" id="a-lot-of-podcasts-and-events">A lot of podcasts and events</h3>
+
+
+<p>Those of you who know me know that I&#8217;m not the most social person in all the land. Yes, I like hanging out with folks and all that, but I tend to keep my activities to back-of-the-house stuff and prefer to stay out of view.</p>
+
+
+
+<p>So, that&#8217;s why it&#8217;s weird for me to call out a few recent podcast and event appearances. It&#8217;s not like I do these things all that often, but they are fun and I like to note them, even if its only for posterity.</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://css-tricks.com/smashing-meets-accessibility/">I hosted Smashing Meets Accessibility</a>, a mini online conference that featured three amazing speakers talking about the ins and outs of WCAG conformance, best practices, and incredible personal experiences shaped by disability.</li>
+
+
+
+<li><a href="https://smashingconf.com/meets-modern-css" rel="noopener">I hosted Smashing Meets CSS</a>, another mini conference from the wonderful Smashing Magazine team. I got to hang out with Adam Argyle, Julia Micene, and Miriam Suzanne, all of whom blew my socks off with their presentations and panel discussion on what&#8217;s new and possible in modern CSS.</li>
+
+
+
+<li>I&#8217;m co-hosting a brand-new podcast with Brad Frost called <em>Open Up</em>! We recorded <a href="https://geoffgraham.me/open-up-with-brad-frost-episode-1/" rel="noopener">the first episode</a> live in front of an audience that was allowed to speak up and participate in the conversation. The whole idea of the show is that we talk <em>more</em> about the things we tend to talk <em>less</em> about in our work as web designers and developers — the touchy-feely side of what we do. We covered so many heady topics, from desperation during layoffs to rediscovering purpose in your work.</li>
+
+
+
+<li>I was a guest on the <em><a href="https://schalkneethling.substack.com/s/mental-health-in-tech" rel="noopener">Mental Health in Tech</a></em> podcast, joining a panel of other front-enders to discuss angst in the face of recent technological developments. The speed and constant drive to market new technologies is dizzying and, to me at least, off-putting to the extent that I&#8217;ve questioned my entire place in it as a developer. What a blast getting to return to the podcast a second time and talk shop with a bunch of the most thoughtful, insightful people you&#8217;ll ever hear. I’ll share that when it’s published.</li>
+</ul>
+
+
+<h2 class="wp-block-heading" id="a-new-guide-on-styling-counters">A new guide on styling counters</h2>
+
+
+<p>We <a href="https://css-tricks.com/styling-counters-in-css/">published it</a> just the other week! I&#8217;ll be honest and say that a complete guide about styling counters in CSS was not the first thing that came to my mind when we started planning new ideas, but I&#8217;ll be darned if Juan didn&#8217;t demonstrate just how big a topic it is. <a href="https://css-tricks.com/some-things-you-might-not-know-about-custom-counter-styles/">There are so many considerations when it comes to styling counters</a> — design! accessibility! semantics! — and the number of tools we have in CSS to style them is mind-boggling, including two functions that look very similar but have vastly different capabilities for creating custom counters — <code>counter()</code> and <code>counters()</code> (which are also freshly published in the Almanac).</p>
+
+
+
+<p>At the end of last year, I said I hoped to publish 1-2 new guides, and here we are in the first quarter of 2025 with our first one out in the wild! That gives me hope that we&#8217;ll be able to get another comprehensive guide out before the end of the year.</p>
+
+
+<h3 class="wp-block-heading" id="authors">Authors</h3>
+
+
+<p>I think the most exciting update of all is getting to recognize the folks who have published new articles with us since the last update. Please help me extend a huge round of applause to all the faces who have rolled up their sleeves and shared their knowledge with us.</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://css-tricks.com/author/leemeyer/">Lee Meyer</a></li>
+
+
+
+<li><a href="https://css-tricks.com/author/zellwk/">Zell Liew</a></li>
+
+
+
+<li><a href="https://css-tricks.com/author/andyclarke/">Andy Clarke</a> (I can&#8217;t believe it!)</li>
+
+
+
+<li><a href="https://css-tricks.com/author/preethi/">Temani Afif</a></li>
+
+
+
+<li><a href="https://css-tricks.com/author/andybell/">Andy Bell</a></li>
+
+
+
+<li><a href="https://css-tricks.com/author/preethi/">Preethi</a></li>
+
+
+
+<li><a href="https://css-tricks.com/author/danielschwarz/">Daniel Schwarz</a></li>
+
+
+
+<li><a href="https://css-tricks.com/author/bryanlrobinson/">Bryan Robinson</a></li>
+
+
+
+<li><a href="https://css-tricks.com/author/sunkanmifafowora/">Sunkanmi Fafowora</a></li>
+</ul>
+
+
+
+<p>And, of course, nothing on this site would be possible without ongoing help from <a href="https://css-tricks.com/author/monknow/">Juan Diego Rodriguez</a> and <a href="https://css-tricks.com/author/ryantrimble/">Ryan Trimble</a>. Those two not only do a lot of heavy lifting to keep the content machine fed, but they are also just two wonderful people who make my job a lot more fun and enjoyable. Seriously, guys, you mean a lot to this site and me!</p>
+<hr />
+<p><small><a rel="nofollow" href="https://css-tricks.com/css-tricks-chronicles-xliii/">CSS-Tricks Chronicles XLIII</a> originally published on <a rel="nofollow" href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a> family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://css-tricks.com/css-tricks-chronicles-xliii/feed/</wfw:commentRss>
+			<slash:comments>4</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">385404</post-id>	</item>
+	</channel>
+</rss>
+
+<!-- plugin=object-cache-pro client=phpredis metric#hits=4899 metric#misses=10 metric#hit-ratio=99.8 metric#bytes=5727593 metric#prefetches=260 metric#store-reads=27 metric#store-writes=2 metric#store-hits=267 metric#store-misses=6 metric#sql-queries=5 metric#ms-total=369.78 metric#ms-cache=32.89 metric#ms-cache-avg=1.1747 metric#ms-cache-ratio=8.9 -->

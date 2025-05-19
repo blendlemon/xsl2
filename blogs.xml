@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<categorias>
+  <categoria nombre="Proyectos de Programación">
+    <blog nombre="Dev.to" url="rss/devto.rss" />
+    <blog nombre="CSS-Tricks" url="rss/css-tricks.rss" />
+    <blog nombre="Stack Overflow Blog" url="rss/stackoverflow.rss" />
+  </categoria>
+  <categoria nombre="Relojes">
+    <blog nombre="Hodinkee" url="rss/hodinkee.rss" />
+    <blog nombre="Fratello Watches" url="rss/fratello.rss" />
+    <blog nombre="WatchTime" url="rss/watchtime.rss" />
+  </categoria>
+  <categoria nombre="Motos de Aventura">
+    <blog nombre="ADV Pulse" url="rss/advpulse.rss" />
+    <blog nombre="Adventure Rider" url="rss/advrider.rss" />
+  </categoria>
+  <categoria nombre="Inteligencia Artificial">
+    <blog nombre="OpenAI Blog" url="rss/openai.rss" />
+    <blog nombre="DeepMind" url="rss/deepmind.rss" />
+    <blog nombre="AI Trends" url="rss/aitrends.rss" />
+  </categoria>
+  <categoria nombre="Videojuegos Retro">
+    <blog nombre="RetroDodo" url="rss/retrododo.rss" />
+    <blog nombre="Time Extension" url="rss/timeextension.rss" />
+    <blog nombre="Indie Retro News" url="rss/indieretronews.rss" />
+  </categoria>
+</categorias>

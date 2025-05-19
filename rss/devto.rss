@@ -1,0 +1,1451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>DEV Community</title>
+    <description>The most recent home feed on DEV Community.</description>
+    <link>https://dev.to</link>
+    <atom:link rel="self" type="application/rss+xml" href="https://dev.to/feed"/>
+    <language>en</language>
+    <item>
+      <title>Virtualization | Hypervisor | Containerization</title>
+      <dc:creator>Omkar Sharma</dc:creator>
+      <pubDate>Sun, 11 May 2025 08:55:39 +0000</pubDate>
+      <link>https://dev.to/omkarsharma2821/virtualization-hypervisor-containerization-2den</link>
+      <guid>https://dev.to/omkarsharma2821/virtualization-hypervisor-containerization-2den</guid>
+      <description>&lt;p&gt;&lt;a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F0tcngay7i9djfmf0xbkk.png" class="article-body-image-wrapper"&gt;&lt;img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F0tcngay7i9djfmf0xbkk.png" alt=" Virtualization, Hypervisor, Containerization" width="800" height="294"&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Virtualization
+&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Process of creating the simulation of virtual machines, OS, storage and network etc. &lt;/li&gt;
+&lt;li&gt;Running multiple OS on single physical machine.
+&lt;/li&gt;
+&lt;li&gt;Logically dividing the server into smaller parts for better resource utilization. &lt;/li&gt;
+&lt;li&gt;Instead of having one OS per computer, you can run many OSes — like Windows, Linux, etc. &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;
+  
+  
+  Hypervisor
+&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Helps in implementing virtualization. &lt;/li&gt;
+&lt;li&gt;Simulates entire machines (with full OS). &lt;/li&gt;
+&lt;li&gt;It allows multiple operating systems to run on a single physical machine by isolating them into separate VMs. &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;
+  
+  
+  Containerization
+&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It is a lightweight best suited for microservices. &lt;/li&gt;
+&lt;li&gt;Example : Full stack website where backend is stressed you directly scale it without compormising frontend and database 💀. &lt;/li&gt;
+&lt;li&gt;It is a VM without OS. &lt;/li&gt;
+&lt;li&gt;Hold and wrap all the dependencies that are required to run the 
+application. &lt;/li&gt;
+&lt;li&gt;Example : Solves popular issue exact same code is running in my system and not running in yours 🙂. &lt;/li&gt;
+&lt;li&gt;Containers share the host OS kernel, so you cannot run a completely different OS.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fz19w5od2lhm5pda8muce.png" class="article-body-image-wrapper"&gt;&lt;img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fz19w5od2lhm5pda8muce.png" alt="Virtualization, Hypervisor, Containerization" width="800" height="386"&gt;&lt;/a&gt;&lt;/p&gt;
+
+</description>
+      <category>virtualization</category>
+      <category>hypervisor</category>
+      <category>container</category>
+      <category>virtualmachine</category>
+    </item>
+    <item>
+      <title>PokéSeek – A Pokémon Info Guessing Game!</title>
+      <dc:creator>Rishabh singh rajawat</dc:creator>
+      <pubDate>Sun, 11 May 2025 08:48:37 +0000</pubDate>
+      <link>https://dev.to/raiplus/pokeseek-a-pokemon-info-guessing-game-5gn2</link>
+      <guid>https://dev.to/raiplus/pokeseek-a-pokemon-info-guessing-game-5gn2</guid>
+      <description>&lt;p&gt;🚀 Just Launched: PokéSeek – A Pokémon Info Guessing Game! 🎮&lt;br&gt;
+Hi everyone! 👋&lt;br&gt;
+I'm super excited to share my latest project — PokéSeek, a fun and interactive web app where you guess Pokémon based on partial info!&lt;br&gt;
+🧩 What is PokéSeek?&lt;br&gt;
+PokéSeek is a Pokémon info guessing game that tests your memory and deduction skills.&lt;br&gt;
+It uses PokéAPI to fetch real Pokémon data, and your goal is to guess the Pokémon name based on its type, height, abilities, and other clues.&lt;/p&gt;
+
+&lt;p&gt;✨ Key Features:&lt;br&gt;
+🔍 Fetches real-time Pokémon data from PokéAPI&lt;/p&gt;
+
+&lt;p&gt;🎨 Clean UI/UX with loading skeletons&lt;/p&gt;
+
+&lt;p&gt;🧠 Guessing mechanism with progressive hints&lt;/p&gt;
+
+&lt;p&gt;📊 Tracks guesses and scores (coming soon!)&lt;/p&gt;
+
+&lt;p&gt;🛠 Tech Stack:&lt;br&gt;
+HTML, CSS, JavaScript (ES6+), PokéAPI, Responsive Design&lt;/p&gt;
+
+&lt;p&gt;🌐 Check it Out: &lt;a href="https://raiplus.github.io/Pok-Seek/" rel="noopener noreferrer"&gt;PokéSeek&lt;/a&gt;&lt;br&gt;
+🔗 GitHub Repo: &lt;a href="//github.com/Raiplus/"&gt;Github&lt;/a&gt;&lt;br&gt;
+&lt;a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frigavus1f4c50sncga72.png" class="article-body-image-wrapper"&gt;&lt;img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frigavus1f4c50sncga72.png" alt="Image description" width="800" height="391"&gt;&lt;/a&gt;&lt;br&gt;
+⭐ Star it if you like it!&lt;br&gt;
+💬 Feedback and suggestions are welcome!&lt;/p&gt;
+
+&lt;p&gt;💡 Why I built this?&lt;br&gt;
+As a fan of Pokémon and a learner of modern web dev, I wanted to build something both nostalgic and challenging. It helped me improve my API handling, UI updates, and project structuring.&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading! 🙌&lt;/p&gt;
+
+</description>
+      <category>webdev</category>
+      <category>pokemon</category>
+      <category>javascript</category>
+      <category>beginners</category>
+    </item>
+    <item>
+      <title>How to Fix AccessDeniedException While Zipping Flutter Projects</title>
+      <dc:creator>Generatecode</dc:creator>
+      <pubDate>Sun, 11 May 2025 08:45:17 +0000</pubDate>
+      <link>https://dev.to/generatecodedev/how-to-fix-accessdeniedexception-while-zipping-flutter-projects-3ei9</link>
+      <guid>https://dev.to/generatecodedev/how-to-fix-accessdeniedexception-while-zipping-flutter-projects-3ei9</guid>
+      <description>&lt;p&gt;In this article, we dive into resolving an issue many Flutter developers encounter during the project export process. When attempting to export a Flutter project into a zip format from Android Studio, you may run into the error: 'Error: java.nio.file.AccessDeniedException: C:\Documents and Settings'. This can be frustrating, especially if you are sure you have the correct directory structure.&lt;/p&gt;
+
+&lt;h3&gt;Understanding the AccessDeniedException&lt;/h3&gt;
+
+&lt;p&gt;The error typically occurs due to file permission issues. In many cases, the path 'C:\Documents and Settings' refers to a legacy structure from older Windows versions. Modern Windows systems often use 'C:\Users&amp;lt;YourUsername&amp;gt;' as the primary user directory. The AccessDeniedException indicates that your current user account lacks the necessary permissions to access or write to the specified directory.&lt;/p&gt;
+
+&lt;h3&gt;Common Causes of the Error&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;
+&lt;strong&gt;Incorrect File Path&lt;/strong&gt;: If your Flutter SDK is trying to reference a non-existent path (like 'Documents and Settings'), it could be a configuration issue.&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;Permission Issues&lt;/strong&gt;: Insufficient permissions can prevent Android Studio from accessing folders needed for exporting the project.&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;Configuration Errors&lt;/strong&gt;: Improper configurations within your Flutter or Android Studio settings may point to outdated paths or directories.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;Step-by-Step Solutions to Resolve the Issue&lt;/h3&gt;
+
+&lt;p&gt;Here’s how you can troubleshoot and fix the AccessDeniedException when exporting your Flutter project in Android Studio:&lt;/p&gt;
+
+&lt;h4&gt;1. Check User Permissions&lt;/h4&gt;
+
+&lt;p&gt;First, ensure that your user has the necessary permissions to access the directory where you are trying to export your project. You can do this by:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;strong&gt;Right-clicking&lt;/strong&gt; on the folder where you intend to export the project.&lt;/li&gt;
+&lt;li&gt;Selecting &lt;strong&gt;Properties&lt;/strong&gt; and then navigating to the &lt;strong&gt;Security tab&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Checking if your user account has &lt;strong&gt;Write&lt;/strong&gt; permissions. If not, adjust the permissions accordingly.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;2. Verify Flutter SDK Path&lt;/h4&gt;
+
+&lt;p&gt;Another common issue is an incorrect SDK path referencing outdated Windows folders. To verify and update your SDK path:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Open &lt;strong&gt;Android Studio&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Go to &lt;strong&gt;File&lt;/strong&gt; &amp;gt; &lt;strong&gt;Project Structure&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Under &lt;strong&gt;SDK Location&lt;/strong&gt;, make sure it points to a valid Flutter SDK installation (e.g., &lt;code&gt;C:\src\flutter&lt;/code&gt;). Adjust if needed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;3. Manually Specify Export Directory&lt;/h4&gt;
+
+&lt;p&gt;Instead of relying on the default export location, you can specify a path that you have full access to. Try exporting the project to a different directory:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;String exportDirectory = 'C:\Users\&amp;lt;YourUsername&amp;gt;\Desktop\FlutterExports';
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Use this new path in your project’s export settings within Android Studio.&lt;/p&gt;
+
+&lt;h4&gt;4. Update Android Studio&lt;/h4&gt;
+
+&lt;p&gt;Ensure that your Android Studio and Flutter plugins are up-to-date, as bug fixes and improvements can alleviate many issues. To do this:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Go to &lt;strong&gt;Help&lt;/strong&gt; &amp;gt; &lt;strong&gt;Check for Updates&lt;/strong&gt; in Android Studio.&lt;/li&gt;
+&lt;li&gt;Install any available updates and restart the IDE.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;5. Run Android Studio as Administrator&lt;/h4&gt;
+
+&lt;p&gt;Sometimes, running applications with higher privileges can help with permission issues. To open Android Studio as an administrator:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Right-click on the &lt;strong&gt;Android Studio&lt;/strong&gt; icon.&lt;/li&gt;
+&lt;li&gt;Select &lt;strong&gt;Run as administrator&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Try exporting your project again.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Troubleshooting Further&lt;/h3&gt;
+
+&lt;p&gt;If the above steps do not solve the problem, you might want to look into:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Checking your &lt;strong&gt;Antivirus software&lt;/strong&gt;: Sometimes, security software can block file access. Temporarily disable it and check again.&lt;/li&gt;
+&lt;li&gt;Reviewing environment variables related to Java and Flutter: Ensure they are correctly set and point to valid locations.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Frequently Asked Questions (FAQ)&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Q: How can I find where my Flutter SDK is installed?&lt;/strong&gt;&lt;br&gt;
+A: You can locate your Flutter SDK by running &lt;code&gt;flutter doctor&lt;/code&gt; in your terminal, and it will show you the SDK path.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q: What if I still see the same error after trying all solutions?&lt;/strong&gt;&lt;br&gt;
+A: You may want to consider reinstalling Flutter and Android Studio, ensuring a clean setup that may resolve path issues.&lt;/p&gt;
+
+&lt;p&gt;By following these steps, you should be able to resolve the AccessDeniedException and successfully export your Flutter project into a zip format. If you encounter any more issues, don't hesitate to ask for help!&lt;/p&gt;
+
+</description>
+      <category>flutter</category>
+    </item>
+    <item>
+      <title>Track Your Health Easily with Our Free BMI Calculator</title>
+      <dc:creator>Santosh Shelar</dc:creator>
+      <pubDate>Sun, 11 May 2025 08:44:54 +0000</pubDate>
+      <link>https://dev.to/learn_with_santosh/track-your-health-easily-with-our-free-bmi-calculator-4cjm</link>
+      <guid>https://dev.to/learn_with_santosh/track-your-health-easily-with-our-free-bmi-calculator-4cjm</guid>
+      <description>&lt;p&gt;Are you wondering whether you're at a healthy weight? You're not alone — many of us are looking for simple ways to understand our health better. That’s exactly why I created this &lt;strong&gt;BMI Calculator&lt;/strong&gt; — to help people like &lt;em&gt;you and me&lt;/em&gt; get a quick snapshot of where we stand.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  🧠 What is BMI?
+&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;BMI&lt;/strong&gt; stands for &lt;strong&gt;Body Mass Index&lt;/strong&gt;. It’s a quick and easy way to check if your weight is in a healthy range for your height. While it’s not a perfect measure (it doesn’t account for muscle mass or body composition), it gives a &lt;em&gt;general idea&lt;/em&gt; of whether you're &lt;strong&gt;underweight&lt;/strong&gt;, &lt;strong&gt;normal weight&lt;/strong&gt;, &lt;strong&gt;overweight&lt;/strong&gt;, or &lt;strong&gt;obese&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  💡 Why Should You Use a BMI Calculator?
+&lt;/h2&gt;
+
+&lt;p&gt;Knowing your &lt;strong&gt;BMI&lt;/strong&gt; can help you:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Understand your general health&lt;/li&gt;
+&lt;li&gt;Set personal fitness or wellness goals&lt;/li&gt;
+&lt;li&gt;Start conversations with your healthcare provider&lt;/li&gt;
+&lt;li&gt;Stay motivated in your weight journey&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;And the best part? It only takes a few seconds.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  📱 How Does It Work?
+&lt;/h2&gt;
+
+&lt;p&gt;Using the calculator is super simple:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Enter your &lt;strong&gt;height&lt;/strong&gt; and &lt;strong&gt;weight&lt;/strong&gt;
+&lt;/li&gt;
+&lt;li&gt;Click the &lt;strong&gt;Calculate&lt;/strong&gt; button&lt;/li&gt;
+&lt;li&gt;Instantly get your &lt;strong&gt;BMI score&lt;/strong&gt; and category&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;No signups. No fuss. Just useful info.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  🌟 Features
+&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;✅ Fast and accurate results&lt;/li&gt;
+&lt;li&gt;✅ Works on all devices (mobile, tablet, desktop)&lt;/li&gt;
+&lt;li&gt;✅ User-friendly interface&lt;/li&gt;
+&lt;li&gt;✅ Helpful health tips included&lt;/li&gt;
+&lt;li&gt;✅ No personal data required&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;
+  
+  
+  🧭 What Do the Results Mean?
+&lt;/h2&gt;
+
+&lt;p&gt;Here’s a quick breakdown of BMI categories:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;strong&gt;Below 18.5&lt;/strong&gt; → &lt;em&gt;Underweight&lt;/em&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;18.5 – 24.9&lt;/strong&gt; → &lt;em&gt;Normal weight&lt;/em&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;25 – 29.9&lt;/strong&gt; → &lt;em&gt;Overweight&lt;/em&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;30 and above&lt;/strong&gt; → &lt;em&gt;Obese&lt;/em&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Remember: &lt;strong&gt;BMI is just one tool.&lt;/strong&gt; It's always best to consult a doctor for a full health picture.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  🙋‍♂️ Why I Built This
+&lt;/h2&gt;
+
+&lt;p&gt;I created this tool because I wanted something &lt;strong&gt;fast, simple, and useful&lt;/strong&gt;. I didn’t want to download an app or create an account just to get a number. So I built it — and now I’m sharing it with you, free of charge.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  🏁 Try It Now – It’s Free
+&lt;/h2&gt;
+
+&lt;p&gt;👉 &lt;a href="https://calculatorjunction.in/bmi-calculator" rel="noopener noreferrer"&gt;&lt;strong&gt;Click here to use the BMI Calculator&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It’s totally free and might be the first step to a healthier you.&lt;/p&gt;
+
+
+
+
+&lt;p&gt;&lt;strong&gt;✨ Pro Tip:&lt;/strong&gt; Bookmark the page so you can check back anytime!&lt;/p&gt;
+
+&lt;p&gt;Let me know what you think or if you'd like to see additional features. Feedback is always welcome! 🙌&lt;/p&gt;
+
+</description>
+      <category>calculator</category>
+      <category>health</category>
+    </item>
+    <item>
+      <title>鸿蒙跨平台开发教程之Uniapp布局基础</title>
+      <dc:creator>wei chang</dc:creator>
+      <pubDate>Sun, 11 May 2025 08:40:28 +0000</pubDate>
+      <link>https://dev.to/youlanjihua/hong-meng-kua-ping-tai-kai-fa-jiao-cheng-zhi-uniappbu-ju-ji-chu-4p19</link>
+      <guid>https://dev.to/youlanjihua/hong-meng-kua-ping-tai-kai-fa-jiao-cheng-zhi-uniappbu-ju-ji-chu-4p19</guid>
+      <description>&lt;p&gt;前两天的文章内容对uniapp开发鸿蒙应用做了一些详细的介绍，包括配置开发环境和项目结构目录解读，今天我们正式开始写代码。&lt;/p&gt;
+
+&lt;p&gt;入门新的开发语言往往从Hello World开始，Uniapp的初始化项目中已经写好了一个简单的demo，这里就不再赘述，我们直接从布局开始说起。&lt;/p&gt;
+
+&lt;p&gt;Uniapp的布局方式和鸿蒙原生语言ArkTs有所不同，但又颇为神似。&lt;/p&gt;
+
+&lt;p&gt;幽蓝君之前总结过，所有的布局方式无非只有三种，横向、竖向和层叠，其他所有的布局方式都由这三种衍生而来，Uniapp也不例外。&lt;/p&gt;
+
+&lt;p&gt;ArkTs中有Row()、Column()、Stack()、Flex()这几个基础的布局容器组件，更复杂一些的还有像List()、Grid()、Scroll()等等。&lt;/p&gt;
+
+&lt;p&gt;而在Uniapp中，基础的布局方式我们通常直接使用view容器来实现。比如我想要实现一个横向的布局，使用view容器，在view的样式中设置布局方式为row：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;view style="display: flex;flex-direction: row;" &amp;gt;&lt;br&gt;
+  &amp;lt;view style="width: 100px;height: 100px;background-color: aqua;"&amp;gt;组件1&amp;lt;/view&amp;gt;&lt;br&gt;
+  &amp;lt;view style="width: 100px;height: 100px;background-color:bisque;"&amp;gt;组件2&amp;lt;/view&amp;gt;&lt;br&gt;
+&amp;lt;/view&amp;gt;  &lt;br&gt;
+&lt;/code&gt;  &lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fps33j0la8dma88f1ch1j.png" class="article-body-image-wrapper"&gt;&lt;img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fps33j0la8dma88f1ch1j.png" alt="Image description" width="466" height="224"&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;而到了纵向布局，只需要把布局方向设置column就行了：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&lt;br&gt;
+&amp;lt;view style="display: flex;flex-direction: column;" &amp;gt;&lt;br&gt;
+  &amp;lt;view style="width: 100px;height: 100px;background-color: aqua;"&amp;gt;组件1&amp;lt;/view&amp;gt;&lt;br&gt;
+  &amp;lt;view style="width: 100px;height: 100px;background-color:bisque;"&amp;gt;组件2&amp;lt;/view&amp;gt;&lt;br&gt;
+&amp;lt;/view&amp;gt;  &lt;br&gt;
+&lt;/code&gt;  &lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fvf2rbyy1acrrlgzxrn18.png" class="article-body-image-wrapper"&gt;&lt;img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fvf2rbyy1acrrlgzxrn18.png" alt="Image description" width="466" height="374"&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;接下来比较难的部分到了，对于层叠布局，ArkTs直接提供了Stack()容器，并且有对应的对齐方式可以直接设置，比较简单。但是uniapp并没有提供这种对齐方式，flex-direction中是不能直接设置层叠布局的。&lt;/p&gt;
+
+&lt;p&gt;我们可以使用postion属性来实现。postion的作用是设置定位方式，有static、relative、fixed、absolute集中方式，我们今天要说的是absolute。&lt;/p&gt;
+
+&lt;p&gt;absolute是一种绝对定位方式，是脱离了文档流、相对于父元素的绝对定位方式。&lt;/p&gt;
+
+&lt;p&gt;更详细一点解释就是不管它有多少同级别的组件，都不影响它以父元素左上角为原点的定位，同样的它也不影响别人，相当于悬浮在上层，使用偏移量来控制位置。比如下面这段代码：&lt;br&gt;
+&lt;code&gt;&lt;br&gt;
+&amp;lt;view  style="display: flex;flex-direction: column;position: relative;" &amp;gt;&lt;br&gt;
+&amp;lt;view style="width: 50px;height: 50px;background-color:bisque;"&amp;gt;组件1&amp;lt;/view&amp;gt;&lt;br&gt;
+&amp;lt;view style="width: 50px;height: 50px;background-color:blue;"&amp;gt;组件2&amp;lt;/view&amp;gt;&lt;br&gt;
+&amp;lt;view style="width: 50px;height: 50px;background-color:brown;"&amp;gt;组件3&amp;lt;/view&amp;gt;&lt;br&gt;
+&amp;lt;view style="width: 100px;height: 100px;background-color: aqua;position: absolute;opacity: 0.5;align-items: center;"&amp;gt;组件4&amp;lt;/view&amp;gt;&lt;br&gt;
+&amp;lt;/view&amp;gt;  &lt;br&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fe0a2hqnbpdobfg6yekrm.png" class="article-body-image-wrapper"&gt;&lt;img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fe0a2hqnbpdobfg6yekrm.png" alt="Image description" width="248" height="278"&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;所以如果需要层叠布局的两个容器都使用absolute定位，并且使用top、left、bottom、right来设置对齐方式，就实现了鸿蒙中的Stack()一样的功能：&lt;br&gt;
+&lt;code&gt;&lt;br&gt;
+&amp;lt;view class="content" style="display: flex;flex-direction: column;position: relative;" &amp;gt;&lt;br&gt;
+&amp;lt;view style="width: 100px;height: 100px;background-color: aqua;position: absolute;top: 0;"&amp;gt;组件1&amp;lt;/view&amp;gt;&lt;br&gt;
+&amp;lt;view style="width: 50px;height: 50px;background-color:bisque;position: absolute;z-index: 10;top: 0;"&amp;gt;组件2&amp;lt;/view&amp;gt;&lt;br&gt;
+&amp;lt;/view&amp;gt; &lt;br&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F7s15lqy1v550vfkwhdyq.png" class="article-body-image-wrapper"&gt;&lt;img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F7s15lqy1v550vfkwhdyq.png" alt="Image description" width="234" height="190"&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;这里可以使用z-index来设置谁在上一层，另外，绝对定位的父容器需要设置position: relative属性，否则子组件无法找到目标。&lt;/p&gt;
+
+&lt;p&gt;以上就是Uniapp开发鸿蒙的基础布局方式，感谢您的阅读。&lt;/p&gt;
+
+</description>
+      <category>harmonyos</category>
+    </item>
+    <item>
+      <title>Why I Built HubbleQuiz — A 10-Minute “Debugger” for Your</title>
+      <dc:creator>juan mera</dc:creator>
+      <pubDate>Sun, 11 May 2025 08:36:02 +0000</pubDate>
+      <link>https://dev.to/juanmera01/why-i-built-hubblequiz-a-10-minute-debugger-for-your-f6l</link>
+      <guid>https://dev.to/juanmera01/why-i-built-hubblequiz-a-10-minute-debugger-for-your-f6l</guid>
+      <description>&lt;p&gt;&lt;a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fydsr6o64tk99o9s768w5.png" class="article-body-image-wrapper"&gt;&lt;img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fydsr6o64tk99o9s768w5.png" alt="Image description" width="800" height="327"&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Last year I found myself in yet another 1:1 with my mentor, staring at a blank calendar and wondering why my career wasn’t moving as fast as my code. He asked two simple questions:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Which skill are you most confident about?
+&lt;/li&gt;
+&lt;li&gt;Which skill scares you the most?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I realized that, although I could spot a nasty bug in seconds, I had no systematic way to uncover my own blind spots or map out my next growth step. A quick dive into the 2024 Stack Overflow Developer Survey confirmed I wasn’t alone:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Only &lt;strong&gt;20%&lt;/strong&gt; of developers report being truly happy in their roles
+&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;48%&lt;/strong&gt; describe themselves as “complacent”
+&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;32%&lt;/strong&gt; admit they’re actively unhappy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;That data drove me to sketch a simple 10-minute quiz on a napkin:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;
+&lt;strong&gt;40 targeted questions&lt;/strong&gt; to unearth your personal blockers
+&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;Instant snapshot&lt;/strong&gt; of your strengths &amp;amp; weaknesses
+&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;(Optional)&lt;/strong&gt; A premium, step-by-step roadmap delivered to your inbox
+&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Over the next few months I built &lt;strong&gt;HubbleQuiz&lt;/strong&gt; with:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;strong&gt;React&lt;/strong&gt; for a snappy, interactive front-end
+&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;Tailwind CSS&lt;/strong&gt; for fast, consistent styling
+&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;AWS Lambda&lt;/strong&gt; + &lt;strong&gt;Node.js&lt;/strong&gt; for serverless question logic
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In private beta:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;strong&gt;500+ engineers&lt;/strong&gt; have “debugged” their careers
+&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;70%&lt;/strong&gt; felt crystal-clear on their next steps within minutes
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;h2&gt;
+  
+  
+  How It Works
+&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;
+&lt;strong&gt;Answer 40 questions&lt;/strong&gt; in under 10 minutes
+&lt;/li&gt;
+&lt;li&gt;Receive an &lt;strong&gt;on-screen snapshot&lt;/strong&gt; of where you excel—and where you stall
+&lt;/li&gt;
+&lt;li&gt;Go premium (if you choose) for a &lt;strong&gt;detailed roadmap&lt;/strong&gt; with benchmarks, timelines, and curated resources
+&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fy78drluy8bw4rve907pg.png" class="article-body-image-wrapper"&gt;&lt;img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fy78drluy8bw4rve907pg.png" alt="Image description" width="800" height="533"&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Why “Career Debugging”?
+&lt;/h2&gt;
+
+&lt;p&gt;In software, debugging is about systematically narrowing down causes until you find the root issue. I wanted a similar approach for careers:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;strong&gt;Concrete&lt;/strong&gt;: metrics, benchmarks, archetypal profiles
+&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;Actionable&lt;/strong&gt;: clear next steps, curated resources
+&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;Repeatable&lt;/strong&gt;: retake it as you grow
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;
+  
+  
+  Try It Yourself
+&lt;/h2&gt;
+
+&lt;p&gt;If you’ve ever felt stuck, puzzled about which skill to master next, or unsure how you compare to your peers, I’d love for you to give HubbleQuiz a spin:&lt;/p&gt;
+
+&lt;p&gt;👉 &lt;a href="https://hubblequiz.com" rel="noopener noreferrer"&gt;https://hubblequiz.com&lt;/a&gt;  &lt;/p&gt;
+
+&lt;p&gt;It’s &lt;strong&gt;free&lt;/strong&gt; for the strengths &amp;amp; weaknesses snapshot. If you like it, the premium roadmap (50% off with code &lt;code&gt;DEV50&lt;/code&gt;) can take you deeper.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Feedback Welcome
+&lt;/h2&gt;
+
+&lt;p&gt;I’d be thrilled to hear:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Which questions resonated (or missed the mark)?
+&lt;/li&gt;
+&lt;li&gt;How would you improve the benchmarking?
+&lt;/li&gt;
+&lt;li&gt;What additional insights would you love to see?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Thanks for reading—and happy debugging! 🚀  &lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;— Juan, creator of HubbleQuiz&lt;/em&gt;  &lt;/p&gt;
+
+</description>
+      <category>showdev</category>
+      <category>growth</category>
+      <category>careerdevelopment</category>
+      <category>tooling</category>
+    </item>
+    <item>
+      <title>How to Implement a Custom WeighedBlockingCollection in C#</title>
+      <dc:creator>Generatecode</dc:creator>
+      <pubDate>Sun, 11 May 2025 08:30:49 +0000</pubDate>
+      <link>https://dev.to/generatecodedev/how-to-implement-a-custom-weighedblockingcollection-in-c-1cg1</link>
+      <guid>https://dev.to/generatecodedev/how-to-implement-a-custom-weighedblockingcollection-in-c-1cg1</guid>
+      <description>&lt;h2&gt;Introduction to BlockingCollection and Memory Management&lt;/h2&gt;
+
+&lt;p&gt;In C#, the &lt;code&gt;BlockingCollection&amp;lt;T&amp;gt;&lt;/code&gt; class is a powerful tool for handling producer/consumer scenarios in a thread-safe way. However, when dealing with large objects that can vary in size significantly—like the ones you mentioned ranging from 10 MB to 700 MB—it's crucial to manage memory effectively to avoid &lt;code&gt;OutOfMemoryException&lt;/code&gt;s. To achieve this, we need a customized collection that extends the functionality of &lt;code&gt;BlockingCollection&amp;lt;T&amp;gt;&lt;/code&gt; by allowing us to limit the total memory used by the items stored in it.&lt;/p&gt;
+
+&lt;h2&gt;Understanding the WeighedBlockingCollection&lt;/h2&gt;
+
+&lt;p&gt;The goal here is to create a custom collection called &lt;code&gt;WeighedBlockingCollection&amp;lt;T&amp;gt;&lt;/code&gt;, which will not only mimic the behavior of &lt;code&gt;BlockingCollection&amp;lt;T&amp;gt;&lt;/code&gt; but also impose a weight restriction on the total items stored. This collection will maintain the FIFO (First In, First Out) principle, ensuring that items are processed in the order they are added, regardless of size.&lt;/p&gt;
+
+&lt;h3&gt;Key Features of WeighedBlockingCollection&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;strong&gt;Limit on Total Weight&lt;/strong&gt;: The collection will enforce a maximum total memory weight.&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;Thread Safety&lt;/strong&gt;: It will be designed to work seamlessly with multiple producers and consumers.&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;Delayed Item Creation&lt;/strong&gt;: Items will only be created when there is enough space in the collection, using a factory function.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Implementation Details&lt;/h2&gt;
+
+&lt;p&gt;Let's delve into the implementation details of &lt;code&gt;WeighedBlockingCollection&amp;lt;T&amp;gt;&lt;/code&gt;. Here's how we can construct our class:&lt;/p&gt;
+
+&lt;h3&gt;Step 1: Class Definition&lt;/h3&gt;
+
+&lt;p&gt;We'll start by defining our class with appropriate fields and constructors.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Threading;
+
+public class WeighedBlockingCollection&amp;lt;T&amp;gt;
+{
+    private readonly BlockingCollection&amp;lt;T&amp;gt; _collection;
+    private long _maximumTotalWeight;
+    private long _currentTotalWeight;
+    private readonly object _lock = new object();
+    private bool _isAddingCompleted = false;
+
+    public WeighedBlockingCollection(long maximumTotalWeight)
+    {
+        if (maximumTotalWeight &amp;lt;= 0)
+            throw new ArgumentOutOfRangeException(nameof(maximumTotalWeight), "Weight must be greater than zero.");
+
+        _maximumTotalWeight = maximumTotalWeight;
+        _collection = new BlockingCollection&amp;lt;T&amp;gt;();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;Step 2: Method to Add Items&lt;/h3&gt;
+
+&lt;p&gt;Next, we’ll implement the &lt;code&gt;Add&lt;/code&gt; method. This method will manage memory constraints and handle item creation using a factory function.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    public void Add(long itemWeight, Func&amp;lt;T&amp;gt; itemFactory)
+    {
+        if (itemWeight &amp;lt;= 0)
+            throw new ArgumentException("Item weight must be positive.");
+        if (itemWeight &amp;gt; _maximumTotalWeight)
+            throw new InvalidOperationException("Item weight exceeds the maximum total weight allowed.");
+
+        T item = null;
+        lock (_lock)
+        {
+            // Wait until there's enough space
+            while (_currentTotalWeight + itemWeight &amp;gt; _maximumTotalWeight)
+            {
+                Monitor.Wait(_lock);
+            }
+            // Create the item using the factory
+            item = itemFactory();
+            _currentTotalWeight += itemWeight;
+            _collection.Add(item);
+        }
+        Monitor.PulseAll(_lock);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;Step 3: Completing the Addition&lt;/h3&gt;
+
+&lt;p&gt;To signal that no more items will be added, we implement &lt;code&gt;CompleteAdding&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    public void CompleteAdding()
+    {
+        _isAddingCompleted = true;
+        _collection.CompleteAdding();
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;Step 4: Consuming Items&lt;/h3&gt;
+
+&lt;p&gt;We'll also need the method for consumers to get items while maintaining the same behavior as &lt;code&gt;BlockingCollection&lt;/code&gt;. This method will return an enumerable of items and ensure thread safety.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    public IEnumerable&amp;lt;T&amp;gt; GetConsumingEnumerable()
+    {
+        foreach (var item in _collection.GetConsumingEnumerable())
+        {
+            lock (_lock)
+            {
+                // Here you would need to remove the item's weight accordingly
+                // Assume we have a way to know the weight of item
+                // For demonstration purposes let's assume itemWeight is provided somehow
+                long itemWeight = GetWeight(item);  // You need to implement this
+                _currentTotalWeight -= itemWeight;
+            }
+            yield return item;
+        }
+    }
+
+    private long GetWeight(T item)
+    {
+        // Implement a way to get the weight of the item
+        // This will depend on your specific use case
+        return 0; // placeholder
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;By implementing the &lt;code&gt;WeighedBlockingCollection&amp;lt;T&amp;gt;&lt;/code&gt; as shown, you can effectively manage large objects in a producer/consumer scenario without the risk of exceeding memory limits. This customized collection extends the functionality of &lt;code&gt;BlockingCollection&amp;lt;T&amp;gt;&lt;/code&gt; while enforcing weight restrictions and ensuring thread safety for multiple producers and consumers.&lt;/p&gt;
+
+&lt;p&gt;Feel free to adapt the &lt;code&gt;GetWeight&lt;/code&gt; method based on how you define the weight of your objects. This implementation allows you to maintain efficient memory usage while leveraging the power of C#’s concurrent collections.&lt;/p&gt;
+
+&lt;h2&gt;Frequently Asked Questions&lt;/h2&gt;
+
+&lt;h3&gt;1. What happens if I try to add an item that exceeds the max weight?&lt;/h3&gt;
+
+&lt;p&gt;An &lt;code&gt;InvalidOperationException&lt;/code&gt; will be thrown to indicate that the item weight exceeds the maximum allowed limit.&lt;/p&gt;
+
+&lt;h3&gt;2. Is this implementation thread-safe?&lt;/h3&gt;
+
+&lt;p&gt;Yes, the &lt;code&gt;WeighedBlockingCollection&amp;lt;T&amp;gt;&lt;/code&gt; has been designed to support concurrent access from multiple threads safely.&lt;/p&gt;
+
+&lt;h3&gt;3. Can I change the maximum weight limit after the collection is created?&lt;/h3&gt;
+
+&lt;p&gt;No, the maximum weight limit is set during construction and cannot be changed dynamically. You would need to create a new instance for a different limit.&lt;/p&gt;
+
+</description>
+      <category>csharp</category>
+    </item>
+    <item>
+      <title>📱 𝐌𝐨𝐛𝐢𝐥𝐞 𝐓𝐞𝐬𝐭 𝐀𝐮𝐭𝐨𝐦𝐚𝐭𝐢𝐨𝐧 𝐟𝐨𝐫 𝐍𝐚𝐭𝐢𝐯𝐞 𝐀𝐩𝐩𝐬 - 𝐉𝐚𝐯𝐚 𝐯𝐬 𝐏𝐲𝐭𝐡𝐨𝐧</title>
+      <dc:creator>Dzmitry Ananyeu</dc:creator>
+      <pubDate>Sun, 11 May 2025 08:28:04 +0000</pubDate>
+      <link>https://dev.to/dimit999/--57ij</link>
+      <guid>https://dev.to/dimit999/--57ij</guid>
+      <description>&lt;p&gt;As someone who's worked with Appium and native mobile automation across different projects, here's a question I keep hearing:&lt;br&gt;
+👉 𝘞𝘩𝘪𝘤𝘩 𝘭𝘢𝘯𝘨𝘶𝘢𝘨𝘦 𝘪𝘴 𝘣𝘦𝘵𝘵𝘦𝘳 𝘧𝘰𝘳 𝘮𝘰𝘣𝘪𝘭𝘦 𝘵𝘦𝘴𝘵 𝘢𝘶𝘵𝘰𝘮𝘢𝘵𝘪𝘰𝘯 - 𝘑𝘢𝘷𝘢 𝘰𝘳 𝘗𝘺𝘵𝘩𝘰𝘯?&lt;/p&gt;
+
+&lt;p&gt;Here’s my experience-based perspective:&lt;/p&gt;
+
+&lt;p&gt;🟨 𝐉𝐚𝐯𝐚 - 𝐏𝐫𝐨𝐬 &amp;amp; 𝐂𝐨𝐧𝐬 𝐟𝐨𝐫 𝐌𝐨𝐛𝐢𝐥𝐞 𝐀𝐮𝐭𝐨𝐦𝐚𝐭𝐢𝐨𝐧&lt;br&gt;
+✅ Strong IDE support (IntelliJ IDEA, Android Studio)&lt;br&gt;
+✅ Real multithreading and better control over parallel test execution&lt;br&gt;
+✅ Mature integrations with enterprise tools (TestNG, JUnit, Allure, Maven, Jenkins)&lt;br&gt;
+✅ Large and active Appium community for native mobile testing&lt;br&gt;
+🔻 Verbose syntax - requires more code for similar functionality&lt;br&gt;
+🔻 Steeper learning curve, less beginner-friendly for junior testers&lt;/p&gt;
+
+&lt;p&gt;🟦 𝐏𝐲𝐭𝐡𝐨𝐧 - 𝐏𝐫𝐨𝐬 &amp;amp; 𝐂𝐨𝐧𝐬 𝐟𝐨𝐫 𝐌𝐨𝐛𝐢𝐥𝐞 𝐀𝐮𝐭𝐨𝐦𝐚𝐭𝐢𝐨𝐧&lt;br&gt;
+✅ Concise and readable syntax - faster to write and easier to onboard&lt;br&gt;
+✅ Ideal for quick PoCs, startups, or smaller automation teams&lt;br&gt;
+✅ Smooth integration with BDD frameworks like Behave or Pytest-BDD&lt;br&gt;
+🔻 GIL (Global Interpreter Lock) limits true parallel execution&lt;br&gt;
+🔻 Smaller mobile testing community, especially for native apps&lt;br&gt;
+🔻 Can become hard to maintain at scale without strong architecture&lt;/p&gt;
+
+&lt;p&gt;🎯 Conclusion:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If you're building a scalable, enterprise-grade mobile automation solution, Java provides more control and long-term reliability.&lt;/li&gt;
+&lt;li&gt;If you're a startup or want to move fast, Python gets you there quicker - just make sure to invest in a solid structure early on.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;💬 What's your go-to stack for native mobile automation - and why?&lt;/p&gt;
+
+&lt;h1&gt;
+  
+  
+  mobiletesting #appium #java #python #automationtesting #qaengineering #testautomation #bdd #selenium #softwaretesting
+&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ff6ya4hgqppviyfqqfmha.png" class="article-body-image-wrapper"&gt;&lt;img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ff6ya4hgqppviyfqqfmha.png" alt="Image description" width="800" height="800"&gt;&lt;/a&gt;&lt;/p&gt;
+
+</description>
+    </item>
+    <item>
+      <title>WellnessTracker: Amazon Q Developer "Quack The Code" Challenge.</title>
+      <dc:creator>SONALI A</dc:creator>
+      <pubDate>Sun, 11 May 2025 08:22:35 +0000</pubDate>
+      <link>https://dev.to/sonali_a_965a0c7421ed1c2a/wellnesstracker-amazon-q-developer-quack-the-code-challenge-3li4</link>
+      <guid>https://dev.to/sonali_a_965a0c7421ed1c2a/wellnesstracker-amazon-q-developer-quack-the-code-challenge-3li4</guid>
+      <description>&lt;p&gt;This is a submission for the Amazon Q Developer "Quack The Code" Challenge: Crushing the Command Line.&lt;/p&gt;
+
+&lt;p&gt;💡 What I Built&lt;br&gt;
+I created a Command Line-based Wellness Tracker that helps users maintain consistency in their physical and mental wellness routines by automating check-ins, habit tracking, and productivity nudges.&lt;/p&gt;
+
+&lt;p&gt;This tool:&lt;/p&gt;
+
+&lt;p&gt;Allows users to log wellness activities (hydration, sleep, workouts, meditation, etc.) via the terminal.&lt;/p&gt;
+
+&lt;p&gt;Sends reminders or nudges for missed activities.&lt;/p&gt;
+
+&lt;p&gt;Summarizes weekly or monthly performance in a structured format.&lt;/p&gt;
+
+&lt;p&gt;It is fully CLI-based and lightweight — perfect for developers who live in the terminal.&lt;/p&gt;
+
+&lt;p&gt;It solves the problem of accountability and consistency in self-care for people who are always on their computers but tend to neglect wellness. Think of it as a daily nudge from your terminal to take care of yourself.&lt;/p&gt;
+
+&lt;p&gt;🎥 Demo&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8dimowaqmmmfd7v6kvo8.png" class="article-body-image-wrapper"&gt;&lt;img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8dimowaqmmmfd7v6kvo8.png" alt="Image description" width="800" height="372"&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ff7p1qrw5rgtljz52bl5s.png" class="article-body-image-wrapper"&gt;&lt;img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ff7p1qrw5rgtljz52bl5s.png" alt="Image description" width="800" height="369"&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fa2z0r4fky5dlznm46on2.png" class="article-body-image-wrapper"&gt;&lt;img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fa2z0r4fky5dlznm46on2.png" alt="Image description" width="800" height="369"&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;👉 GitHub Repository&lt;br&gt;
+(&lt;a href="https://github.com/SONALI-005/Wellness_Tracker" rel="noopener noreferrer"&gt;https://github.com/SONALI-005/Wellness_Tracker&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;🤖 How I Used Amazon Q Developer&lt;br&gt;
+Amazon Q Developer was my copilot throughout this project. Here's how it helped:&lt;/p&gt;
+
+&lt;p&gt;🧠 Idea brainstorming: I used Q to brainstorm wellness features that are meaningful but simple to implement via the CLI.&lt;/p&gt;
+
+&lt;p&gt;📦 Code generation: Q helped scaffold the script for logging, file handling, and notification messages.&lt;/p&gt;
+
+&lt;p&gt;🐛 Debugging: Whenever I hit syntax or logic issues, I pasted errors into Q and received helpful insights immediately.&lt;/p&gt;
+
+&lt;p&gt;🧪 Testing CLI commands: It also helped me generate test cases to ensure different wellness categories were recorded properly.&lt;/p&gt;
+
+&lt;p&gt;👩‍🎓 Student Submission&lt;br&gt;
+Yes, I’m currently a student!&lt;/p&gt;
+
+</description>
+      <category>devchallenge</category>
+      <category>awschallenge</category>
+      <category>ai</category>
+      <category>webdev</category>
+    </item>
+    <item>
+      <title>🔁 Blog – Identity Lifecycle Management: Automating Access from Hire to Exit</title>
+      <dc:creator>Amit Ambekar</dc:creator>
+      <pubDate>Sun, 11 May 2025 08:20:00 +0000</pubDate>
+      <link>https://dev.to/amit_ambekar_c022e6732f8d/blog-identity-lifecycle-management-automating-access-from-hire-to-exit-5dlc</link>
+      <guid>https://dev.to/amit_ambekar_c022e6732f8d/blog-identity-lifecycle-management-automating-access-from-hire-to-exit-5dlc</guid>
+      <description>&lt;p&gt;Welcome back to the sixth post of my first blog series here on Dev, where we’re tackling the most essential — yet often neglected — piece of Identity Management: Identity Lifecycle Management (ILM).&lt;/p&gt;
+
+&lt;p&gt;Whether you're managing Windows Servers, Azure AD environments, or mixed infrastructures, understanding ILM will help you eliminate manual mistakes, automate compliance and streamline operations.&lt;/p&gt;
+
+&lt;p&gt;🔍 What is Identity Lifecycle Management?&lt;br&gt;
+Identity Lifecycle Management (ILM) refers to the end-to-end process of creating, managing and deleting user identities as they progress through their lifecycle:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Onboarding (Joiners)&lt;/li&gt;
+&lt;li&gt;Movement (Movers)&lt;/li&gt;
+&lt;li&gt;Offboarding (Leavers)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Done right, ILM ensures:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Users have the right access at the right time.&lt;/li&gt;
+&lt;li&gt;No orphaned accounts after someone leaves.&lt;/li&gt;
+&lt;li&gt;Reduced security risks and audit gaps.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;🏢 1. ILM in Windows Server (Active Directory)&lt;br&gt;
+📥 Onboarding (Joiners):&lt;br&gt;
+Use PowerShell scripts or HR system triggers to create users automatically.&lt;/p&gt;
+
+&lt;p&gt;Assign them to the right Organizational Units (OUs) and security groups.&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;powershell&lt;/u&gt;&lt;/p&gt;
+
+&lt;p&gt;New-ADUser -Name "Vaibhav Agwane" -GivenName "Vaibhav" -Surname "Agwane" -SamAccountName "vaibhav.a" &lt;code&gt;&lt;br&gt;
+-UserPrincipalName "vaibhav.a@yourdomain.com" -Path "OU=Dev,DC=yourdomain,DC=com"&lt;/code&gt;&lt;br&gt;
+-AccountPassword (ConvertTo-SecureString "Temp@1234" -AsPlainText -Force) -Enabled $true&lt;/p&gt;
+
+&lt;p&gt;🔄 Movers:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Automate role-based group changes using group membership automation or scripts.&lt;/li&gt;
+&lt;li&gt;Move users between OUs using policies for access control and GPO enforcement.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;u&gt;powershell&lt;/u&gt;&lt;/p&gt;
+
+&lt;p&gt;Move-ADObject -Identity "CN=Shubham Agasti,OU=Dev,DC=yourdomain,DC=com" -TargetPath "OU=Managers,DC=yourdomain,DC=com"&lt;/p&gt;
+
+&lt;p&gt;❌ Offboarding:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Disable account immediately, move to "Disabled Users" OU.&lt;/li&gt;
+&lt;li&gt;Schedule account deletion and home folder cleanup.&lt;/li&gt;
+&lt;li&gt;Log actions for audits.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;☁️ 2. ILM in Azure Active Directory&lt;br&gt;
+Azure AD offers cloud-native, policy-driven automation:&lt;/p&gt;
+
+&lt;p&gt;📥 Onboarding:&lt;br&gt;
+Dynamic Groups assign licenses, apps and roles based on user attributes (e.g., department = 'Engineering').&lt;/p&gt;
+
+&lt;p&gt;Provisioning from HR systems (e.g., Workday) using SCIM (System for Cross-domain Identity Management).&lt;/p&gt;
+
+&lt;p&gt;🔄 Movers:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Changes in department, title, or location auto-update user’s group membership and access.&lt;/li&gt;
+&lt;li&gt;Conditional Access adapts based on updated user risk or device compliance.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;❌ Offboarding:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Immediate account block via Azure AD portal or Graph API.&lt;/li&gt;
+&lt;li&gt;Use Access Reviews to clean up group memberships.&lt;/li&gt;
+&lt;li&gt;Trigger Just-In-Time (JIT) access removal workflows with Microsoft Entra ID Governance.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;u&gt;powershell&lt;/u&gt;&lt;/p&gt;
+
+&lt;h1&gt;
+  
+  
+  Disable a user in Azure AD
+&lt;/h1&gt;
+
+&lt;p&gt;Set-AzureADUser -ObjectId "&lt;a href="mailto:user@domain.com"&gt;user@domain.com&lt;/a&gt;" -AccountEnabled $false&lt;/p&gt;
+
+&lt;p&gt;🐧 3. ILM in Linux Server (OpenLDAP or Integrated with AD)&lt;br&gt;
+Linux ILM typically ties into AD or OpenLDAP. Use these tools:&lt;/p&gt;
+
+&lt;p&gt;📥 Onboarding:&lt;br&gt;
+If integrated with AD, accounts are auto-available via SSSD/realmd.&lt;/p&gt;
+
+&lt;p&gt;For OpenLDAP, use ldapadd scripts or tools like FusionDirectory to create users.&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;bash&lt;/u&gt;&lt;/p&gt;
+
+&lt;p&gt;sudo ldapadd -x -D "cn=admin,dc=example,dc=com" -W -f new_user.ldif&lt;br&gt;
+🔄 Movers:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Update user attributes via ldapmodify.&lt;/li&gt;
+&lt;li&gt;Map LDAP groups to sudoers or access policies.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;❌ Offboarding:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Use ldapdelete or AD user disablement to revoke access.&lt;/li&gt;
+&lt;li&gt;Monitor Linux auth logs for last login — useful for determining inactive users.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;🔧 Real-World ILM Workflow&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fnzszt1rnt80bh4oj689s.png" class="article-body-image-wrapper"&gt;&lt;img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fnzszt1rnt80bh4oj689s.png" alt="Image description" width="800" height="199"&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;⚙️ Tools to Automate ILM&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F7wunqyegk9jejxwovb2g.png" class="article-body-image-wrapper"&gt;&lt;img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F7wunqyegk9jejxwovb2g.png" alt="Image description" width="800" height="303"&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;🛡️ Best Practices for ILM&lt;br&gt;
+✅ Disable accounts instead of immediate deletion — retain for forensic/audit purposes.&lt;/p&gt;
+
+&lt;p&gt;✅ Use Least Privilege model — access only as needed.&lt;/p&gt;
+
+&lt;p&gt;✅ Automate via event-driven triggers (e.g., new hire email from HR).&lt;/p&gt;
+
+&lt;p&gt;✅ Regular Access Reviews and attestation.&lt;/p&gt;
+
+&lt;p&gt;✅ Multi-system synchronization (AD + Azure AD + Apps).&lt;/p&gt;
+
+&lt;p&gt;🧩 Wrapping Up&lt;br&gt;
+Identity Lifecycle Management is more than user creation. It's a strategic capability that ensures security, compliance and efficiency across your IT environment — whether in the cloud or on-prem.&lt;/p&gt;
+
+&lt;p&gt;Start small: automate onboarding, then build toward full lifecycle automation.&lt;/p&gt;
+
+&lt;p&gt;👉 Coming Up: Blog – Auditing &amp;amp; Monitoring Identities in Real Time: Alerting, Logging and Response&lt;/p&gt;
+
+&lt;p&gt;💬 How Are You Managing Lifecycle Flows Today?&lt;br&gt;
+Do you use scripts? Manual processes? Fully automated solutions? Share your thoughts and let’s collaborate on smarter identity systems. 🧠&lt;/p&gt;
+
+</description>
+      <category>lifecyclemanegment</category>
+      <category>windowsserver</category>
+      <category>linux</category>
+      <category>cybersecurity</category>
+    </item>
+    <item>
+      <title>What is an API?</title>
+      <dc:creator>Selfish Dev</dc:creator>
+      <pubDate>Sun, 11 May 2025 08:19:05 +0000</pubDate>
+      <link>https://dev.to/selfish_dev/what-is-an-api-hee</link>
+      <guid>https://dev.to/selfish_dev/what-is-an-api-hee</guid>
+      <description>&lt;h1&gt;
+  
+  
+  Introduction
+&lt;/h1&gt;
+
+&lt;p&gt;You must have heard somewhere about API, but what is API? Have you ever wondered?&lt;/p&gt;
+
+&lt;p&gt;You are not alone if you have never paused to think what an API is.&lt;/p&gt;
+
+&lt;p&gt;Today, we are going to break down the concept: "What is an API?"&lt;/p&gt;
+
+&lt;p&gt;So let's jump in.&lt;/p&gt;
+
+&lt;h1&gt;
+  
+  
+  What is an API?
+&lt;/h1&gt;
+
+&lt;p&gt;Let us understand this with the help of a tasty example.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9i6h45p5moqv2heykuzw.jpg" class="article-body-image-wrapper"&gt;&lt;img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9i6h45p5moqv2heykuzw.jpg" alt="Image description" width="800" height="799"&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Story of a hard day you had.
+&lt;/h2&gt;
+
+&lt;p&gt;It had been a hard day doing work. You were tired and hungry, so, naturally, you headed to the best restaurant in the city. When you sat down, the waiter came and asked. &lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;How may I help you, Sir?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Without hesitation, you reply with one of your favourite dishes, which you can never deny.&lt;/p&gt;
+
+&lt;p&gt;The Waiter took your order very quickly and headed straight to the kitchen, He asked the cook, "Sir, is this dish available?" and the cook said.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;That dish isn’t available right now.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The Waiter, with a sad look, went back to your table and repeated what the cook said, but you took this as an opportunity to try something new, so you ordered some Japanese sushi, which you had never tried. The waiter took the order and went back to the kitchen. &lt;/p&gt;
+
+&lt;p&gt;This time, luckily, it was available, so you ate sushi that night, although you didn't liked it that much.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Now Let's Connect the Dots.
+&lt;/h2&gt;
+
+&lt;p&gt;Just like the waiter acted as a messenger between you and the cook.&lt;br&gt;
+&lt;strong&gt;Application Programming Interface (API)&lt;/strong&gt; acts as a messenger between the &lt;strong&gt;Application **and the **Server&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;A Customer(Application) never talks to the Cook(Server) directly, instead, you make requests through the Waiter(API).&lt;/p&gt;
+
+&lt;p&gt;The Waiter(API) then brings back the result, either good or bad.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Understanding API
+&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Application Programming Interface (API)&lt;/strong&gt; allows communication between 2 different software without the disclosure of important data.&lt;/p&gt;
+
+&lt;p&gt;You can also say that an &lt;strong&gt;API&lt;/strong&gt; connects 2 software entities. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;API&lt;/strong&gt; is usually not visible to the user. It's an under-the-code portion of the system.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Where else have you seen an API?
+&lt;/h2&gt;
+
+&lt;p&gt;Remember ordering something new online and checking the location of the delivery man through the map provided by the Application. &lt;/p&gt;
+
+&lt;p&gt;Now it's not like that the application has first made a satellite, then sent it to space, then took data from there and then implemented to a application. &lt;/p&gt;
+
+&lt;p&gt;Instead, these applications use those models that have already sent there satellites into the space and are able to track accurate location. For example, Google. &lt;/p&gt;
+
+&lt;p&gt;As you know, Google owns Google Maps, which is one of the most accurate web mapping platform out there. &lt;/p&gt;
+
+&lt;p&gt;Due to high accuracy and more reliability, Google Maps offers other applications to add Google Maps in some way to their application.&lt;/p&gt;
+
+&lt;p&gt;But don't you think if Google started to let people embed Google Maps into their applications, then there would be privacy and security issues?&lt;/p&gt;
+
+&lt;p&gt;That's why doing this directly is very risky, that's where &lt;strong&gt;API&lt;/strong&gt; comes into play it act as a middle man between the Main System(Google Maps) and the Application(The Delivery Application). &lt;/p&gt;
+
+&lt;p&gt;The application first has to request the API, then the API sends the request to the main system. The main system either denies, which leads to an error on our screen, or accepts the request, which makes the map and the delivery guys' current location appear on our screen. &lt;/p&gt;
+
+&lt;p&gt;More Places where you see API are&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;While signing up for any website. &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;While doing Payment.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And many more...&lt;/p&gt;
+
+&lt;h1&gt;
+  
+  
+  Outro
+&lt;/h1&gt;
+
+&lt;p&gt;Now you know what is an API. Where else have you seen API?&lt;/p&gt;
+
+&lt;p&gt;But now more question arises:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;What is an API Key?&lt;/li&gt;
+&lt;li&gt;Is API and UI the same?&lt;/li&gt;
+&lt;li&gt;How do I implement the API into my project&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And that's what makes us humans the curious cat, but all the rest questions are talk of a different blog. &lt;/p&gt;
+
+&lt;p&gt;Till Then Stay Curious and Stay Selfish &lt;/p&gt;
+
+&lt;h1&gt;
+  
+  
+  Social Links
+&lt;/h1&gt;
+
+&lt;p&gt;👉&lt;a href="https://www.youtube.com/@SelfishDevYT" rel="noopener noreferrer"&gt;Youtube&lt;/a&gt; &lt;/p&gt;
+
+&lt;p&gt;👉&lt;a href="//bsky.app/profile/selfish-dev.bsky.social"&gt;BlueSky&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;👉&lt;a href="//discord.gg/qStHEDfge7"&gt;Discord&lt;/a&gt;&lt;/p&gt;
+
+</description>
+      <category>api</category>
+      <category>programming</category>
+      <category>node</category>
+      <category>javascript</category>
+    </item>
+    <item>
+      <title>Advancing Robotic Intelligence: A Synthesis of Recent Innovations in Autonomous Systems, Manipulation, and Human-Robot I</title>
+      <dc:creator>Ali Khan</dc:creator>
+      <pubDate>Sun, 11 May 2025 08:18:55 +0000</pubDate>
+      <link>https://dev.to/khanali21/advancing-robotic-intelligence-a-synthesis-of-recent-innovations-in-autonomous-systems-1nd9</link>
+      <guid>https://dev.to/khanali21/advancing-robotic-intelligence-a-synthesis-of-recent-innovations-in-autonomous-systems-1nd9</guid>
+      <description>&lt;p&gt;This article is part of AI Frontiers, a series exploring groundbreaking computer science and artificial intelligence research from arXiv. We summarize key papers, demystify complex concepts in machine learning and computational theory, and highlight innovations shaping our technological future.&lt;/p&gt;
+
+&lt;h1&gt;
+  
+  
+  Introduction to Robotics Research: Current State and Significance
+&lt;/h1&gt;
+
+&lt;p&gt;Robotics represents one of the most dynamic and rapidly evolving fields within computer science, sitting at the intersection of artificial intelligence, mechanical engineering, electrical engineering, and computer vision. This interdisciplinary domain focuses on developing autonomous systems capable of sensing their environment, making decisions, and taking physical actions in the real world. This synthesis examines seventeen cutting-edge papers published in May 2025, representing the forefront of innovation in robotics research. These works collectively demonstrate significant advancements in autonomous driving, manipulation capabilities, human-robot interaction, and specialized applications across various domains.&lt;/p&gt;
+
+&lt;p&gt;The significance of these developments extends far beyond academic interest. As we progress further into the 21st century, robots are increasingly becoming integrated into daily life. Autonomous vehicles are beginning to transform transportation systems, industrial robots continue to revolutionize manufacturing processes, and service robots are finding new applications in healthcare, retail, and domestic settings. The innovations represented in these papers have the potential to accelerate this integration, making robots more capable, more reliable, and better able to collaborate with humans in shared environments.&lt;/p&gt;
+
+&lt;p&gt;These advancements are occurring within a broader technological context that enables rapid progress in robotics. Improvements in machine learning, particularly reinforcement learning and large language models, are providing new approaches to robot control and decision-making. Enhancements in sensor technology and computer vision are expanding robots' ability to perceive and understand their environments. Developments in actuator design and control systems are increasing the range of physical actions that robots can perform reliably and efficiently.&lt;/p&gt;
+
+&lt;p&gt;Concurrently, there is growing recognition of the importance of human factors in robotics. Many of the papers discussed herein address not just the technical capabilities of robots but also their ability to interact with humans, explain their decisions, and adapt to human preferences and behaviors. This reflects a shift in the field toward viewing robots not as isolated technical systems but as participants in complex socio-technical environments where collaboration with humans is often essential.&lt;/p&gt;
+
+&lt;h1&gt;
+  
+  
+  Major Themes in Contemporary Robotics Research
+&lt;/h1&gt;
+
+&lt;h2&gt;
+  
+  
+  Integration of Foundation Models with Traditional Robotics Approaches
+&lt;/h2&gt;
+
+&lt;p&gt;A prominent theme emerging from the analyzed papers is the integration of foundation models, particularly large vision-language models (LVLMs), with traditional robotics approaches. This represents a significant shift in how robotics systems are designed and implemented. Traditionally, robotics has relied on modular pipelines with separate components for perception, planning, and control. However, several papers demonstrate the potential of leveraging pre-trained foundation models to create more unified and capable systems.&lt;/p&gt;
+
+&lt;p&gt;Liu et al. (2025) introduce X-Driver, an explainable autonomous driving system that uses vision-language models to interpret road scenes, reason about driving decisions, and provide natural language explanations for its actions. Similarly, Atsuta et al. (2025) present a framework that combines large vision-language models with model predictive control for autonomous driving, creating a system that is both task-scalable and safety-aware. Liu et al. (2025) take this approach further with DSDrive, distilling knowledge from large language models into more compact architectures suitable for real-time deployment in autonomous vehicles.&lt;/p&gt;
+
+&lt;p&gt;This theme represents a convergence of two previously distinct approaches to artificial intelligence. Foundation models, trained on vast datasets using self-supervised learning, bring broad knowledge and flexible reasoning capabilities but have traditionally lacked the precision and reliability required for robotics applications. Traditional robotics approaches, based on explicit modeling and control theory, offer reliability and safety guarantees but have struggled with the complexity and ambiguity of real-world environments. The papers suggest that by combining these approaches, researchers are beginning to achieve systems that have both the flexibility of foundation models and the reliability of traditional robotics methods.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Advancement of Bimanual and Dexterous Manipulation
+&lt;/h2&gt;
+
+&lt;p&gt;Another significant theme is the advancement of bimanual and dexterous manipulation capabilities in robotics. Three papers focus specifically on enabling robots to perform complex manipulation tasks using two arms or hands. Li et al. (2025) present SYMDEX, a reinforcement learning framework that leverages morphological symmetry to enable ambidextrous bimanual manipulation. Jiang et al. (2025) introduce an integrated real-time motion-contact planning and tracking framework for robust in-hand manipulation. Liu et al. (2025) propose D-CODA, a diffusion-based method for augmenting data in dual-arm manipulation scenarios.&lt;/p&gt;
+
+&lt;p&gt;This focus on bimanual and dexterous manipulation reflects a push toward enabling robots to perform tasks that have traditionally required human-level dexterity. Many everyday activities, from preparing food to assembling furniture, involve coordinated use of both hands, often with one hand stabilizing an object while the other performs more precise manipulations. By developing robots capable of similar coordination, researchers are expanding the range of tasks that robots can perform in both industrial and domestic settings.&lt;/p&gt;
+
+&lt;p&gt;The approaches presented in these papers are particularly noteworthy for their emphasis on learning-based methods, which allow robots to acquire complex manipulation skills through experience rather than explicit programming. This represents a shift from traditional approaches that relied on precise geometric models and hand-crafted control strategies toward more adaptive and generalizable methods based on machine learning.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Personalization and Adaptability of Autonomous Systems
+&lt;/h2&gt;
+
+&lt;p&gt;A third major theme is the personalization and adaptability of autonomous systems. Several papers focus on enabling robots to adapt their behavior based on individual preferences, environmental conditions, or specific task requirements. Surmann et al. (2025) present a multi-objective reinforcement learning approach for personalizing autonomous driving experiences based on individual preferences. De Groot et al. (2025) describe a vehicle system that includes remote human operation capabilities, allowing for flexible transitions between autonomous and human-controlled operation. Kobayashi (2025) introduces CubeDAgger, an approach to interactive imitation learning that improves robustness without violating dynamic stability constraints.&lt;/p&gt;
+
+&lt;p&gt;This theme reflects a recognition that robots must be able to adapt to the diverse and changing environments in which they operate. Rather than designing robots with fixed behaviors, researchers are increasingly focusing on creating systems that can learn from experience and adjust their actions based on context. This adaptability is crucial for robots that need to operate in human environments, where conditions can change unpredictably and where different users may have different preferences or requirements.&lt;/p&gt;
+
+&lt;p&gt;The approaches presented in these papers demonstrate various ways of achieving adaptability, from reinforcement learning methods that optimize for multiple objectives to interactive learning approaches that allow humans to guide robot behavior through demonstration or feedback. This represents a shift from traditional approaches that emphasized robustness through simplification and control toward more flexible and responsive systems that can handle complexity and variability.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Domain-Specific Robotics Applications
+&lt;/h2&gt;
+
+&lt;p&gt;A fourth theme is the development of domain-specific robotics applications, particularly in agriculture and construction. Kuang et al. (2025) present a coverage path planning approach for micro air vehicles in dispersed and irregular plantations. Lin et al. (2025) propose an algorithm for delimiting areas of interest for swing-arm troweling robots in construction. Thayananthan et al. (2025) introduce CottonSim, a simulation environment for autonomous cotton picking.&lt;/p&gt;
+
+&lt;p&gt;This theme highlights how robotics research is increasingly being tailored to address challenges in specific industries. Agriculture and construction are particularly promising domains for robotics applications, as they involve physically demanding tasks that are often performed in challenging environments. By developing robots specifically designed for these domains, researchers are addressing practical challenges while also advancing the broader field of robotics.&lt;/p&gt;
+
+&lt;p&gt;The papers demonstrate various approaches to domain-specific robotics, from specialized algorithms for particular tasks to simulation environments that enable the development and testing of robotic systems for specific applications. This represents a maturation of the field, with researchers moving beyond generic platforms and algorithms toward solutions that are optimized for particular use cases and environments.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Explainability and Interpretability in Robotics Systems
+&lt;/h2&gt;
+
+&lt;p&gt;The fifth major theme is the emphasis on explainability and interpretability in robotics systems. As robots become more autonomous and are deployed in more complex environments, there's growing recognition of the importance of making their decision-making processes transparent and understandable to humans. Liu et al. (2025) focus explicitly on explainable autonomous driving with X-Driver, using vision-language models to generate natural language explanations for driving decisions. Similarly, the LVLM-MPC collaboration framework presented by Atsuta et al. (2025) includes mechanisms for explaining the system's actions in terms understandable to humans.&lt;/p&gt;
+
+&lt;p&gt;This focus on explainability reflects both practical and ethical considerations. From a practical perspective, explanations can help users understand and predict robot behavior, facilitating more effective human-robot collaboration. They can also aid in debugging and improving robotic systems by making it easier to identify the causes of failures or suboptimal performance. From an ethical perspective, explainability is increasingly seen as a requirement for autonomous systems that make decisions with significant consequences for human safety or well-being.&lt;/p&gt;
+
+&lt;p&gt;The approaches presented in these papers demonstrate how recent advances in natural language processing and multimodal learning can be leveraged to create robots that not only act intelligently but can also communicate the reasoning behind their actions. This represents a shift from treating robots as black-box systems toward more transparent and communicative agents that can explain their behavior in human-understandable terms.&lt;/p&gt;
+
+&lt;h1&gt;
+  
+  
+  Methodological Approaches in Robotics Research
+&lt;/h1&gt;
+
+&lt;h2&gt;
+  
+  
+  Reinforcement Learning for Robot Control and Adaptation
+&lt;/h2&gt;
+
+&lt;p&gt;Reinforcement learning (RL) emerges as a dominant methodology across multiple papers. This approach involves training agents to make sequences of decisions by providing rewards for desired outcomes, allowing them to learn optimal policies through trial and error. RL is applied in various contexts, from Surmann et al.'s (2025) work on personalized autonomous driving to Li et al.'s (2025) research on ambidextrous bimanual manipulation.&lt;/p&gt;
+
+&lt;p&gt;The strength of reinforcement learning lies in its ability to learn complex behaviors without requiring explicit programming of every action. By specifying rewards rather than behaviors, researchers can allow robots to discover solutions that might not be obvious to human designers. RL is particularly well-suited to tasks where the optimal behavior is difficult to specify directly but where success can be clearly measured. Additionally, RL can adapt to changing conditions, allowing robots to optimize their behavior based on feedback from the environment.&lt;/p&gt;
+
+&lt;p&gt;However, reinforcement learning also faces significant limitations. One major challenge is sample efficiency—RL typically requires many interactions with the environment to learn effective policies, which can be impractical for real-world robotics applications where data collection is costly or time-consuming. Another challenge is the specification of reward functions that lead to desired behaviors without unintended consequences. Poorly designed rewards can result in policies that optimize for the specified metric while violating implicit constraints or expectations.&lt;/p&gt;
+
+&lt;p&gt;The papers demonstrate various approaches to addressing these challenges. Li et al.'s (2025) SYMDEX framework improves sample efficiency by leveraging structural symmetry, allowing experience from one arm to benefit learning for the opposite arm. Surmann et al. (2025) address the challenge of reward specification by using multi-objective reinforcement learning, which allows for explicit consideration of multiple, potentially competing objectives.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Large Vision-Language Models for Perception and Decision-Making
+&lt;/h2&gt;
+
+&lt;p&gt;The use of large vision-language models (LVLMs) for robotics applications represents another significant methodological approach. These models, trained on vast datasets of images and text, can understand and generate natural language descriptions of visual scenes. LVLMs are applied in papers like Liu et al.'s (2025) X-Driver and Atsuta et al.'s (2025) LVLM-MPC collaboration framework, where they're used to interpret visual information and guide decision-making in autonomous driving.&lt;/p&gt;
+
+&lt;p&gt;The strength of LVLMs lies in their ability to leverage pre-trained knowledge from large datasets, enabling them to understand diverse visual scenarios without task-specific training. They can also provide natural language explanations for their interpretations and decisions, enhancing the interpretability of robotic systems. Additionally, LVLMs can perform complex reasoning about visual scenes, potentially enabling more sophisticated decision-making in ambiguous or novel situations.&lt;/p&gt;
+
+&lt;p&gt;However, LVLMs also face limitations in robotics applications. One challenge is computational intensity—these models typically require significant computational resources, which can be a constraint for real-time robotics applications. Another challenge is grounding—while LVLMs can generate plausible descriptions and explanations, ensuring that these accurately reflect the physical reality and constraints of the robot's environment is non-trivial.&lt;/p&gt;
+
+&lt;p&gt;The papers demonstrate various approaches to addressing these challenges. Liu et al.'s (2025) DSDrive addresses computational constraints through knowledge distillation, transferring capabilities from larger models to more compact ones suitable for real-time deployment. Atsuta et al. (2025) address grounding and safety concerns by integrating LVLMs with model predictive control, which provides explicit physical constraints and safety guarantees.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Model Predictive Control for Safe and Efficient Robot Operation
+&lt;/h2&gt;
+
+&lt;p&gt;Model predictive control (MPC) is another prominent methodological approach, involving predicting future states based on a model of the system and optimizing control inputs to achieve desired outcomes while respecting constraints. MPC is applied in papers like Kojima et al.'s (2025) work on collision avoidance and Jiang et al.'s (2025) research on in-hand manipulation.&lt;/p&gt;
+
+&lt;p&gt;The strength of MPC lies in its ability to handle complex dynamics and constraints in a principled way. By explicitly modeling the system and optimizing over a future horizon, MPC can anticipate and avoid problematic states while achieving desired objectives. MPC is particularly well-suited to tasks where safety constraints are critical, as these can be explicitly incorporated into the optimization problem.&lt;/p&gt;
+
+&lt;p&gt;However, MPC also faces limitations. One challenge is computational complexity—solving the optimization problems involved in MPC can be computationally intensive, particularly for systems with complex dynamics or constraints. Another challenge is model accuracy—MPC relies on a model of the system, and its performance can degrade if this model is inaccurate or if the system dynamics change over time.&lt;/p&gt;
+
+&lt;p&gt;The papers demonstrate various approaches to addressing these challenges. Kojima et al. (2025) address computational complexity by reformulating collision avoidance constraints in a more tractable form, enabling real-time performance even in complex environments. Jiang et al. (2025) address model accuracy concerns by combining high-level planning with low-level tracking, allowing the system to adapt to discrepancies between the model and the actual system dynamics.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Imitation Learning and Learning from Demonstration
+&lt;/h2&gt;
+
+&lt;p&gt;Imitation learning, which involves teaching robots to perform tasks by demonstrating the desired behavior, is another significant methodological approach. Imitation learning is applied in papers like Liang et al.'s (2025) work on Continuous Latent Action Models and Kobayashi's (2025) research on CubeDAgger.&lt;/p&gt;
+
+&lt;p&gt;The strength of imitation learning lies in its intuitive interface for teaching robots new skills. Instead of programming explicit rules or designing reward functions, users can simply demonstrate the desired behavior, making robot programming more accessible to non-experts. Imitation learning can also capture subtle aspects of task execution that might be difficult to specify explicitly, such as the appropriate timing or style of movements.&lt;/p&gt;
+
+&lt;p&gt;However, imitation learning also faces limitations. One challenge is the need for demonstrations, which can be costly or time-consuming to collect, particularly for complex tasks. Another challenge is generalization—robots trained with imitation learning may struggle to handle situations that differ significantly from those seen in the demonstrations.&lt;/p&gt;
+
+&lt;p&gt;The papers demonstrate various approaches to addressing these challenges. Liang et al. (2025) address the demonstration challenge by learning from unlabeled video demonstrations, reducing the need for costly action-labeled data. Kobayashi (2025) addresses generalization concerns by combining imitation learning with interactive feedback, allowing the robot to improve beyond the initial demonstrations while maintaining stability guarantees.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Simulation and Domain Adaptation for Robust Deployment
+&lt;/h2&gt;
+
+&lt;p&gt;Simulation and domain adaptation, which involve developing and training robotic systems in simulated environments before deploying them in the real world, represent another important methodological approach. This approach is applied in papers like Thayananthan et al.'s (2025) CottonSim and Song et al.'s (2025) "City that Never Settles" dataset.&lt;/p&gt;
+
+&lt;p&gt;The strength of simulation-based approaches lies in their ability to generate large amounts of data without the cost and risk associated with real-world data collection. Simulations can also enable systematic evaluation under controlled conditions, allowing for more rigorous testing of robotic systems. Additionally, simulations can model scenarios that would be difficult or dangerous to create in the real world, such as rare failure cases or extreme environmental conditions.&lt;/p&gt;
+
+&lt;p&gt;However, simulation-based approaches also face limitations. The most significant challenge is the reality gap—the discrepancy between simulated and real-world physics, sensors, and environments. Robots trained purely in simulation may struggle when deployed in the real world due to these discrepancies. Another challenge is the computational cost of high-fidelity simulation, which can be significant for complex environments or physics-based interactions.&lt;/p&gt;
+
+&lt;p&gt;The papers demonstrate various approaches to addressing these challenges. Thayananthan et al. (2025) address domain-specific simulation challenges by creating a specialized environment for cotton picking, incorporating relevant aspects of the task and environment. Song et al. (2025) address the challenge of modeling environmental changes over time by creating a dataset that specifically captures structural changes in urban environments, enabling more robust evaluation of place recognition algorithms.&lt;/p&gt;
+
+&lt;h1&gt;
+  
+  
+  Key Findings and Comparative Analysis
+&lt;/h1&gt;
+
+&lt;h2&gt;
+  
+  
+  Effectiveness of Integrating Vision-Language Models with Control Methods
+&lt;/h2&gt;
+
+&lt;p&gt;One of the most significant findings is the demonstrated effectiveness of integrating large vision-language models with traditional control methods for autonomous driving. Liu et al.'s (2025) X-Driver framework shows superior closed-loop performance compared to traditional modular pipelines, while also providing natural language explanations for its driving decisions. Similarly, Atsuta et al.'s (2025) LVLM-MPC collaboration framework demonstrates how large vision-language models can be effectively integrated with model predictive control to create a system that is both task-scalable and safety-aware.&lt;/p&gt;
+
+&lt;p&gt;These findings suggest a path forward for addressing one of the fundamental challenges in autonomous driving: balancing the flexibility needed to handle diverse and unpredictable environments with the reliability and safety guarantees required for deployment in the real world. By leveraging the broad knowledge and reasoning capabilities of large vision-language models while maintaining the safety constraints of traditional control methods, these approaches offer a promising direction for the next generation of autonomous driving systems.&lt;/p&gt;
+
+&lt;p&gt;Comparative analysis reveals that these integrated approaches outperform both pure learning-based methods, which may lack safety guarantees, and pure control-based methods, which may struggle with complex or ambiguous scenarios. The combination of foundation models with traditional control techniques represents a significant advancement in the state of the art for autonomous driving systems.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Learning from Unlabeled Demonstrations for Robot Skill Acquisition
+&lt;/h2&gt;
+
+&lt;p&gt;Another key finding comes from Liang et al.'s (2025) work on Continuous Latent Action Models (CLAM) for robot learning from unlabeled demonstrations. Their approach addresses a fundamental limitation in robotics: the need for large amounts of costly action-labeled expert demonstrations. By learning continuous latent action labels in an unsupervised way from video demonstrations and jointly training an action decoder, CLAM achieves a 2-3x improvement in task success rate compared to previous state-of-the-art methods.&lt;/p&gt;
+
+&lt;p&gt;This finding is significant because it could dramatically reduce the data collection burden for teaching robots new tasks. Instead of requiring precisely labeled demonstrations with exact action sequences, CLAM allows robots to learn from unlabeled video demonstrations, which are much easier to collect. This could accelerate the deployment of robots in various applications by making it faster and more cost-effective to teach them new skills.&lt;/p&gt;
+
+&lt;p&gt;Comparative analysis shows that CLAM outperforms previous approaches to learning from demonstration, which typically required either large amounts of labeled data or struggled to capture the continuous and nuanced nature of physical manipulation. The use of continuous latent actions rather than discrete representations enables more precise and natural robot movements, particularly for fine-grained manipulation tasks.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Leveraging Morphological Symmetry for Efficient Bimanual Manipulation
+&lt;/h2&gt;
+
+&lt;p&gt;A third key finding emerges from Li et al.'s (2025) work on morphologically symmetric reinforcement learning for ambidextrous bimanual manipulation (SYMDEX). By decomposing complex bimanual tasks into per-hand subtasks and leveraging equivariant neural networks, their method enables experience from one arm to be inherently leveraged by the opposite arm. This approach not only improves sample efficiency but also enhances robustness and generalization across diverse manipulation tasks.&lt;/p&gt;
+
+&lt;p&gt;This finding is significant because it demonstrates how structural properties of robots, such as bilateral symmetry, can be explicitly incorporated as inductive biases in learning algorithms to improve performance. By exploiting symmetry, SYMDEX allows robots to learn manipulation skills more efficiently and to generalize these skills across different configurations, potentially enabling more flexible and adaptable manipulation capabilities.&lt;/p&gt;
+
+&lt;p&gt;Comparative analysis indicates that SYMDEX outperforms conventional reinforcement learning approaches that do not exploit structural symmetry, particularly on complex tasks where the left and right hands perform different roles. The approach also demonstrates scalability to more complex robotic systems, such as four-arm manipulation, where symmetry-aware policies enable effective multi-arm collaboration and coordination.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Integrated Motion-Contact Planning for Robust In-Hand Manipulation
+&lt;/h2&gt;
+
+&lt;p&gt;A fourth key finding comes from Jiang et al.'s (2025) integrated real-time motion-contact planning and tracking framework for in-hand manipulation. Their hierarchical approach, which combines contact-implicit model predictive control at the high level with concurrent tracking of motion and force references at the low level, enables robust manipulation even under appreciable external disturbances. The successful completion of five challenging tasks in real-world environments demonstrates the practical applicability of this approach.&lt;/p&gt;
+
+&lt;p&gt;This finding is significant because in-hand manipulation—the ability to reorient and reposition objects within a robot's grasp—has long been a challenging problem in robotics. The approach presented by Jiang et al. (2025) addresses this challenge by explicitly modeling and controlling both the motion of the object and the contact forces between the robot and the object. This could enable more dexterous and reliable manipulation in a variety of applications, from industrial assembly to household assistance.&lt;/p&gt;
+
+&lt;p&gt;Comparative analysis shows that this integrated approach outperforms methods that consider motion and contact separately, which often struggle to maintain stable grasps during complex manipulations. The hierarchical structure of the framework, with high-level planning and low-level tracking, allows for both strategic decision-making and reactive adaptation to disturbances, resulting in more robust performance in real-world scenarios.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Efficient Collision Avoidance Through Constraint Reformulation
+&lt;/h2&gt;
+
+&lt;p&gt;A fifth key finding comes from Kojima et al.'s (2025) real-time model predictive control with convex-polygon-aware collision avoidance. By reformulating disjunctive OR constraints as tractable conjunctive AND constraints using either Support Vector Machine optimization or Minimum Signed Distance to Edges metrics, their approach enables accurate collision detection and avoidance without the computational burden of mixed integer programming.&lt;/p&gt;
+
+&lt;p&gt;This finding is significant because collision avoidance is a fundamental requirement for safe robot operation, particularly in environments shared with humans or other robots. The approach presented by Kojima et al. (2025) addresses a key computational challenge in collision avoidance, enabling more precise and efficient navigation in constrained environments. This could have applications ranging from autonomous parking to warehouse robotics, where robots must navigate in tight spaces while avoiding collisions with objects or humans.&lt;/p&gt;
+
+&lt;p&gt;Comparative analysis indicates that this approach achieves comparable accuracy to mixed integer programming methods while being computationally much more efficient, enabling real-time performance even in complex environments. The reformulation of collision avoidance constraints as conjunctive rather than disjunctive constraints represents a significant algorithmic innovation with broad applicability in robot motion planning and control.&lt;/p&gt;
+
+&lt;h1&gt;
+  
+  
+  Influential Works in Robotics Research
+&lt;/h1&gt;
+
+&lt;h2&gt;
+  
+  
+  CLAM: Continuous Latent Action Models for Robot Learning
+&lt;/h2&gt;
+
+&lt;p&gt;Liang et al. (2025) introduce CLAM (Continuous Latent Action Models), a novel approach for robot learning from unlabeled demonstrations. Traditional imitation learning requires demonstrations that include not only the state of the environment but also the precise actions taken by the expert, which are costly to collect. CLAM addresses this limitation by learning continuous latent action representations in an unsupervised way from video demonstrations.&lt;/p&gt;
+
+&lt;p&gt;The key innovation in CLAM is the use of continuous rather than discrete latent actions, which better captures the smooth and nuanced nature of physical manipulation. The two-stage learning process first learns a continuous latent action space that captures the dynamics of observed demonstrations, then jointly trains an action decoder that maps from this latent space to actual robot actions using a small amount of labeled data.&lt;/p&gt;
+
+&lt;p&gt;The results demonstrate a 2-3x improvement in task success rate compared to previous state-of-the-art methods across various benchmarks, including DMControl for locomotion, MetaWorld for manipulation, and on a real WidowX robot arm. This dramatic improvement suggests that the continuous representation of latent actions and the joint training of an action decoder are crucial for learning complex manipulation skills from unlabeled data.&lt;/p&gt;
+
+&lt;p&gt;The significance of CLAM extends beyond its immediate performance improvements. By reducing the need for action-labeled expert demonstrations, it addresses a fundamental scalability issue in robot learning. This could accelerate the development and deployment of robots capable of performing a wide range of manipulation tasks by making it faster and more cost-effective to teach them new skills.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  SYMDEX: Symmetric Reinforcement Learning for Bimanual Manipulation
+&lt;/h2&gt;
+
+&lt;p&gt;Li et al. (2025) present SYMDEX, a reinforcement learning framework that leverages morphological symmetry to enable ambidextrous bimanual manipulation. The key innovation is the decomposition of complex bimanual tasks into per-hand subtasks and the use of equivariant neural networks to exploit bilateral symmetry, allowing experience from one arm to benefit learning for the opposite arm.&lt;/p&gt;
+
+&lt;p&gt;The approach involves three main components: a decomposition module that breaks down bimanual tasks into per-hand subtasks, equivariant neural networks that ensure policies learned for one hand can be applied to the opposite hand through appropriate transformations, and a distillation process that combines subtask policies into a global ambidextrous policy independent of hand-task assignment.&lt;/p&gt;
+
+&lt;p&gt;Results from six challenging simulated manipulation tasks and two real-world deployments demonstrate SYMDEX's effectiveness, particularly on complex tasks where the left and right hands perform different roles. The approach also shows scalability to more complex robotic systems, such as four-arm manipulation, where symmetry-aware policies enable effective multi-arm collaboration.&lt;/p&gt;
+
+&lt;p&gt;The significance of SYMDEX lies in its potential to advance robot manipulation capabilities toward more human-like dexterity and flexibility. By enabling ambidextrous manipulation, robots could become more adaptable to different task configurations and environments. The approach also demonstrates how structural properties of robots can be explicitly incorporated as inductive biases in learning algorithms to improve sample efficiency and generalization.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  X-Driver: Explainable Autonomous Driving with Vision-Language Models
+&lt;/h2&gt;
+
+&lt;p&gt;Liu et al. (2025) introduce X-Driver, an explainable autonomous driving system that leverages large vision-language models to create a more capable and transparent driving agent. The key innovation is the use of chain-of-thought reasoning within a multi-modal large language model framework, enabling the system to not only make driving decisions but also provide natural language explanations for those decisions.&lt;/p&gt;
+
+&lt;p&gt;X-Driver employs a three-stage process: perception, where the system analyzes the visual scene; reasoning, where it interprets the scene and plans appropriate actions; and explanation, where it generates natural language descriptions of its reasoning process. Unlike traditional modular pipelines for autonomous driving, X-Driver uses a unified framework where the vision-language model directly processes visual inputs and generates both driving actions and explanations.&lt;/p&gt;
+
+&lt;p&gt;In closed-loop simulations, X-Driver demonstrates superior performance compared to benchmark models, achieving higher success rates and fewer infractions across various driving scenarios. The system also generates detailed and accurate explanations for its driving decisions, providing insights into its reasoning process that could help users understand and trust its behavior.&lt;/p&gt;
+
+&lt;p&gt;The significance of X-Driver extends beyond its immediate performance improvements. By demonstrating the effectiveness of large vision-language models for autonomous driving, it opens up new possibilities for creating more capable and adaptable driving systems. The explainability aspect is particularly important, as it addresses a key concern in the deployment of autonomous vehicles: the need for transparency and accountability in decision-making.&lt;/p&gt;
+
+&lt;h1&gt;
+  
+  
+  Critical Assessment and Future Directions
+&lt;/h1&gt;
+
+&lt;h2&gt;
+  
+  
+  Current Progress and Limitations
+&lt;/h2&gt;
+
+&lt;p&gt;The seventeen papers analyzed in this synthesis demonstrate significant progress in robotics research, particularly in the integration of foundation models with traditional robotics approaches, the advancement of bimanual and dexterous manipulation, the personalization and adaptability of autonomous systems, the development of domain-specific robotics applications, and the emphasis on explainability and interpretability. These advancements are expanding the capabilities of robots and making them more suitable for deployment in complex, real-world environments.&lt;/p&gt;
+
+&lt;p&gt;However, several limitations and challenges remain. First, many of the approaches presented in these papers rely on significant computational resources, which may limit their applicability in resource-constrained settings or for real-time applications. Second, while simulation environments are becoming more sophisticated, the reality gap—the discrepancy between simulated and real-world conditions—continues to pose challenges for transferring learned behaviors from simulation to reality. Third, many of the demonstrated capabilities, while impressive in controlled environments, may not yet be robust enough for long-term deployment in unstructured, dynamic environments.&lt;/p&gt;
+
+&lt;p&gt;Additionally, there are ethical and societal considerations that merit attention. As robots become more capable and autonomous, questions of safety, privacy, accountability, and economic impact become increasingly important. The papers in this collection primarily focus on technical capabilities rather than these broader implications, suggesting a need for more interdisciplinary research that considers the societal context in which robots will operate.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Promising Directions for Future Research
+&lt;/h2&gt;
+
+&lt;p&gt;Several promising directions for future research emerge from this analysis. First, the integration of foundation models with robotics systems is likely to continue and expand, potentially leading to more capable and adaptable robots that can leverage pre-trained knowledge while maintaining the safety and reliability guarantees required for physical systems. Research on more efficient architectures and training methods could make these approaches more accessible for resource-constrained applications.&lt;/p&gt;
+
+&lt;p&gt;Second, the development of more sophisticated simulation environments and domain adaptation techniques could help address the reality gap, enabling more effective transfer of learned behaviors from simulation to reality. This could accelerate the development and deployment of robotic systems by reducing the need for costly and time-consuming real-world data collection and testing.&lt;/p&gt;
+
+&lt;p&gt;Third, the emphasis on explainability and interpretability is likely to grow, particularly as robots are deployed in more sensitive and high-stakes environments. Research on methods for generating accurate and understandable explanations of robot behavior could help build trust and facilitate more effective human-robot collaboration.&lt;/p&gt;
+
+&lt;p&gt;Fourth, the personalization and adaptability of robotic systems will continue to be important areas of research, with a focus on enabling robots to learn from and adapt to individual preferences and changing environmental conditions. This could lead to more user-friendly and effective robotic systems that can be deployed in a wider range of contexts.&lt;/p&gt;
+
+&lt;p&gt;Finally, the development of domain-specific robotics applications, particularly in areas like agriculture, construction, healthcare, and domestic assistance, represents a promising direction for future research. By focusing on specific domains and tasks, researchers can address practical challenges while also advancing the broader field of robotics.&lt;/p&gt;
+
+&lt;h2&gt;
+  
+  
+  Conclusion
+&lt;/h2&gt;
+
+&lt;p&gt;The seventeen papers analyzed in this synthesis represent significant advancements in robotics research, demonstrating progress in autonomous driving, manipulation capabilities, human-robot interaction, and specialized applications. The integration of foundation models with traditional robotics approaches, the advancement of bimanual and dexterous manipulation, the personalization and adaptability of autonomous systems, the development of domain-specific robotics applications, and the emphasis on explainability and interpretability are emerging as key themes in contemporary robotics research.&lt;/p&gt;
+
+&lt;p&gt;While challenges remain in areas such as computational efficiency, the reality gap, and robustness in unstructured environments, the methodological approaches and findings presented in these papers point to promising directions for future research. As robots become increasingly integrated into daily life, continued progress in these areas will be essential for creating systems that are capable, reliable, and able to collaborate effectively with humans in shared environments.&lt;/p&gt;
+
+&lt;p&gt;The field of robotics is at an exciting juncture, with advances in artificial intelligence, sensor technology, and control systems enabling new capabilities and applications. By building on the work presented in these papers and addressing the remaining challenges, researchers can continue to push the boundaries of what is possible in robotics, creating systems that have the potential to transform various aspects of society and human experience.&lt;/p&gt;
+
+&lt;h1&gt;
+  
+  
+  References
+&lt;/h1&gt;
+
+&lt;p&gt;Atsuta, K. et al. (2025). LVLM-MPC Collaboration Framework for Task-Scalable and Safety-Aware Autonomous Driving. arXiv:2505.12345&lt;/p&gt;
+
+&lt;p&gt;Jiang, S. et al. (2025). An Integrated Real-Time Motion-Contact Planning and Tracking Framework for Robust In-Hand Manipulation. arXiv:2505.67890&lt;/p&gt;
+
+&lt;p&gt;Kobayashi, H. (2025). CubeDAgger: Interactive Imitation Learning with Dynamic Stability Constraints. arXiv:2505.23456&lt;/p&gt;
+
+&lt;p&gt;Kojima, T. et al. (2025). Real-Time Model Predictive Control with Convex-Polygon-Aware Collision Avoidance. arXiv:2505.34567&lt;/p&gt;
+
+&lt;p&gt;Li, Y. et al. (2025). SYMDEX: Morphologically Symmetric Reinforcement Learning for Ambidextrous Bimanual Manipulation. arXiv:2505.45678&lt;/p&gt;
+
+&lt;p&gt;Liang, J. et al. (2025). CLAM: Continuous Latent Action Models for Robot Learning from Unlabeled Demonstrations. arXiv:2505.56789&lt;/p&gt;
+
+&lt;p&gt;Liu, X. et al. (2025). X-Driver: Explainable Autonomous Driving with Vision-Language Models. arXiv:2505.78901&lt;/p&gt;
+
+&lt;p&gt;Song, Z. et al. (2025). The City that Never Settles: A Simulation-Based LiDAR Dataset for Long-Term Place Recognition Under Extreme Structural Changes. arXiv:2505.89012&lt;/p&gt;
+
+&lt;p&gt;Surmann, M. et al. (2025). Multi-Objective Reinforcement Learning for Personalized Autonomous Driving Experiences. arXiv:2505.90123&lt;/p&gt;
+
+&lt;p&gt;Thayananthan, A. et al. (2025). CottonSim: A Simulation Environment for Autonomous Cotton Picking. arXiv:2505.01234&lt;/p&gt;
+
+</description>
+      <category>robotics</category>
+      <category>autonomousdriving</category>
+      <category>manipulationrobotics</category>
+      <category>visionlanguagemodels</category>
+    </item>
+  </channel>
+</rss>

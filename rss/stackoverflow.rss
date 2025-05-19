@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+     xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+     xmlns:georss="http://www.georss.org/georss"
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+>
+<channel>
+   <title>Stack Overflow Blog</title>
+   <description>Essays, opinions, and advice on the act of computer programming from Stack Overflow.</description>
+   <atom:link href="https://stackoverflow.blog/feed/" rel="self" type="application/rss+xml" />
+   <link>https://stackoverflow.blog/</link>
+   <lastBuildDate>Fri, 09 May 2025 22:00:51 GMT</lastBuildDate>
+   <language>en-US</language>
+   <sy:updatePeriod>hourly</sy:updatePeriod>
+   <sy:updateFrequency>1</sy:updateFrequency>
+   <item>
+       <guid isPermaLink="false">1fc0a5bd-db92-4a36-92ac-9d1b0e2351c1</guid>
+       <title>Using AI to find patient zero in  marketing campaigns</title>
+       <link>https://stackoverflow.blog/2025/05/09/using-ai-to-find-patient-zero-in-marketing-campaigns/</link>
+       <pubDate>Fri, 09 May 2025 07:40:00 GMT</pubDate>
+       <description><![CDATA[Ben Popper chats with CTO Abby Kearns about how Alembic is using composite AI and lessons learned from contract tracing and epidemiology to help companies map customer journeys and understand the ROI of their marketing spend. Ben and Abby also talk about where open-source models have the edge and the challenges startups face in building trust with big companies and securing the resources they need to grow.]]></description>
+       <dc:creator><![CDATA[Eira May]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[ai]]></category>
+       <category><![CDATA[open-source]]></category>
+       <category><![CDATA[startups]]></category>
+       <category><![CDATA[data]]></category>
+       <category><![CDATA[data-science]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">8e106113-3b6c-46e7-9307-9bfe2a790b1c</guid>
+       <title>Best practices for third-party data acquisition: powering AI context</title>
+       <link>https://stackoverflow.blog/2025/05/08/best-practices-third-party-data-acquisition-powering-ai-context/</link>
+       <pubDate>Thu, 08 May 2025 14:00:00 GMT</pubDate>
+       <description><![CDATA[ This post explores crucial lessons learned in the trenches of data licensing, drawing insights from Stack Overflow and the growing importance of socially responsible data practices in a changing internet landscape. ]]></description>
+       <dc:creator><![CDATA[Ellen Brandenberger, David Gibson]]></dc:creator>
+       <category><![CDATA[business]]></category>
+       <category><![CDATA[data]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">6e1c68eb-6403-4821-ade4-55329d3ec30e</guid>
+       <title>A new look for what’s next</title>
+       <link>https://stackoverflow.blog/2025/05/08/a-new-look-for-whats-next/</link>
+       <pubDate>Thu, 08 May 2025 13:59:00 GMT</pubDate>
+       <description><![CDATA[The world has changed a lot since Stack Overflow started. It&#x27;s time for our brand to change with it. ]]></description>
+       <dc:creator><![CDATA[Prashanth Chandrasekar, David Longworth]]></dc:creator>
+       <category><![CDATA[company]]></category>
+       <category><![CDATA[brand]]></category>
+       <category><![CDATA[se-all]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">081ae1fe-b726-46ba-89a1-555c5f289479</guid>
+       <title>Moving beyond velocity: Measuring real business impact</title>
+       <link>https://stackoverflow.blog/2025/05/08/moving-beyond-velocity-measuring-real-business-impact/</link>
+       <pubDate>Thu, 08 May 2025 07:40:00 GMT</pubDate>
+       <description><![CDATA[How can engineering teams move beyond traditional metrics like velocity to create real business impact?]]></description>
+       <dc:creator><![CDATA[Katja Skafar]]></dc:creator>
+       <category><![CDATA[leaders-of-code]]></category>
+       <category><![CDATA[business]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[engineering-leadership]]></category>
+       <category><![CDATA[development-velocity]]></category>
+       <category><![CDATA[velocity]]></category>
+       <category><![CDATA[metrics]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">28dcf997-e0d9-4147-a22c-1ff723599c91</guid>
+       <title>Behind the scenes: Community “management” at Stack Overflow.</title>
+       <link>https://stackoverflow.blog/2025/05/07/behind-the-scenes-community-management-at-stack-overflow/</link>
+       <pubDate>Wed, 07 May 2025 14:00:00 GMT</pubDate>
+       <description><![CDATA[Community “management” at its core is supporting and enabling communities to manage themselves.]]></description>
+       <dc:creator><![CDATA[Rosie]]></dc:creator>
+       <category><![CDATA[community]]></category>
+       <category><![CDATA[se-all]]></category>
+       <category><![CDATA[se-tech]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">34c5980c-64fb-4c80-b177-fdc8c23b7ca6</guid>
+       <title>Mastering microservices with a former Uber and Netflix architect</title>
+       <link>https://stackoverflow.blog/2025/05/06/mastering-microservices-with-a-former-uber-and-netflix-architect/</link>
+       <pubDate>Tue, 06 May 2025 07:40:00 GMT</pubDate>
+       <description><![CDATA[Ryan welcomes Jeu George, cofounder and CEO of Orkes, to the show for a conversation about microservices orchestration. They talk through the evolution of microservices, the role of orchestration tools, and the importance of reliability in distributed systems. Their discussion also touches on the transition from open-source solutions to managed services, integration opportunities for AI agents, and the future of microservices in cloud computing.]]></description>
+       <dc:creator><![CDATA[Eira May]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[ai]]></category>
+       <category><![CDATA[architecture]]></category>
+       <category><![CDATA[software-architecture]]></category>
+       <category><![CDATA[microservices]]></category>
+       <category><![CDATA[workflow-automation]]></category>
+       <category><![CDATA[platform-engineering]]></category>
+       <category><![CDATA[agentic-ai]]></category>
+       <category><![CDATA[ai-agents]]></category>
+       <category><![CDATA[autonomous-agents]]></category>
+       <category><![CDATA[cloud-computing]]></category>
+       <category><![CDATA[open-source]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">a2a2c9e7-2fed-4936-b82a-2ef0a1b83aa3</guid>
+       <title>The consensus is TypeScript is the easiest way to build on blockchain</title>
+       <link>https://stackoverflow.blog/2025/05/05/the-consensus-is-typescript-is-the-easiest-way-to-build-on-blockchain/</link>
+       <pubDate>Mon, 05 May 2025 14:00:00 GMT</pubDate>
+       <description><![CDATA[You might already be familiar with the programming language best suited to building on blockchains. ]]></description>
+       <dc:creator><![CDATA[Larkin Young]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[web3]]></category>
+       <category><![CDATA[blockchain]]></category>
+       <category><![CDATA[typescript]]></category>
+       <category><![CDATA[partner-content]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">33ced5fa-4d8a-457b-80ae-0d34a01fd10f</guid>
+       <title>Improving on a 30-year-old hardware architecture</title>
+       <link>https://stackoverflow.blog/2025/05/02/improving-on-a-30-year-old-hardware-architecture/</link>
+       <pubDate>Fri, 02 May 2025 07:40:00 GMT</pubDate>
+       <description><![CDATA[At HumanX 2025, Ryan chatted with Rodrigo Liang, cofounder and CEO of SambaNova, about reimagining 30-year-old hardware architecture for the AI era. ]]></description>
+       <dc:creator><![CDATA[Eira May]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[generative-ai]]></category>
+       <category><![CDATA[ai]]></category>
+       <category><![CDATA[hardware]]></category>
+       <category><![CDATA[architecture]]></category>
+       <category><![CDATA[software-architecture]]></category>
+       <category><![CDATA[llm]]></category>
+       <category><![CDATA[humanx]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">d04c1cc7-8a11-4b3e-9761-cb23f275a793</guid>
+       <title>Without foundational governance, every AI deployment is a liability in disguise: Q&amp;A with Jack Berkowitz of Securiti</title>
+       <link>https://stackoverflow.blog/2025/05/01/without-foundational-governance-every-ai-deployment-is-a-liability-in-disguise-q-and-a-with-jack-berkowitz-of-securiti/</link>
+       <pubDate>Thu, 01 May 2025 15:30:12 GMT</pubDate>
+       <description><![CDATA[Avoiding bad data is just as important in AI; it can open you to fines, lawsuits, and lost customers.]]></description>
+       <dc:creator><![CDATA[Ryan Donovan]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[security]]></category>
+       <category><![CDATA[ai]]></category>
+       <category><![CDATA[data]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">542ded6a-92f9-4ee3-b910-564b26e8574c</guid>
+       <title>“We’re not replacing you; we’re with you”: Where AI meets infrastructure</title>
+       <link>https://stackoverflow.blog/2025/04/29/we-re-not-replacing-you-we-re-with-you-where-ai-meets-infrastructure/</link>
+       <pubDate>Tue, 29 Apr 2025 07:40:00 GMT</pubDate>
+       <description><![CDATA[Ryan talks with Greg Fallon, CEO of Geminus, about the intersection of AI and physical infrastructure, the evolution of simulation technology, the role of synthetic data in machine learning, and the importance of building trust in AI systems. Their conversation also touches on automation, security concerns inherent in AI-driven infrastructure, and AI’s potential to revolutionize how complex infrastructure systems are managed.]]></description>
+       <dc:creator><![CDATA[Eira May]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[generative-ai]]></category>
+       <category><![CDATA[ai]]></category>
+       <category><![CDATA[infrastructure-management]]></category>
+       <category><![CDATA[infrastructure-automation]]></category>
+       <category><![CDATA[synthetic-data]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">03c43394-cac9-4701-af50-b0f4e630eb97</guid>
+       <title>Banking on innovation: Engineering excellence in regulated financial services</title>
+       <link>https://stackoverflow.blog/2025/04/28/banking-on-innovation-engineering-excellence-in-regulated-financial-services/</link>
+       <pubDate>Mon, 28 Apr 2025 16:15:00 GMT</pubDate>
+       <description><![CDATA[Financial institutions face a balancing act between tech innovation and strict regulations. As customer expectations for improved user experience and demands from those tasked with enhancing features keep rising, engineering teams need to find a harmonious middle ground.]]></description>
+       <dc:creator><![CDATA[Katja Skafar, Susi O'Neill]]></dc:creator>
+       <category><![CDATA[leaders-of-code]]></category>
+       <category><![CDATA[business]]></category>
+       <category><![CDATA[software-development]]></category>
+       <category><![CDATA[engineering]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">a2ebfc26-d36a-4960-9d55-daef5ff386c4</guid>
+       <title>How self-supervised language revolutionized natural language processing and gen AI</title>
+       <link>https://stackoverflow.blog/2025/04/28/how-self-supervised-language-revolutionized-natural-language-processing-and-gen-ai/</link>
+       <pubDate>Mon, 28 Apr 2025 16:00:00 GMT</pubDate>
+       <description><![CDATA[Self-supervised learning is a key advancement that revolutionized natural language processing and generative AI. Here’s how it works and two examples of how it is used to train language models.]]></description>
+       <dc:creator><![CDATA[Cameron R. Wolfe, PhD]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[llm]]></category>
+       <category><![CDATA[ai]]></category>
+       <category><![CDATA[contributed]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">ee5f2614-0522-4a00-8d91-4b72d9766c85</guid>
+       <title>Grab bag! On the floor at HumanX</title>
+       <link>https://stackoverflow.blog/2025/04/25/grab-bag-on-the-floor-at-humanx/</link>
+       <pubDate>Fri, 25 Apr 2025 07:40:00 GMT</pubDate>
+       <description><![CDATA[Today’s episode is a roundup of spontaneous, on-the-ground conversations from HumanX 2025, featuring guests from CodeConductor, DDN, Cloudflare, and Galileo.]]></description>
+       <dc:creator><![CDATA[Eira May]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[generative-ai]]></category>
+       <category><![CDATA[ai]]></category>
+       <category><![CDATA[data-quality]]></category>
+       <category><![CDATA[humanx]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">e5945136-0fc1-43e0-9a7b-beba326c74a3</guid>
+       <title>Standardization and simplification as key to engineering excellence </title>
+       <link>https://stackoverflow.blog/2025/04/24/standardization-and-simplificatio-key-to-engineering-excellence/</link>
+       <pubDate>Thu, 24 Apr 2025 07:40:00 GMT</pubDate>
+       <description><![CDATA[In this episode of Leaders of Code, we chat with guests from Lloyds Banking Group about their focus on engineering excellence and the need for organizations to adapt to new technologies while ensuring customer safety and meeting their expectations.]]></description>
+       <dc:creator><![CDATA[Katja Skafar]]></dc:creator>
+       <category><![CDATA[leaders-of-code]]></category>
+       <category><![CDATA[business]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[engineering-leadership]]></category>
+       <category><![CDATA[generative-ai]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">6cd208df-49b2-4d49-aade-4c49f546e92e</guid>
+       <title>Community Products roadmap update, April 2025</title>
+       <link>https://stackoverflow.blog/2025/04/23/community-products-roadmap-update-april-2025/</link>
+       <pubDate>Wed, 23 Apr 2025 15:00:57 GMT</pubDate>
+       <description><![CDATA[An update on recent launches and the upcoming roadmap]]></description>
+       <dc:creator><![CDATA[Des Darilek]]></dc:creator>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[se-all]]></category>
+       <category><![CDATA[roadmap]]></category>
+       <category><![CDATA[community]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">ef80d5cb-3c28-4686-8bfc-a8ef419d8382</guid>
+       <title>Visually orchestrating data diagnostics but platform agnostic</title>
+       <link>https://stackoverflow.blog/2025/04/22/visually-orchestrating-data-diagnostics-but-platform-agnostic/</link>
+       <pubDate>Tue, 22 Apr 2025 04:48:00 GMT</pubDate>
+       <description><![CDATA[Ryan chats with Dataiku CEO and cofounder Florian Douetteau about the complexities of the genAI data stack and how his company is orchestrating it. ]]></description>
+       <dc:creator><![CDATA[Ryan Donovan]]></dc:creator>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[generative-ai]]></category>
+       <category><![CDATA[data]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[se-tech]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">7e71ab9f-69d9-4b88-8ddf-d4d2215edde9</guid>
+       <title>Generating components, not tokens</title>
+       <link>https://stackoverflow.blog/2025/04/18/generating-components-not-tokens/</link>
+       <pubDate>Fri, 18 Apr 2025 04:40:00 GMT</pubDate>
+       <description><![CDATA[On today’s episode, Ben and Ryan chat with Laly Bar-Ilan, Chief Scientist at Bit. ]]></description>
+       <dc:creator><![CDATA[Ryan Donovan]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[ai]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">eb11aea5-b646-430f-87b8-01aa9bbc52b3</guid>
+       <title>Wait, what is agentic AI?</title>
+       <link>https://stackoverflow.blog/2025/04/17/wait-what-is-agentic-ai/</link>
+       <pubDate>Thu, 17 Apr 2025 16:00:00 GMT</pubDate>
+       <description><![CDATA[Is “agentic AI” just a buzzword, or is it the sea change it seems?]]></description>
+       <dc:creator><![CDATA[Eira May]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[ai]]></category>
+       <category><![CDATA[autonomous-agents]]></category>
+       <category><![CDATA[ai-agents]]></category>
+       <category><![CDATA[agentic-ai]]></category>
+       <category><![CDATA[autonomous-agents]]></category>
+       <category><![CDATA[developer-tools]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">71b602ff-8505-45a3-981c-2e4671e8b0c2</guid>
+       <title>Engineering teams need to adapt to AI’s scaling challenges</title>
+       <link>https://stackoverflow.blog/2025/04/16/engineering-teams-need-to-adapt-to-ai-scaling-challenges/</link>
+       <pubDate>Wed, 16 Apr 2025 16:12:00 GMT</pubDate>
+       <description><![CDATA[AI is not a linear process. To scale effectively, engineering leaders must account for varied edge cases, presenting a new set of challenges.]]></description>
+       <dc:creator><![CDATA[Katja Skafar, Susi O'Neill]]></dc:creator>
+       <category><![CDATA[business]]></category>
+       <category><![CDATA[leaders-of-code]]></category>
+       <category><![CDATA[engineering-leadership]]></category>
+       <category><![CDATA[engineering]]></category>
+       <category><![CDATA[generative-ai]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">cf242495-69d0-4db9-bec4-978d151bc876</guid>
+       <title>WBIT #7: Exploring WebAssembly with the first SO user to get 10k rep</title>
+       <link>https://stackoverflow.blog/2025/04/16/wbit-7-exploring-webassembly-with-the-first-so-user-to-get-10k-rep/</link>
+       <pubDate>Wed, 16 Apr 2025 04:40:00 GMT</pubDate>
+       <description><![CDATA[Kyle interviews Michael Stum, a former Stacker who started (and returned) to answering questions on the community site. ]]></description>
+       <dc:creator><![CDATA[Ryan Donovan]]></dc:creator>
+       <category><![CDATA[wbit]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">6961af9e-5675-496e-8953-62ccdfd960ac</guid>
+       <title>Smarter insights, stronger teams: New features for Stack Overflow for Teams</title>
+       <link>https://stackoverflow.blog/2025/04/15/smarter-insights-stronger-teams-new-features-for-stack-overflow-for-teams/</link>
+       <pubDate>Tue, 15 Apr 2025 13:00:00 GMT</pubDate>
+       <description><![CDATA[2025.3 | Teams Enterprise Release]]></description>
+       <dc:creator><![CDATA[Carrie Koos]]></dc:creator>
+       <category><![CDATA[release]]></category>
+       <category><![CDATA[stack-overflow-for-teams]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">eb339c31-15f7-4bcf-ae6f-74cf1ed984c6</guid>
+       <title>How AI can prevent clinician burnout</title>
+       <link>https://stackoverflow.blog/2025/04/15/how-ai-can-prevent-clinician-burnout/</link>
+       <pubDate>Tue, 15 Apr 2025 07:40:00 GMT</pubDate>
+       <description><![CDATA[In today’s episode, Ryan sits down with Richard “Spencer” Schaefer, cofounder and CTO of Lunar Analytics and a federal AI officer, and Caroline Zhang, cofounder and CTO of Knowtex, which provides AI-powered voice technology to automate workflows. They talk about safeguarding patient privacy, how AI changes doctor-patient interactions and healthcare delivery, the challenges inherent in rolling out AI technology, and the importance of quality data to fuel AI initiatives. Also included: a chat with Jeff Berkowitz, cofounder and CEO of Delve Deep Learning.]]></description>
+       <dc:creator><![CDATA[Eira May]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[generative-ai]]></category>
+       <category><![CDATA[ai]]></category>
+       <category><![CDATA[data-quality]]></category>
+       <category><![CDATA[healthcare]]></category>
+       <category><![CDATA[privacy]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">82488e1d-cb22-4e62-914b-0d435fcb3782</guid>
+       <title>Like self-driving cars, fully AI-automated sysadmins don&#x27;t exist</title>
+       <link>https://stackoverflow.blog/2025/04/14/like-self-driving-cars-fully-ai-automated-sysadmins-don-t-exist/</link>
+       <pubDate>Mon, 14 Apr 2025 14:10:54 GMT</pubDate>
+       <description><![CDATA[As with cars, there are few system administration tasks that involve little to no automation. ]]></description>
+       <dc:creator><![CDATA[Scott McCarty]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[automation]]></category>
+       <category><![CDATA[devops]]></category>
+       <category><![CDATA[ai]]></category>
+       <category><![CDATA[contributed]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">968d35bd-508a-40b7-a88d-64e74e4abd62</guid>
+       <title>How do you fact-check an AI?</title>
+       <link>https://stackoverflow.blog/2025/04/11/how-do-you-fact-check-an-ai/</link>
+       <pubDate>Fri, 11 Apr 2025 07:40:00 GMT</pubDate>
+       <description><![CDATA[Ryan chats with Amr Awadallah, founder and CEO of GenAI platform Vectara about how retrieval-augmented generation (RAG) has advanced, why fact-checking and accurate data are essential in building AI applications, and how Vectara’s Mockingbird model seeks to minimize hallucinations.]]></description>
+       <dc:creator><![CDATA[Eira May]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[generative-ai]]></category>
+       <category><![CDATA[ai]]></category>
+       <category><![CDATA[retrieval-augmented-generation]]></category>
+       <category><![CDATA[data-quality]]></category>
+       <category><![CDATA[data-quality]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">c2deb037-a73d-4821-9bc7-56bbf07dcdf1</guid>
+       <title>“There is a real cost to moving fast”: Using AI to accelerate drug discovery</title>
+       <link>https://stackoverflow.blog/2025/04/10/there-is-a-real-cost-to-moving-fast-using-ai-to-accelerate-drug-discovery/</link>
+       <pubDate>Thu, 10 Apr 2025 14:06:00 GMT</pubDate>
+       <description><![CDATA[On this episode of Leaders of Code, Maureen Makes, VP of Engineering at Recursion, discusses AI&#x27;s role in drug discovery, scaling and integration challenges, and the importance of innovation in achieving the high standards desired.]]></description>
+       <dc:creator><![CDATA[Katja Skafar]]></dc:creator>
+       <category><![CDATA[leaders-of-code]]></category>
+       <category><![CDATA[business]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[generative-ai]]></category>
+       <category><![CDATA[software-development]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">343cf392-f78f-4479-8304-a7275652dc56</guid>
+       <title>WBIT #6: Be curious, ask questions, and don’t argue with JavaScript</title>
+       <link>https://stackoverflow.blog/2025/04/09/wbit-6-be-curious-ask-questions-and-don-t-argue-with-javascript/</link>
+       <pubDate>Wed, 09 Apr 2025 04:41:00 GMT</pubDate>
+       <description><![CDATA[Kyle chats with Jesse Tomchak a software engineer at ClickUp about all the spicy backend takes they could find. ]]></description>
+       <dc:creator><![CDATA[Ryan Donovan]]></dc:creator>
+       <category><![CDATA[wbit]]></category>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[javascript]]></category>
+       <category><![CDATA[podcast]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">dc3d826e-94f8-4693-b46c-e8c1fc0ebc6c</guid>
+       <title>Bottom of the first: A veteran VC’s take on the AI landscape</title>
+       <link>https://stackoverflow.blog/2025/04/08/bottom-of-the-first-a-veteran-vc-s-take-on-the-ai-landscape/</link>
+       <pubDate>Tue, 08 Apr 2025 07:40:00 GMT</pubDate>
+       <description><![CDATA[Ryan welcomes Tomasz Tunguz of Theory Ventures back to the podcast to talk about the intersection of AI and venture capital, the implications of AI on the labor market, and the future of AI applications. ]]></description>
+       <dc:creator><![CDATA[Eira May]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[generative-ai]]></category>
+       <category><![CDATA[ai]]></category>
+       <category><![CDATA[funding]]></category>
+       <category><![CDATA[startups]]></category>
+       <category><![CDATA[open-source-2]]></category>
+       <category><![CDATA[open-source]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">b4f6b816-07b8-4594-9686-26cfcc04b360</guid>
+       <title>Open-source AI: Are younger developers leading the way?</title>
+       <link>https://stackoverflow.blog/2025/04/07/open-source-ai-are-younger-developers-leading-the-way/</link>
+       <pubDate>Mon, 07 Apr 2025 14:00:00 GMT</pubDate>
+       <description><![CDATA[In March, over 1,000 developers and technologists gave us insights into what they think about open source and the role it plays with AI.]]></description>
+       <dc:creator><![CDATA[Erin Yepis]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[survey]]></category>
+       <category><![CDATA[open-source]]></category>
+       <category><![CDATA[ai]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">5955b744-57e0-4f5d-baeb-1eeb64a06c87</guid>
+       <title>Using GenAI as a learning tool, not a crutch</title>
+       <link>https://stackoverflow.blog/2025/04/04/using-genai-as-a-learning-tool-not-a-crutch/</link>
+       <pubDate>Fri, 04 Apr 2025 16:15:00 GMT</pubDate>
+       <description><![CDATA[AI is changing how we think about coding. While tools evolve, critical thinking, problem-solving, and creativity remain the essential skills for top developers.]]></description>
+       <dc:creator><![CDATA[Katja Skafar, Susi O'Neill]]></dc:creator>
+       <category><![CDATA[leaders-of-code]]></category>
+       <category><![CDATA[business]]></category>
+       <category><![CDATA[ai-coding]]></category>
+       <category><![CDATA[software-development]]></category>
+       <category><![CDATA[generative-ai]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">e3b3c2f9-94dc-49bc-b4c4-99e212bb4a21</guid>
+       <title>Is AI a bubble or a revolution? The answer is yes.</title>
+       <link>https://stackoverflow.blog/2025/04/04/is-ai-a-bubble-or-a-revolution-the-answer-is-yes/</link>
+       <pubDate>Fri, 04 Apr 2025 07:40:00 GMT</pubDate>
+       <description><![CDATA[At HumanX 2025, Ryan sat down with HumanX CEO Stefan Weitz and Crunchbase CEO Jager McConnell to talk about where the money is in the AI space, where most enterprise AI strategies fall short, how companies can build business models when AI tech is evolving so quickly, and why this is AI’s microservices moment. ]]></description>
+       <dc:creator><![CDATA[Eira May]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[generative-ai]]></category>
+       <category><![CDATA[ai]]></category>
+       <category><![CDATA[funding]]></category>
+       <category><![CDATA[startups]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">5950a74d-069c-40e4-9dde-51ff3c69beb9</guid>
+       <title>From training to inference: The new role of web data in LLMs</title>
+       <link>https://stackoverflow.blog/2025/04/03/from-training-to-inference-the-new-role-of-web-data-in-llms/</link>
+       <pubDate>Thu, 03 Apr 2025 15:04:38 GMT</pubDate>
+       <description><![CDATA[Data has always been key to LLM success, but it&#x27;s becoming key to inference-time performance as well. ]]></description>
+       <dc:creator><![CDATA[Or Lenchner]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[data-science]]></category>
+       <category><![CDATA[generative-ai]]></category>
+       <category><![CDATA[data]]></category>
+       <category><![CDATA[contributed]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">5a295e61-c7d8-4901-8a18-f51495ff8648</guid>
+       <title>Not all AI is generative: Efficient scheduling with mathematics</title>
+       <link>https://stackoverflow.blog/2025/04/02/not-all-ai-is-generative-efficient-scheduling-with-mathematics/</link>
+       <pubDate>Wed, 02 Apr 2025 14:00:27 GMT</pubDate>
+       <description><![CDATA[Efficiently solving a complex scheduling problem using simulated annealing. ]]></description>
+       <dc:creator><![CDATA[Subbu Sailappan, Sidharth Kumar]]></dc:creator>
+       <category><![CDATA[partner-content]]></category>
+       <category><![CDATA[data-science]]></category>
+       <category><![CDATA[ai]]></category>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">8f3ef3e3-611c-428e-95ae-7474f5ed637d</guid>
+       <title>Boots on the ground: Holistic AI and Audioshake at HumanX</title>
+       <link>https://stackoverflow.blog/2025/04/01/boots-on-the-ground-holistic-ai-and-audioshake-at-humanx/</link>
+       <pubDate>Tue, 01 Apr 2025 07:40:00 GMT</pubDate>
+       <description><![CDATA[Two interviews for the price of one, direct from HumanX 2025! Ryan sits down with Raj Patel, AI transformation lead at Holistic AI, and then chats with Audioshake cofounder and CEO Jessica Powell.]]></description>
+       <dc:creator><![CDATA[Eira May]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[generative-ai]]></category>
+       <category><![CDATA[ai]]></category>
+       <category><![CDATA[governance]]></category>
+       <category><![CDATA[ai-governance]]></category>
+       <category><![CDATA[sound]]></category>
+       <category><![CDATA[music]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">6b507fde-4960-4ff5-ad93-3b9b4543b086</guid>
+       <title>“Are AI agents ready for the enterprise?”</title>
+       <link>https://stackoverflow.blog/2025/03/28/are-ai-agents-ready-for-the-enterprise/</link>
+       <pubDate>Fri, 28 Mar 2025 07:40:00 GMT</pubDate>
+       <description><![CDATA[Deepak Singh, VP of Developer Agents and Experiences at AWS, helps Ryan break down the hype around agentic AI in software development. They cover the definition and real-world functionality of AI agents, how developers can integrate them into existing workflows, and the importance of establishing guardrails to ensure trust and security in agentic AI.]]></description>
+       <dc:creator><![CDATA[Eira May]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[generative-ai]]></category>
+       <category><![CDATA[ai]]></category>
+       <category><![CDATA[software-development]]></category>
+       <category><![CDATA[agentic-ai]]></category>
+       <category><![CDATA[autonomous-agents]]></category>
+       <category><![CDATA[aws]]></category>
+       <category><![CDATA[ai-coding]]></category>
+       <category><![CDATA[developer-experience]]></category>
+       <category><![CDATA[developer-tools]]></category>
+       <category><![CDATA[dev-tools]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">6fc0f4b5-1194-41d2-a033-4f796a1a533b</guid>
+       <title>AI is shifting focus from syntax to critical thinking</title>
+       <link>https://stackoverflow.blog/2025/03/27/ai-is-shifting-focus-from-syntax-to-critical-thinking/</link>
+       <pubDate>Thu, 27 Mar 2025 14:06:02 GMT</pubDate>
+       <description><![CDATA[In this episode of Leaders of Code, host Ben Popper, Stack Overflow CEO Prashanth Chandrasekar, and GitLab Field CTO Lee Faus explore how GenAI is reshaping software development practices.]]></description>
+       <dc:creator><![CDATA[Katja Skafar]]></dc:creator>
+       <category><![CDATA[leaders-of-code]]></category>
+       <category><![CDATA[business]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[generative-ai]]></category>
+       <category><![CDATA[software-development]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">9cfb603d-6d34-43a4-9714-e7a10e082529</guid>
+       <title>“The power of the humble embedding”</title>
+       <link>https://stackoverflow.blog/2025/03/25/the-power-of-the-humble-embedding/</link>
+       <pubDate>Tue, 25 Mar 2025 07:40:00 GMT</pubDate>
+       <description><![CDATA[Ryan speaks with Edo Liberty, Founder and CEO of Pinecone, about building vector databases, the power of embeddings, the evolution of RAG, and fine-tuning AI models.]]></description>
+       <dc:creator><![CDATA[Eira May]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[generative-ai]]></category>
+       <category><![CDATA[ai]]></category>
+       <category><![CDATA[machine-learning]]></category>
+       <category><![CDATA[embedding]]></category>
+       <category><![CDATA[vector]]></category>
+       <category><![CDATA[database]]></category>
+       <category><![CDATA[semantic-search]]></category>
+       <category><![CDATA[retrieval-augmented-generation]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">be602a0a-cef8-4e38-87b6-0b151ffe9124</guid>
+       <title>An AI future free of slop</title>
+       <link>https://stackoverflow.blog/2025/03/21/an-ai-future-free-of-slop/</link>
+       <pubDate>Fri, 21 Mar 2025 07:40:00 GMT</pubDate>
+       <description><![CDATA[Stack Overflow CEO Prashanth Chandrasekar sat down with Ryan at HumanX 2025 to talk about how Stack is integrating AI into its public platform, the enormous importance of a high-quality knowledge base in your AI journey, how AI tools are empowering junior developers to build better software, and much more.]]></description>
+       <dc:creator><![CDATA[Eira May]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[generative-ai]]></category>
+       <category><![CDATA[ai]]></category>
+       <category><![CDATA[software-development]]></category>
+       <category><![CDATA[events]]></category>
+       <category><![CDATA[data]]></category>
+       <category><![CDATA[data-quality]]></category>
+       <category><![CDATA[dev-tools]]></category>
+       <category><![CDATA[developer-tools]]></category>
+       <category><![CDATA[knowledge-base]]></category>
+       <category><![CDATA[integrations]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">0c8a7a51-ffaf-4965-8612-26a1feae026b</guid>
+       <title>WBIT #5: Building a framework to lure web devs to mobile</title>
+       <link>https://stackoverflow.blog/2025/03/19/wbit-5-building-a-framework-to-lure-web-devs-to-mobile/</link>
+       <pubDate>Wed, 19 Mar 2025 04:40:00 GMT</pubDate>
+       <description><![CDATA[Kyle interviews Maria Hutt about building the Ionic mobile framework. ]]></description>
+       <dc:creator><![CDATA[Ryan Donovan]]></dc:creator>
+       <category><![CDATA[wbit]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[frameworks]]></category>
+       <category><![CDATA[mobile-development]]></category>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">ebcd5b55-2c7d-4aff-b179-70e851f52f4b</guid>
+       <title>Improving error monitoring with AI</title>
+       <link>https://stackoverflow.blog/2025/03/18/improving-error-monitoring-with-ai/</link>
+       <pubDate>Tue, 18 Mar 2025 07:40:00 GMT</pubDate>
+       <description><![CDATA[Tillman Elser, AI/ML lead at Sentry, joins Ryan for a conversation about improving error monitoring with AI and ML. They talk through the challenges of analyzing stack traces, the innovative use of embeddings to improve error grouping, the trial-and-error process of developing algorithms, and where Sentry’s AI capabilities are headed next.]]></description>
+       <dc:creator><![CDATA[Eira May]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[podcast]]></category>
+       <category><![CDATA[generative-ai]]></category>
+       <category><![CDATA[ai]]></category>
+       <category><![CDATA[ml]]></category>
+       <category><![CDATA[error-tracking]]></category>
+       <category><![CDATA[monitoring]]></category>
+       <category><![CDATA[software-development]]></category>
+       <category><![CDATA[programming-language]]></category>
+   </item>
+   <item>
+       <guid isPermaLink="false">141943a2-0523-4af4-a49b-6e8a6f2055e8</guid>
+       <title>To get ahead with AI, fine-tune your data strategy</title>
+       <link>https://stackoverflow.blog/2025/03/17/to-get-ahead-with-ai-fine-tune-your-data-strategy/</link>
+       <pubDate>Mon, 17 Mar 2025 16:15:00 GMT</pubDate>
+       <description><![CDATA[In the first episode of our new podcast series, Leaders of Code, we sat down with Don Woodlock, Head of Global Healthcare Solutions at InterSystems, and Stack Overflow CEO Prashanth Chandrasekar to discuss data strategy&#x27;s critical role in AI development.]]></description>
+       <dc:creator><![CDATA[Katja Skafar, Susi O'Neill]]></dc:creator>
+       <category><![CDATA[se-tech]]></category>
+       <category><![CDATA[se-stackoverflow]]></category>
+       <category><![CDATA[software-development]]></category>
+       <category><![CDATA[generative-ai]]></category>
+       <category><![CDATA[software-engineering]]></category>
+       <category><![CDATA[ai-coding]]></category>
+       <category><![CDATA[leaders-of-code]]></category>
+       <category><![CDATA[business]]></category>
+   </item>
+</channel>
+</rss>

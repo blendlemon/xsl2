@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lector RSS - Menú por Categorías</title>
+  
+  <!------------------------------------ ESTILOS CSS ---------------------------------->
+  <style>
+	
+	/* dame estilos chulos */
+  body{
+    display: flex;
+  }
+  #categorias{
+    background-color: lightgrey;
+    padding: 1%;
+    height: 100vh;
+  }
+	
+  #blogs{
+    background-color: aquamarine;
+    padding: 1%;
+    height: 100vh;
+  }
+  </style>
+</head>
+
+<body onload="cargarCategorias()">
+
+  <!-------------------------------------- ESTRUCTURA HTML ------------------------------------>
+
+  <nav id="categorias">
+    <h2>Categorías</h2>
+	<h6>Selecciona una categoría.</h6>
+  </nav>
+
+  <nav id="blogs">
+    <h2>Blogs</h2>
+    <h6>Selecciona un blog.</h6>
+  </nav>
+
+  <main id="contenido">
+    <!--
+	<h2>Contenido</h2>
+	<h6>Selecciona un post.</h6>
+	-->
+  </main>
+  
+  <!------------------------------------ FUNCIONES JAVASCRIPT ---------------------------------->
+
+  <script>
+    let datosXML = null;
+
+    function cargarCategorias() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.open("GET", "./blogs.xml", false);
+      xhttp.send();
+      datosXML = xhttp.responseXML;
+
+      const categorias = datosXML.getElementsByTagName("categoria");
+      const contenedor = document.getElementById("categorias");
+
+      for (let i = 0; i < categorias.length; i++) {
+        const nombre = categorias[i].getAttribute("nombre");
+
+        const div = document.createElement("div");
+        div.className = "categoria";
+        div.textContent = nombre;
+        div.addEventListener("click", function () {
+          mostrarBlogs(nombre);
+        });
+
+        contenedor.appendChild(div);
+      }
+    }
+
+    function mostrarBlogs(nombreCategoria) {
+      const categoria = [...datosXML.getElementsByTagName("categoria")]
+        .find(c => c.getAttribute("nombre") === nombreCategoria);
+
+      const blogs = categoria.getElementsByTagName("blog");
+      const contenedor = document.getElementById("blogs");
+	  
+	  contenedor.innerHTML = "<h2>Blogs</h2><h6>Selecciona un blog.</h6>";
+
+      for (let i = 0; i < blogs.length; i++) {
+        const nombre = blogs[i].getAttribute("nombre");
+        const url = blogs[i].getAttribute("url");
+
+        const div = document.createElement("div");
+        div.className = "blog";
+
+        const enlace = document.createElement("a");
+        enlace.href = "#";
+        enlace.textContent = nombre;
+        enlace.addEventListener("click", function (e) {
+          e.preventDefault();
+          mostrarEntradas(url, nombre);
+        });
+
+		div.appendChild(enlace);
+        contenedor.appendChild(div);
+      }
+
+      const contenido = document.getElementById("contenido");
+    }
+	
+	function mostrarEntradas(url, nombreBlog) {
+	  const contenedor = document.getElementById("contenido");
+	  contenedor.innerHTML = '<h2>' + nombreBlog + '</h2><p>Cargando entradas desde: <code>' + url + '</code></p>';
+	  const rssUrl = url;
+	  
+	  fetch(rssUrl)
+		.then(response => {
+		  if (!response.ok) throw new Error("No se pudo obtener el RSS");
+		  return response.text();
+		})
+		.then(rssData => {
+		  const parser = new DOMParser();
+		  const rssXML = parser.parseFromString(rssData, "application/xml");
+
+		  const xslRequest = new XMLHttpRequest();
+		  xslRequest.open("GET", "posts.xsl", false);
+		  xslRequest.send();
+		  const xslDoc = xslRequest.responseXML;
+
+		  const xsltProcessor = new XSLTProcessor();
+		  xsltProcessor.importStylesheet(xslDoc);
+
+		  const resultDocument = xsltProcessor.transformToFragment(rssXML, document);
+		  contenedor.innerHTML = "";
+		  contenedor.appendChild(resultDocument);
+		  
+			// desescapado
+			const descripciones = contenedor.querySelectorAll(".descripcion");
+			descripciones.forEach(desc => {
+			  const temp = document.createElement("div");
+			  temp.innerHTML = desc.innerHTML;
+			  desc.innerHTML = temp.textContent || temp.innerText || "";
+			});
+
+		})
+		.catch(error => {
+		  contenedor.innerHTML = '<p>Error al cargar el feed: ' + error.message + '</p>';
+		});
+	}
+
+
+  </script>
+</body>
+</html>
